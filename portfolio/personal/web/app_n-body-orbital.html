@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>N-Body Orbitals (Javascript)</title>
+		<meta name="description" content="This JavaScript project takes on the n-body problem in a 2D environment, using colorful particles of different mass to demonstrate orbital mechanics.">
+		<meta name="author" content="Reilly Thate">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="ie-edge">
+		<link rel="stylesheet" href="../../../css/projects/js_app.css" type="text/css">
+
+		<link rel="icon" type="image/ico" href="../../../favicon.ico" sizes="16x16" />
+	</head>
+
+	<body>
+		<main>
+			<canvas id="app_canvas"></canvas>
+			<section id="control_board">
+				<article class="control_option">
+					<input type="button" class="button" id="toggle_gravity" value="Toggle Repulsion" onclick="toggleGravity()">
+				</article>
+				<article class="control_option">
+					<label for="planetCount">Number of Planets</label>
+					<div id="planet_control">
+						<input type="button" class="button" id="planet_decrement" value="&ndash;" onclick="planetDecrement()">
+						<p id="planet_count">10</p>
+						<input type="button" class="button" id="planet_increment" value="+" onclick="planetIncrement()">
+					</div>
+				</article>
+				<article class="control_option">
+					<label for="decay">Boundary Decay</label>
+					<div id="decay_control">
+						<input type="range" class="slider" id="slider_decay" min="0.0" max="100.0" value="100.0" onInput="adjustDecay()" name="decay">
+						<p id="decay_value"></p>
+					</div>
+				</article>
+				<article class="control_option">
+					<label for="g">G Constant</label>
+					<div id="g_control">
+						<input type="range" class="slider" id="slider_g" min="1.0" max="100000.0" value="5000" onInput="adjustG()" name="g">
+						<p id="g_value"></p>
+					</div>
+				</article>
+			</section>
+			<script type="text/javascript" src="../../../js/app_n-body-orbital.js"></script>
+		</main>
+	</body>
+</html>

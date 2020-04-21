@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js" ng-app="blogModule">
+	<head>
+		<meta charset="utf-8">
+		<title>Blog - Reilly Thate</title>
+		<meta name="description" content="Reilly Thate's blog.">
+		<meta name="author" content="Reilly Thate">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/common/common.css" type="text/css">
+		<link rel="stylesheet" href="css/main-pages/blog.css" type="text/css">
+		
+		<link rel="icon" type="image/ico" href="favicon.ico" sizes="16x16" />
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+		<script src="database/blog_map.js"></script>
+		<script src="js/blogController.js"></script>
+	</head>
+
+	<body>
+		
+		<header>
+			<h1><a href="index.html">Reilly Thate</a></h1>
+			<span class="logo logo-renegade"></span>
+			<nav id="topNav">
+    			<button id="topNav_toggle" aria-expanded="false">Menu</button>
+				<ul id="topNav_list">
+					<li class="topNav_item"><a href="portfolio.html">Portfolio</a></li>
+					<li class="topNav_item" id="active_page">Blog</li>
+					<li class="topNav_item"><a href="about.html">About</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<main>
+			<section id="page_teaser">
+				<article class="page_teaser">
+					<h2>Blog</h2>
+					<p class="page_teaser_tagline">Reviews, Tutorials, and More!</p>
+				</article>
+			</section>
+			<section id="recent" class="posts_section" ng-controller="blogController">
+				<h2>Recent Posts</h2>
+				<article class="card" ng-repeat="entry in entries | startFrom:currentPage*pageSize | limitTo:pageSize">
+					<figure class="blog_banner">
+						<img ng-src="{{entry.image}}">
+					</figure>
+					<article class="content">
+						<h3>
+							{{entry.name}}
+						</h3>
+						<p>
+							{{entry.preview}}
+						</p>
+						<p class="to_blog_post">
+							<a ng-href="{{entry.page}}">
+								Read More
+							</a>
+						</p>
+					</article>
+				</article>
+				<div id="nav_recent">
+					<button ng-disabled="currentPage==0" ng-click="setPage(currentPage-1)">
+						Previous
+					</button>
+					<button ng-disabled="currentPage==$index" ng-repeat="entry in entries | startFrom:0 | limitTo: (entries.length/pageSize+1)" ng-click="setPage($index)">
+						{{$index}}
+					</button>
+					<button ng-disabled="currentPage>=entries.length/pageSize-1" ng-click="setPage(currentPage+1)">
+						Next
+					</button>
+				</div>
+			</section>
+		</main>
+		
+		<footer>
+			<section id="social_media_bar">
+				<figure class="social_logo_container">
+					<a href="https://www.youtube.com/channel/UCr9bNNf2-HwIflgvgbjnnOQ" target="_blank" class="social_media_link">
+						<img src="media/icons/yt_icon.svg" alt="YouTube logo: a red television screen with a white play button.">
+					</a>
+				</figure>
+			</section>
+			
+			<p id="site_copyright">Copyright &copy; 2020 Reilly Thate</p>
+			
+		</footer>
+		
+		<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/182774/modernizr_copy.js"></script>
+  		<script>
+  
+			var toggle = document.querySelector('#topNav_toggle');
+			var menu = document.querySelector('#topNav_list');
+			//var menuItems = document.querySelectorAll('#menu li a');
+
+			toggle.addEventListener('click', function()
+			{
+				if (menu.classList.contains('is-active')) 
+				{
+					this.setAttribute('aria-expanded', 'false');
+					menu.classList.remove('is-active');
+				} else 
+				{
+					menu.classList.add('is-active'); 
+					this.setAttribute('aria-expanded', 'true');
+					//menuItems[0].focus();
+				}
+			});
+  
+  		</script>
+		
+	</body>
+</html>

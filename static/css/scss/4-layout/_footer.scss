@@ -1,0 +1,26 @@
+/* Footer */
+
+ #social_media_bar
+ {
+     @include edge(0, 0);
+     @include flex(row, center, center);
+ }
+ .social_logo_container
+ {
+     @include edge(0, 0.5rem 0 0.3rem 0);
+
+     a
+     {
+         @include edge(0);
+         display: block;
+     }
+     img
+     {
+         @include edge(0);
+         width: 3rem;
+     }
+ }
+ #site_copyright
+ {
+     text-align: center;
+ }

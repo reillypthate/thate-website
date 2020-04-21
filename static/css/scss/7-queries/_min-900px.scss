@@ -1,0 +1,68 @@
+@media screen and (min-width: 900px)
+{
+    // 3-Basics
+
+
+    // 4-Layout
+
+    // _header.scss
+
+    header
+	{
+		height: 6rem;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1.5rem;
+	}
+	h1
+	{
+		text-align: center;
+		height: 3rem;
+		flex-basis: 40%;
+		flex-grow: 0;
+	}
+	.logo
+	{
+		display: block;
+		position: absolute;
+		top: 0.75rem;
+		left: calc(50% - (3.75rem));
+		opacity: 100%;
+		width: 7.5rem;
+		height: 7.5rem;
+		z-index: 0;
+		background-image: url("../../../media/logo/renegade-basic.svg");
+		background-origin: content-box;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	.logo
+	{
+		opacity: 50%;
+		animation-duration: 0.75s;
+		animation-timing-function: ease;
+		animation-iteration-count: infinite;
+	}
+	.logo-renegade
+	{
+		opacity: 100%;
+		z-index: 1;
+	}
+	// _topNav.scss
+	#topNav
+	{
+		margin: 0;
+		flex-basis: 40%;
+		flex-grow: 0;
+	}
+	#topNav_list, .js #topNav_list
+	{
+		justify-content: flex-start;
+	}
+
+    // 5-Modules
+
+
+    // 6-Pages
+}

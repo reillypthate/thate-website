@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,500|Raleway&display=swap');
+
+h1, h2, h3, h4, h5, h6
+{
+    font-family: $heading-family;
+    font-weight: $heading-weight;
+    
+    letter-spacing: 0.05rem;
+    text-align: center;
+
+    flex: 1 0 100%;
+}
+h1
+{
+    @include edge(($h1-height / 4.0) 0, 0);
+    
+    @include heading($h1-height / 2.0, center, $dark-primary, $h1-height);
+    height: $h1-height;
+}
+h2
+{
+	font-size: $h2-height;
+    line-height: $h2-height;
+
+	padding-bottom: 0.5rem;
+}
+h3
+{
+	font-size: $h3-height;
+	line-height: $h3-height;
+
+	padding-bottom: 0.25rem;
+}
+h4
+{
+	font-size: $h4-height;
+    line-height: $h4-height;
+    
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+
+p
+{
+    line-height: 1.3rem;
+    height: auto;
+    &:last-child
+    {
+        padding-bottom: 0;
+    }
+}

@@ -1,0 +1,368 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:300,400,500|Raleway&display=swap");
+/******************************************************************************
+ ** Header ********************************************************************
+ *****************************************************************************/
+header {
+  /* Spacing & Border */
+  margin: 0;
+  padding: 1rem 0 0 0;
+  /* */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+h1 {
+  /* Spacing & Border */
+  margin: 1.5rem 0;
+  padding: 0;
+  /* */
+  font-size: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  color: black;
+  text-shadow: 0 0.25rem 0.3125rem white;
+  height: 6rem;
+  flex-basis: 100%;
+  flex-grow: 1;
+}
+
+h1 a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 80%, rgba(32, 64, 223, 0.45) 80%, rgba(32, 64, 223, 0.9) 100%);
+  background-size: 100% 100%;
+  background-origin: content-box;
+}
+
+h1 a:hover {
+  background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 80%, rgba(9, 64, 109, 0.45) 80%, rgba(9, 64, 109, 0.9) 100%);
+}
+
+.logo {
+  opacity: 20%;
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  top: 1.5rem;
+  left: calc(50% - 3rem);
+  z-index: -1;
+  background-image: url("../../media/logo/renegade-basic.svg");
+  background-origin: content-box;
+  background-repeat: no-repeat;
+}
+
+@media only screen and (min-width: 450px) {
+  /************
+   ** Header **
+   ************/
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  h1 {
+    text-align: center;
+    padding: 0 0;
+  }
+}
+@media screen and (min-width: 900px) {
+  header {
+    height: 6rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    text-align: center;
+    height: 3rem;
+    flex-basis: 40%;
+    flex-grow: 0;
+  }
+
+  .logo {
+    display: block;
+    position: absolute;
+    top: 0.75rem;
+    left: calc(50% - (3.75rem));
+    opacity: 100%;
+    width: 7.5rem;
+    height: 7.5rem;
+    z-index: 0;
+    background-image: url("../../media/logo/renegade-basic.svg");
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .logo {
+    opacity: 50%;
+    animation-duration: 0.75s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+  }
+
+  .logo-renegade {
+    opacity: 100%;
+    animation-name: opacityChange2;
+    z-index: 1;
+  }
+
+  .logo-renegade1 {
+    filter: invert(17%) sepia(31%) saturate(4660%) hue-rotate(221deg) brightness(84%) contrast(110%);
+    left: calc(50% - 3.60rem);
+    animation-name: swipeLeft, opacityChange;
+  }
+
+  .logo-renegade2 {
+    filter: invert(17%) sepia(31%) saturate(4660%) hue-rotate(190deg) brightness(89%) contrast(93%);
+    left: calc(50% - 3.90rem);
+    animation-name: swipeRight, opacityChange;
+  }
+
+  /*
+  @keyframes swipeLeft
+  {
+  	0%	{left: calc(50% - 3.75rem);}
+  	50% {left: calc(50% - 3.65rem);}
+  	100%{left: calc(50% - 3.75rem));}
+  }
+  @keyframes swipeRight
+  {
+  	0%	{left: calc(50% - 3.75rem);}
+  	50% {left: calc(50% - 3.85rem);}
+  	100%{left: calc(50% - 3.75rem);}
+  }
+  @keyframes opacityChange
+  {
+  	0%	{opacity: 0%;}
+  	50% {opacity: 50%;}
+  	100%{opacity: 0%;}
+  }
+  @keyframes opacityChange2
+  {
+  	0%	{opacity: 100%;}
+  	50% {opacity: 70%;}
+  	100%{opacity: 100%;}
+  }*/
+}
+html {
+  /* Spacing & Border */
+  margin: 0 auto;
+  padding: 0;
+  /* */
+  max-width: 1024px;
+}
+
+body {
+  /* Spacing & Border */
+  margin: 0;
+  padding: 0.5rem;
+  /* */
+  padding-bottom: 2.55rem;
+  background: rgba(0, 0, 0, 0.075);
+  font-family: "Raleway", Arial, "sans-serif";
+}
+
+h1, h2, h3, nav li, button {
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+}
+
+h2, h3, h4 {
+  /* Spacing & Border */
+  margin: 0;
+  padding: 0;
+  /* */
+  flex-basis: 100%;
+  flex-grow: 1;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+  letter-spacing: 0.05rem;
+  padding-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  line-height: 1.3rem;
+  padding-bottom: 0.25rem;
+}
+
+h4 {
+  font-size: 1.1rem;
+  line-height: 1.1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+p {
+  line-height: 1.3rem;
+  padding-bottom: 5rem;
+}
+
+main {
+  border-top: 1rem groove rgba(9, 64, 109, 0.9);
+}
+
+button {
+  border-radius: 1rem;
+  background: var(--bright-primary);
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+button:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.45);
+}
+
+/******************************************************************************
+ ** Dashboard *****************************************************************
+ *****************************************************************************/
+#admin_page_label {
+  display: block;
+  flex-basis: 100%;
+  flex-grow: 0;
+  text-align: left;
+}
+
+.manager_preview {
+  /* Spacing & Border */
+  margin: 1rem;
+  padding: 1rem;
+  /* */
+  border: 3px solid rgba(9, 64, 109, 0.45);
+  border-radius: 1rem;
+}
+.manager_preview table {
+  margin: 0 auto;
+}
+.manager_preview table tr {
+  border: 1px solid rgba(9, 64, 109, 0.45);
+}
+.manager_preview table tr td:first-child {
+  width: 16rem;
+  text-align: left;
+}
+
+table {
+  /* Spacing & Border */
+  margin: 1rem;
+  padding: 1rem;
+  /* */
+  border: 2px solid rgba(9, 64, 109, 0.45);
+  border-radius: 1rem;
+}
+table tr td {
+  text-align: center;
+  font-size: 1.1rem;
+}
+table tr td:first-child {
+  text-decoration: underline;
+}
+
+.manager_control_center {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.manager_control_center button {
+  /* Spacing & Border */
+  margin: 0.5rem;
+  padding: 1rem 2rem;
+  /* */
+}
+.manager_control_center h3 {
+  width: 100%;
+}
+
+.to_manager {
+  /* Spacing & Border */
+  margin: 2rem;
+  padding: 0;
+  /* */
+  text-align: center;
+  font-size: 1.3rem;
+  border: 2px groove rgba(9, 64, 109, 0.9);
+  border-radius: 1rem;
+}
+.to_manager a {
+  /* Spacing & Border */
+  margin: 0;
+  padding: 1rem 2rem;
+  /* */
+  display: block;
+  text-decoration: none;
+  line-height: 1.3rem;
+}
+.to_manager a:hover {
+  background: rgba(9, 64, 109, 0.45);
+  border-radius: 1rem;
+}
+
+/******************************************************************************
+ ** Category Manager **********************************************************
+ *****************************************************************************/
+.action {
+  /* Spacing & Border */
+  margin: 1rem 0;
+  padding: 1rem 0;
+  /* */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.action form {
+  /* Spacing & Border */
+  margin: 1rem;
+  padding: 1rem;
+  /* */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 0.25rem solid rgba(9, 64, 109, 0.45);
+  border-radius: 1rem;
+  flex-basis: 100%;
+}
+.action form input {
+  /* Spacing & Border */
+  margin: 0.5rem;
+  padding: 0.5rem 0 0.5rem 0.25rem;
+  /* */
+}
+.action form button {
+  /* Spacing & Border */
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  /* */
+}
+
+.categories, .tags {
+  /* Spacing & Border */
+  margin: 0 auto;
+  padding: 1rem;
+  /* */
+  border: 0.25rem solid rgba(9, 64, 109, 0.45);
+  border-radius: 1rem;
+}
+
+.indices {
+  width: 4rem;
+}
+
+.names {
+  width: 16rem;
+}
+
+/*# sourceMappingURL=admin.css.map */

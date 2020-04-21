@@ -1,0 +1,144 @@
+#page_teaser
+{
+    @include edge(
+        0,
+        1rem
+    );
+    @include softBox(0.015, 0.035);
+
+    flex: 0 1 100%;
+
+    box-shadow: 1px 1px 1px 1px hsla(0, 0%, 0%, 0.1);
+
+    p
+	{
+		font-size: 1.2rem;
+		text-align: center;
+
+		&:first-child
+		{
+			font-size: 1.3rem;
+		}
+		&:last-child
+		{
+			font-size: 0.9rem;
+		}
+	}
+}
+
+.page_preview
+{
+	@include edge(0 1rem, 0 1rem);
+
+	.description
+	{
+		flex: 1 0 100%;
+	}
+	.tiles
+	{
+		flex: 0 1 100%;
+	}
+
+}
+.sub_description
+{
+	padding-top: 0.5rem;
+}
+.to_main_page
+{
+	flex-basis: 100%;
+}
+.home_card
+{
+	padding: 1rem;
+	@include softBox(0.015, 0.035);
+	box-shadow: 1px 1px 1px 1px hsla(0, 0%, 0%, 0.1);
+}
+
+#featured_projects
+{
+	@include edge(1rem 0 0 0, 0);
+
+	.home_card
+	{
+		@include flex(row);
+		display: block;
+	}
+}
+#recent_posts
+{
+    @include edge(1rem 0 0 0, 0);
+    
+	
+	.home_card
+	{
+		@include flex(column, space-between, flex-start);
+
+		h3
+		{
+			@include edge(0.25rem 0 0 0, 0);
+		}
+	
+	}
+
+}
+.card_content
+{
+    @include edge(0 0 0 1rem, 0);
+    display: block;
+
+	flex-basis: 65%;
+	flex-grow: 1;
+}
+.card_content h3
+{
+	text-align: left;
+}
+figure, img
+{
+    @include edge(0);
+	display: block;
+}
+.home_card figure
+{
+	box-shadow: 0px 0px 2px 2px hsla(0, 0%, 50%, 0.5);
+}
+h2
+{
+    @include edge(0, 0.5rem);
+	flex-basis: 100%;
+	
+	text-transform: uppercase;
+	letter-spacing: 0.05rem;
+	
+	color: hsla(0, 0%, 0%, 0.85);
+	text-shadow: 1.0px 1.0px 1px white;
+}
+h3
+{
+    @include edge(0.5 0 auto 0, 0);
+}
+p
+{
+	@include edge(0.5rem, 0);
+	align-self: flex-start;
+}
+.card_banner
+{
+	margin: 0;
+	margin-bottom: 0.5rem;
+	padding: 0;
+	flex-basis: 100%;
+	background: var(--accent-secondary);
+}
+.card_banner img
+{
+	display: block;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+.card_banner figcaption
+{
+	text-align: center;
+}

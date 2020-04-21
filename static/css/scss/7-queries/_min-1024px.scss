@@ -1,0 +1,40 @@
+@media only screen and (min-width: 1024px)
+{
+    // 6-pages
+
+    // _home.scss
+	.page_preview
+	{
+		@include flex(row, center, flex-start, none);
+	}
+	#featured_projects
+	{
+		@include flex(row, center, flex-start, none);
+
+		.home_card
+		{
+			@include flex(row);
+			height: 100%;
+		}
+		.description
+		{
+			flex: 1 0 70%;
+		}
+		.tiles
+		{
+			flex: 1 0 30%;
+		}
+	}
+	#recent_posts
+	{
+		.description
+		{
+			order: 1;
+			flex: 1 0 30%;
+		}
+		.tiles
+		{
+			flex: 1 0 70%;
+		}
+	}
+}

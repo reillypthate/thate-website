@@ -1,0 +1,114 @@
+@charset "utf-8";
+
+
+#portfolio_supercategory_card
+{
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(3, 1fr);
+	grid-gap: 0.5rem;
+	
+	padding-bottom: 0.5rem;
+}
+.portfolio_supercategory_card
+{
+	display: flex;
+	flex-basis: 100%;
+	flex-direction: column;
+	
+	border-radius: 0.5rem;
+	background: linear-gradient(
+		hsla(0, 0%, 100%, 0.15) 0%,
+		hsla(0, 0%, 0%, 0.015) 5%,
+		hsla(0, 0%, 0%, 0.015) 95%,
+		hsla(0, 0%, 0%, 0.035) 100%),
+	linear-gradient(
+		90deg,
+		hsla(0, 0%, 100%, 0.15) 0%,
+		hsla(0, 0%, 0%, 0.015) 2.5%,
+		hsla(0, 0%, 0%, 0.015) 97.5%,
+		hsla(0, 0%, 0%, 0.035) 100%);
+	box-shadow: 1px 1px 1px 1px hsla(0, 0%, 0%, 0.1);
+	
+	padding: 0.5rem 1rem;
+}
+.about_h2
+{
+	flex-basis: 33%;
+	
+	font-size: 1.8rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05rem;
+	text-align: center;
+	
+	color: hsla(0, 0%, 0%, 0.85);
+	text-shadow: 1.0px 1.0px 1px white;
+	
+	margin: 0 0 0 0;
+	padding: 0.5rem;
+}
+.supercategory_tagline
+{
+	font-size: 1.25rem;
+	font-weight: bolder;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05rem;
+	width: 100%;
+	text-align: center;
+	
+	color: hsla(0, 0%, 0%, 0.85);
+	text-shadow: 1.0px 1.0px 1px white;
+	
+	border: none;
+	margin: 0;
+	padding: 0 0 0.5rem 0;
+}
+
+#about_portfolio
+{
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(3, 1fr);
+	grid-gap: 0.5rem;
+	
+	display: flex;
+	flex-direction: column;
+	
+	padding: 0 0 0.75rem 0;
+}
+.portfolio_category_about
+{
+	padding: 0.75rem 0 0.5rem 0;
+	
+	background: linear-gradient(
+		hsla(0, 0%, 0%, 0) 0%,
+		var(--shade-primary) 0.25rem,  
+		var(--shade-secondary) 0.75rem,
+		hsla(0, 0%, 0%, 0) 1.75rem,
+		hsla(0, 0%, 0%, 0) 100%
+	);
+	background-position: top 0;
+    background-origin: border-box;
+    
+    h2
+    {
+        text-align: left;
+        margin: 0;
+        margin-bottom: 0.75rem;
+        padding: 0;
+        padding-left: 0.75rem;
+    }
+    p
+    {
+        font-size: 1.1rem;
+        line-height: 1.35rem;
+        letter-spacing: 1px;
+        
+        flex-basis: 100%;
+        text-align: left;
+        margin: 0;
+        margin-bottom: 0.75rem;
+        padding: 0;
+        padding-left: 1.5rem;
+    }
+}

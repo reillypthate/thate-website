@@ -1,0 +1,88 @@
+@media only screen and (min-width: 450px)
+{
+    // 3-Basics
+
+	// _reset.scss
+	body
+    {// When topNav moves back up to header, reduce bottom padding.
+        padding-bottom: 0.5;
+    }
+
+    // 4-Layout
+
+    // _header.scss
+	header
+	{
+		display: flex;
+		justify-content: space-between;
+	}
+	h1
+	{
+		text-align: center;
+		padding: 0 0;
+	}
+	// _topNav.scss
+	#topNav
+    {
+        @include edge(0.5rem 0, 0);
+        position: relative;
+        background: none;
+        backdrop-filter: none;
+    }
+    #topNav_toggle
+    {
+        display: none;
+    }
+    .topNav_item, .js .topNav_item
+    {
+        @include softBox(0.015, 0.035);
+    }
+    %topNav_list-rows
+    {
+        background: none;
+        padding: 0;
+        box-shadow: none;
+        
+        display: flex;
+        justify-content: center;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        border: none;
+    }
+    #topNav_list, #topNav_list.is-active
+    {
+        @extend %topNav_list-rows;
+    }
+    .js
+    {
+        #topNav_toggle
+        {
+            display: none;
+        }
+        #topNav_list, #topNav_list.is-active
+        {
+            @extend %topNav_list-rows;
+        }
+        .topNav_item
+        {
+            width: 7rem;
+        }
+    }
+    @-moz-document url-prefix()
+    {
+        #topNav
+        {
+            background: transparent;
+        }
+    }
+
+    // 5-Modules
+
+
+    // 6-Pages
+
+    // _home.scss
+	#featured_projects
+	{
+	}
+}

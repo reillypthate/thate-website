@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+$transparent: hsla(0, 0%, 0%, 0);
+$shade-transparent: hsla(230, 75%, 50%, 0);
+$shade-primary: hsla(230, 75%, 50%, 0.9);
+$shade-secondary: hsla(230, 75%, 50%, 0.45);
+$accent-transparent: hsla(207, 85%, 23%, 0);
+$accent-primary: hsla(207, 85%, 23%, 0.9);
+$accent-secondary: hsla(207, 85%, 23%, 0.45);
+$bright-primary: hsla(135, 2%, 100%, 1.0);
+$bright-secondary: hsla(135, 2%, 60%, 1.0);
+$dark-primary: hsla(0, 0%, 0%, 1.0);
+
+$heading-color-primary: hsla(0, 0%, 0%, 0.85);
+$heading-color-secondary: hsla(0, 0%, 0%, 0.75);
+
+$button-border-default: hsla(0, 0%, 0%, 0.25);
+$button-border-highlight: hsla(0, 0%, 0%, 0.45);
+$button-background-default: var(--bright-primary);
+$button-background-hover: hsla(0, 0%, 0%, 0.1);
+$button-background-active-default: var(--button-border-default);
+$button-background-active-hover: var(--button-border-highlight);
+
+$background-color: hsla(0, 0%, 0%, 0.075);
+
+$border-blue: hsla(230, 75%, 50%, 1.0);
+$underline-blue: hsla(230, 75%, 50%, 0.5);
+
+$heading-base-gradient: linear-gradient(
+    $transparent 0%,
+    $transparent 80%,
+    $shade-secondary 80%,  
+    $shade-primary 100%
+);
+$heading-hover-gradient: linear-gradient(
+    $transparent 0%,
+    $transparent 80%,
+    $accent-secondary 80%,  
+    $accent-primary 100%
+);
+
+
+$body-family: 'Raleway', Arial, 'sans-serif';
+$heading-family: 'Oswald', sans-serif;
+$heading-weight: 500;
+$heading-padding: 2.05% 0 4.1% 0;
+
+
+$default-padding: 0.5rem;
+
+$h1-height: 6.0rem;
+$h2-height: 1.8rem;
+$h3-height: 1.3rem;
+$h4-height: 1.1rem;
+
+$topNav_toggle-fontSize: 1.6rem;
+$topNav_item-fontSize: 1.5rem;
+// Padding values balance out ascender/descender ratio: Top=0.0205, Bottom=0.0410
+$topNav_toggle-padding: ($topNav_toggle-fontSize*0.3205) 0 ($topNav_toggle-fontSize*0.341) 0;
+$topNav_item-padding: ($topNav_item-fontSize*0.3205) 0 ($topNav_toggle-fontSize*0.341) 0;

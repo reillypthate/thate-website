@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+
+.closeup
+{
+	max-width: 280px;
+	margin: 0 auto;
+}
+picture
+{
+	width: 50%;
+}
+img
+{
+	width: 100%;
+}
+section
+{
+	margin-bottom: 1rem;
+}
+.bio 
+{
+	
+}
+
+@media screen and (min-width:450px)
+{
+	.bio figure
+	{
+		
+	}
+}
+@media screen and (min-width:830px)
+{
+	.bio
+	{
+		display: flex;
+		align-items: center;
+	}
+	article
+	{
+		margin-left: 1rem;
+	}
+	.bio figure
+	{
+		
+	}
+}

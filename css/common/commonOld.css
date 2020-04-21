@@ -1,0 +1,388 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,500|Raleway&display=swap');
+/* CSS Document */
+
+/******************************************************************************
+ ** Main Containers ***********************************************************
+ *****************************************************************************/
+*
+{
+	--shade-primary: hsla(230, 75%, 50%, 1.0);
+	--shade-secondary: hsla(230, 75%, 50%, 0.5);
+	--accent-primary: hsla(207, 85%, 23%, 1.0);
+	--accent-secondary: hsla(207, 85%, 23%, 0.5);
+	--bright-primary: hsla(135, 2%, 100%, 1.0);
+	--bright-secondary: hsla(135, 2%, 60%, 1.0);
+	--dark-primary: hsla(0, 0%, 0%, 1.0);
+	
+	--button-border-default: hsla(0, 0%, 0%, 0.25);
+	--button-border-highlight: hsla(0, 0%, 0%, 0.45);
+	--button-background-default: var(--bright-primary);
+	--button-background-hover: hsla(0, 0%, 0%, 0.1);
+	--button-background-active-default: var(--button-border-default);
+	--button-background-active-hover: var(--button-border-highlight);
+	
+	
+	--border-blue: hsla(230, 75%, 50%, 1.0);
+	--underline-blue: hsla(230, 75%, 50%, 0.5);
+}
+html
+{
+	max-width: 90rem;
+	border-left: 10px groove var(--shade-primary);
+	border-right: 10px groove var(--shade-primary);
+	margin: 0 auto;
+}
+body
+{
+	background: var(--bright-primary);
+	padding: 0.5rem;
+	padding-top: 1rem;
+	
+	font-family: 'Raleway', Arial, "sans-serif";
+}
+h1, h2, h3, nav li, button
+{
+	font-family: 'Oswald', sans-serif;
+	font-weight: 500;
+}
+/******************************************************************************
+ ** Header ********************************************************************
+ *****************************************************************************/
+header
+{
+	
+}
+h1
+{
+	text-align: center;
+	align-self: flex-start;
+	
+	flex-basis: 100%;
+	
+	margin: 0;
+	padding: 0;
+	border-bottom: 1rem groove var(--shade-secondary);
+	
+	color: var(--dark-primary);
+	font-size: 3.0rem;
+	line-height: 1.5rem;
+	
+	text-shadow: 0 0.125rem 0.3125rem var(--bright-primary);
+}
+h1 a
+{
+	display: block;
+	text-decoration: none;
+	color: var(--dark-primary);
+}
+h1 a:hover
+{
+	text-shadow: 0 0.125rem 0.3125rem var(--bright-secondary);
+}
+/******************************************************************************
+ ** Nav (w/ collapsible script) ***********************************************
+ *****************************************************************************/
+#topNav /* header nav */
+{
+	margin: 0.5rem 0;
+	padding: 0;
+}
+#topNav_list /* header nav ul */
+{	
+	flex-basis: 100%;
+	border-radius: 0.3125rem;
+	border: 0.125rem groove var(--dark-primary);
+	margin: 0;
+	padding: 0;
+}
+.topNav_item /* header nav ul li */
+{
+	font-weight: 400;
+	font-size: 1.5rem;
+	line-height: 1.5rem;
+	text-align: center;
+	list-style: none;
+	
+	border-radius: 5px;
+	border: 1px dotted var(--button-border-default);
+	
+	margin: 0.25rem;
+	padding: 0 0 0 0;
+}
+.topNav_item a
+{
+	text-decoration: none;
+	display: block;
+	height: 90%;
+	margin: 0;
+	padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+}
+.topNav_item a:hover
+{
+	
+}
+#active_page
+{
+	background: var(--button-background-active-default);
+	border: 1px solid var(--button-border-default);
+}
+#active_page:hover
+{
+	background: var(--button-background-active-highlight);
+}
+#topNav a:link, #topNav a:visited
+{
+	color: var(--dark-primary);
+}
+#topNav_toggle
+{
+	width: 100%;
+	background: transparent;
+	
+	font-size: 1.6rem;
+	line-height: 1.6rem;
+	
+	border-radius: 5px;
+	border: 3px groove var(--dark-primary);
+	margin: 0;
+	padding: 0.1rem 0 0.3rem 0;
+	display: none;
+}
+#topNav_toggle:hover
+{
+	border: 3px groove var(--accent-primary);
+}
+
+.js #topNav_list
+{
+	display: none;
+}
+
+.js #topNav_toggle
+{
+	display: block;
+}
+
+#topNav_list.is-active 
+{
+	display: block;
+}
+/******************************************************************************
+ ** Main **********************************************************************
+ *****************************************************************************/
+main
+{
+	margin: 0;
+	padding: 0.5rem 0;
+	border-top: 0.25rem groove var(--shade-secondary);
+}
+section
+{
+	margin: 0;
+	padding: 0;
+}
+article
+{
+	margin: 0;
+	padding: 0;
+}
+h2, h3, h4
+{
+	margin: 0;
+	padding: 0;
+	flex-basis: 100%;
+	flex-grow: 1;
+}
+h2
+{
+	font-size: 1.6rem;
+	line-height: 1.6rem;
+	padding-bottom: 0.5rem;
+}
+h3
+{
+	font-size: 1.3rem;
+	line-height: 1.3rem;
+	padding-bottom: 0.25rem;
+}
+h4
+{
+	font-size: 1.1rem;
+	line-height: 1.1rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+.card
+{
+	display: flex;
+	flex-wrap: wrap;
+}
+.content
+{
+	margin: 0.25rem auto;
+}
+.content_p
+{
+	margin: 0;
+	padding: 0;
+	padding-left: 1rem;
+	padding-bottom: 0.5rem;
+	flex-basis: 100%;
+	flex-grow: 1;
+}
+.art_title
+{
+	text-align: center;
+	text-decoration: underline;
+}
+ul
+{
+	margin: 0;
+	padding: 0;
+	padding-left: 2rem;
+}
+.to_blog_post
+{
+	font-size: 1.1rem;
+	margin: 0;
+	padding: 0;
+	padding-top: 0.5rem;
+	text-align: right;
+	text-decoration: underline;
+}
+.to_blog_post a:link, .to_blog_post a:visited
+{
+	color: var(--dark-primary);
+}
+.to_blog_post a:hover
+{
+	color: var(--accent-primary);
+	text-shadow: 0 0 1px var(--accent-secondary);
+}
+
+/******************************************************************************
+ ** Footer ********************************************************************
+ *****************************************************************************/
+#social_media_bar
+{
+	border-top: 0.25rem groove var(--shade-secondary);
+	border-bottom: 0.25rem groove var(--shade-secondary);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.social_logo_container
+{
+	margin: 0;
+	padding: 0.5rem 0 0.3rem 0;
+}
+.social_logo_container a
+{
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+.social_logo_container img
+{
+	width: 3rem;
+	margin: 0;
+	padding: 0;
+}
+#site_copyright
+{
+	text-align: center;
+}
+
+/**************************
+ **** Embedded Content ****
+ *************************/
+
+.youtube_container
+{
+	margin: 0.5rem auto;
+	flex-basis: 100%;
+}
+.youtube_figure
+{
+	margin: 0 auto;
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 51.25%;
+}
+.youtube_figure iframe
+{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+
+/***********************
+ *** Media Queries *****
+ ***********************/
+
+/* Placeholder for minimum design width */
+@media screen and (max-width:320px)
+{
+	
+}
+/* iPhone 6/7/8: 375px */
+@media only screen and (min-width: 421px)
+{
+	h1
+	{
+		text-align: left;
+	}
+	
+	.js #topNav_list 
+	{
+		display: flex;
+		justify-content: flex-end;
+		grid-template-columns: 1fr 1fr 1fr;
+		
+		border: none;
+	}
+	.js .topNav_item
+	{
+		width: 7rem;
+		padding: 0;
+	}
+	.js .topNav_item a
+	{
+		margin: 0;
+		padding: 0 0 0 0;
+	}
+	#topNav a
+	{
+		margin: 0 0 0.5rem 0;
+		padding: 0.25rem 0 0 0;
+	}
+	.js #topNav_toggle 
+	{
+		display: none;
+	}
+	#topNav_toggle
+	{
+		display: none;
+	}
+}
+@media only screen and (min-width: 667px)
+{
+	header
+	{
+		display: flex;
+		justify-content: space-between;
+	}
+	h1
+	{
+		padding: 0 0;
+	}
+	#topNav
+	{
+		margin-left: 1rem;
+		align-self: flex-end;
+	}
+}

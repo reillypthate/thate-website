@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<title>Crofton Crew</title>
+		<meta name="description" content="Crofton Crew home page, featuring the latest podcast episode, a blog entry reflecting on the episode, and a selection of merchandise from the store.">
+		<meta name="author" content="Reilly Thate">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/common.css" type="text/css">
+		<link rel="stylesheet" href="css/home.css" type="text/css">
+	</head>
+
+	<body>
+		
+		<header>
+			<figure><a href="index.html">
+				<img src="img/CC_Logo.svg" alt="A Maryland Flag wrapped over two C's, one within the other." id="main_logo"></a>
+			</figure>
+			<h1><a href="index.html">Crofton Crew</a></h1>
+			<nav id="topNav">
+    			<button id="topNav_toggle" aria-expanded="false">Menu</button>
+				<ul id="topNav_list">
+					<li class="topNav_item"><a href="episodes.html">Episodes</a></li>
+					<li class="topNav_item"><a href="about.html">About</a></li>
+					<li class="topNav_item"><a href="blog.html">Blog</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		
+		<main>
+			<section id="featured">
+				<h2>Featured Episode: <span class="featured_video">"Pilot"</span></h2>
+				<section class="main">
+					<figure class="sc_audio">
+						<iframe height="166" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/761738425%3Fsecret_token%3Ds-F71HT&color=%23df2020&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+
+						<figcaption>
+							Crofton Crew Podcast - Pilot
+						</figcaption>
+					</figure>
+					<p>
+						Reilly and Brad kick off the pilot episode of "Crofton Crew" with a discussion about the name of the podcast, the tourist appeal of Maryland, and a criticism of the final seasons of Game of Thrones.
+					</p>
+					<p class="article_link"><a href="episodes.html">More episodes...</a></p>
+				</section>
+			</section>
+			
+			<section id="about_blurb">
+				<h2>About</h2>
+				<section class="main">
+					<p>
+						"Crofton Crew" is a podcast hosted by two college buddies from Maryland who believe their conversations bring more value to the world than they actually do.
+					</p>
+					<figure>
+						<img src="img/Crew_Smaller.jpg" alt="A Maryland Flag wrapped over two C's, one within the other.">
+					</figure>
+					<p class="article_link"><a href="about.html">Meet the Crew...</a></p>	
+				</section>
+			</section>
+		</main>
+		
+		<footer>
+			<section id='social_media_bar'>
+				<figure class='social_logo_container'>
+					<a href="https://www.youtube.com/channel/UCr9bNNf2-HwIflgvgbjnnOQ" target="_blank" class="social_media_link">
+						<img src="img/yt_icon.svg" alt="YouTube logo: a red television screen with a white play button.">
+					</a>
+				</figure>
+			</section>
+			
+			<p id="site_copyright">Copyright &copy; 2020 Reilly Thate</p>
+			
+		</footer>
+	
+		<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/182774/modernizr_copy.js'></script>
+  		<script>
+  
+			var toggle = document.querySelector('#topNav_toggle');
+			var menu = document.querySelector('#topNav_list');
+			//var menuItems = document.querySelectorAll('#menu li a');
+
+			toggle.addEventListener('click', function()
+			{
+				if (menu.classList.contains('is-active')) 
+				{
+					this.setAttribute('aria-expanded', 'false');
+					menu.classList.remove('is-active');
+				} else 
+				{
+					menu.classList.add('is-active'); 
+					this.setAttribute('aria-expanded', 'true');
+					//menuItems[0].focus();
+				}
+			});
+  
+  		</script>
+		
+	</body>
+</html>

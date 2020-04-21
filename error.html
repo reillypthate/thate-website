@@ -1,0 +1,66 @@
+<!doctype html>
+<html class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<title>Error - Reilly Thate</title>
+		<meta name="description" content="Error page for ReillyThate.com.">
+		<meta name="author" content="Reilly Thate">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/common/common2.css" type="text/css">
+		<link rel="icon" type="image/ico" href="favicon.ico" sizes="16x16">
+	</head>
+
+	<body>
+		<header>
+			<h1><a href="index.html">Reilly Thate</a></h1>
+			<nav id="topNav">
+    			<button id="topNav_toggle" aria-expanded="false">Menu</button>
+				<ul id="topNav_list">
+					<li class="topNav_item"><a href="portfolio.html">Portfolio</a></li>
+					<li class="topNav_item"><a href="blog.html">Blog</a></li>
+					<li class="topNav_item"><a href="#">About</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main style="display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2rem;padding-top:4.5rem;">
+			<h2 style="padding-top:text-align:center;flex-basis:50%;">ERROR</h2>
+			<p style="text-align:center;flex-basis:50%;">File not found.</p>
+			<p><a href="index.html">Return to home page.</a></p>
+		</main>
+		<footer>
+			<section id='social_media_bar'>
+				<figure class='social_logo_container'>
+					<a href="https://www.youtube.com/channel/UCr9bNNf2-HwIflgvgbjnnOQ" target="_blank" class="social_media_link">
+						<img src="media/icons/yt_icon.svg" alt="YouTube logo: a red television screen with a white play button.">
+					</a>
+				</figure>
+			</section>
+			
+			<p id="site_copyright">Copyright &copy; 2020 Reilly Thate</p>
+			
+		</footer>
+
+
+		<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/182774/modernizr_copy.js'></script>
+  		<script>
+  
+			var toggle = document.querySelector('#topNav_toggle');
+			var menu = document.querySelector('#topNav_list');
+			//var menuItems = document.querySelectorAll('#menu li a');
+
+			toggle.addEventListener('click', function()
+			{
+				if (menu.classList.contains('is-active')) 
+				{
+					this.setAttribute('aria-expanded', 'false');
+					menu.classList.remove('is-active');
+				} else 
+				{
+					menu.classList.add('is-active'); 
+					this.setAttribute('aria-expanded', 'true');
+					//menuItems[0].focus();
+				}
+			});
+  		</script>
+	</body>
+</html>

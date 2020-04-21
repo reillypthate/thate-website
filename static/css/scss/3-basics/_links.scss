@@ -1,0 +1,18 @@
+a
+{
+    display: block;
+    text-decoration: none;
+    color: $dark-primary;
+}
+
+.trick-highlight
+{
+    background: $heading-base-gradient;
+    background-size: 100% 100%;
+    background-origin: content-box;
+
+    &:hover
+    {
+        background: $heading-hover-gradient;
+    }
+}

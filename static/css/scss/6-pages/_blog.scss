@@ -1,0 +1,133 @@
+main
+{
+    @include flex(row);
+    flex-basis: 0 1 100%;
+}
+
+h2
+{
+    padding-top: 0;
+    text-align: left;
+}
+h3, h4, h5
+{
+    text-align: left;
+    
+    @include edge(0, 0 0.5rem);
+	flex: 0 1 100%;
+	
+	text-transform: uppercase;
+	letter-spacing: 0.05rem;
+	
+	color: hsla(0, 0%, 0%, 0.85);
+	text-shadow: 1.0px 1.0px 1px white;
+}
+ol
+{
+    @include edge(0);
+    li
+    {
+        @include edge(1rem 0, 0);
+    }
+}
+.page_preview
+{
+    @include edge(0);
+}
+.blog_post
+{
+    flex: 0 1 100%;
+    @include edge(0);
+
+    h2
+    {
+        @include edge(0, 0 0.5rem 0.5rem 0.5rem);
+        text-align: left;
+
+    }
+    figure
+    {
+        flex: 0 1 100%;
+        align-content: center;
+        img
+        {
+            max-width: 100%;
+        }
+    }
+    
+    @include edge(0.5rem, 0);
+    &:first-child
+    {
+        @include edge(0 0.5rem 0.75rem 0.5rem, 0);
+    }
+    &:last-child
+    {
+        @include edge(0.75rem 0.5rem 0 0.5rem, 0);
+    }
+    &:only-child
+    {
+        @include edge(0 0.5rem, 0);
+    }
+}
+.date_published
+{
+    @include edge(0, 0.5rem 0.5rem 0 0.5rem);
+    color: $heading-color-secondary;
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+}
+.post_closer
+{
+    @include edge(1rem);
+    border: 2px solid $accent_secondary;
+    border-radius: 0.25rem;
+}
+.content_paragraph
+{
+    @include edge(0.5rem 0 1rem 0, 0);
+    p
+    {
+        @include edge(0.75rem 0.5rem, 0);
+        line-height: 1.75rem;
+        &:first-child
+        {
+            @include edge(0 0.5rem 0.75rem 0.5rem, 0);
+        }
+        &:last-child
+        {
+            @include edge(0.75rem 0.5rem 0 0.5rem, 0);
+        }
+        &:only-child
+        {
+            @include edge(0 0.5rem, 0);
+        }
+    }
+}
+.blog_summary
+{
+    @include flex(row, flex-start, flex-start);
+    align-content: flex-start;
+    flex-basis: 0 1 100%;
+    .date_published
+    {
+        flex: 0 1 100%;
+        align-self: flex-start;
+        font-size: 0.8rem;
+    }
+    h3
+    {
+        flex: 0 1 100%;
+        align-self: flex-start;
+        font-size: 1.4rem;
+    }
+    .summary
+    {
+        flex: 0 1 100%;
+    }
+    .to_blog
+    {
+        flex: 0 1 100%;
+        text-align: right;
+        align-self: flex-end;
+    }
+}

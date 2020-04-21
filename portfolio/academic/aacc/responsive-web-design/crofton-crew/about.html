@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<title>Crofton Crew - About</title>
+		<meta name="description" content="Crofton Crew about page, featuring bios of the podcast hosts Reilly and Brad.">
+		<meta name="author" content="Reilly Thate">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/common.css" type="text/css">
+		<link rel="stylesheet" href="css/about.css" type="text/css">
+	</head>
+
+	<body>
+		
+		<header>
+			<figure><a href="index.html">
+				<img src="img/CC_Logo.svg" alt="A Maryland Flag wrapped over two C's, one within the other." id="main_logo"></a>
+			</figure>
+			<h1><a href="index.html">Crofton Crew</a></h1>
+			<nav id="topNav">
+    			<button id="topNav_toggle" aria-expanded="false">Menu</button>
+				<ul id="topNav_list">
+					<li class="topNav_item"><a href="episodes.html">Episodes</a></li>
+					<li class="topNav_item" id="active_page"><a href="about.html">About</a></li>
+					<li class="topNav_item"><a href="blog.html">Blog</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<main>
+			<h2>Meet the Crew</h2>
+			<picture>
+				<source media="(min-width: 780px)" srcset="img/Crew_Large.jpg">
+				<source media="(min-width: 568px)" srcset="img/Crew_Medium.jpg">
+				<source media="(min-width: 480px)" srcset="img/Crew_Small.jpg">
+				<img src="img/Crew_Smaller.jpg" alt="The Crofton Crew hosts, Brad and Reilly.">
+			</picture>
+			<section>
+			<h3>Reilly</h3>
+				<div class="bio">
+					<figure class="closeup">
+						<img src="img/Reilly.jpg" alt="Reilly">
+					</figure>
+					<article>
+					<p>
+						Reilly is a 23 year-old artist with a background in science. He graduated in 2018 from Rochester Institute of Technology with a B.S. in Bioinformatics.
+					</p>
+					<p>
+						He is meticulous and calculating, approaching life with high standards for himself. Behind his ambitious lifestyle is an open mind that takes him above and beyond what he could achieve by following rules without question. However, he understands the value of constraint and guidelines, and is consistently able to find the right balance between developing his unique vision and tailoring it to professional standards.
+					</p>
+					</article>
+				</div>
+			</section>
+			<section>
+			<h3>Brad</h3>
+				<div class="bio">
+					<figure class="closeup">
+						<img src="img/Brad.jpg" alt="Brad">
+					</figure>
+					<article>
+						<p>
+							Brad is a 22 year-old novelist with a background in journalism. He graduated in 2018 from University of Maryland: College Park with a B.S. in Journalism.
+						</p>
+						<p>
+							He is disciplined and principled, approaching life with unparalleled tenacity. Behind his professional streak is a playful soul that stems from an ocean of imagination. His ability to compartmentalize his professional goals, whether he's conducting a journalistic investigation or he's outlining the plot to his next creative masterpiece, enables him to maximize his potential in every field he pursues.
+						</p>
+					</article>
+				</div>
+			</section>
+		</main>
+		
+		<footer>
+			<section id='social_media_bar'>
+				<figure class='social_logo_container'>
+					<a href="https://www.youtube.com/channel/UCr9bNNf2-HwIflgvgbjnnOQ" target="_blank" class="social_media_link">
+						<img src="img/yt_icon.svg" alt="YouTube logo: a red television screen with a white play button.">
+					</a>
+				</figure>
+			</section>
+			
+			<p id="site_copyright">Copyright &copy; 2020 Reilly Thate</p>
+			
+		</footer>
+	
+		<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/182774/modernizr_copy.js'></script>
+  		<script>
+  
+			var toggle = document.querySelector('#topNav_toggle');
+			var menu = document.querySelector('#topNav_list');
+			//var menuItems = document.querySelectorAll('#menu li a');
+
+			toggle.addEventListener('click', function()
+			{
+				if (menu.classList.contains('is-active')) 
+				{
+					this.setAttribute('aria-expanded', 'false');
+					menu.classList.remove('is-active');
+				} else 
+				{
+					menu.classList.add('is-active'); 
+					this.setAttribute('aria-expanded', 'true');
+					//menuItems[0].focus();
+				}
+			});
+  
+  		</script>
+		
+	</body>
+</html>

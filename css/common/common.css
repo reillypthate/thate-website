@@ -1,0 +1,643 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,500|Raleway&display=swap');
+/* CSS Document */
+
+/******************************************************************************
+ ** Main Containers ***********************************************************
+ *****************************************************************************/
+*
+{
+	--transparent: hsla(0, 0%, 0%, 0);
+	--shade-primary: hsla(230, 75%, 50%, 0.9);
+	--shade-secondary: hsla(230, 75%, 50%, 0.45);
+	--accent-primary: hsla(207, 85%, 23%, 0.9);
+	--accent-secondary: hsla(207, 85%, 23%, 0.45);
+	--bright-primary: hsla(135, 2%, 100%, 1.0);
+	--bright-secondary: hsla(135, 2%, 60%, 1.0);
+	--dark-primary: hsla(0, 0%, 0%, 1.0);
+	
+	--button-border-default: hsla(0, 0%, 0%, 0.25);
+	--button-border-highlight: hsla(0, 0%, 0%, 0.45);
+	--button-background-default: var(--bright-primary);
+	--button-background-hover: hsla(0, 0%, 0%, 0.1);
+	--button-background-active-default: var(--button-border-default);
+	--button-background-active-hover: var(--button-border-highlight);
+	
+	--background-color: hsla(0, 0%, 0%, 0.075);
+	
+	
+	--border-blue: hsla(230, 75%, 50%, 1.0);
+	--underline-blue: hsla(230, 75%, 50%, 0.5);
+
+	--heading-base-gradient: linear-gradient(
+		var(--transparent) 0%,
+		var(--transparent) 80%,
+		var(--shade-secondary) 80%,  
+		var(--shade-primary) 100%
+	);
+	--heading-hover-gradient: linear-gradient(
+		var(--transparent) 0%,
+		var(--transparent) 80%,
+		var(--accent-secondary) 80%,  
+		var(--accent-primary) 100%
+	);
+/*
+	outline: 2px solid hsla(0, 0%, 0%, 0.25);
+*/
+}
+html
+{
+	max-width: 1000px;
+	margin: 0 auto;
+	/*
+	border-left: 10px groove var(--shade-primary);
+	border-right: 10px groove var(--shade-primary);
+	*/
+}
+body
+{
+	background: var(--background-color);
+	padding: 0.5rem;
+	padding-top: 1rem;
+	
+	font-family: 'Raleway', Arial, "sans-serif";
+}
+h1, h2, h3, nav li, button
+{
+	font-family: 'Oswald', sans-serif;
+	font-weight: 500;
+}
+/******************************************************************************
+ ** Header ********************************************************************
+ *****************************************************************************/
+header
+{
+	display: flex;
+	flex-direction: column;
+}
+header div
+{
+	height: 6.0rem;
+	display: flex;
+	align-items: center;
+}
+h1
+{
+	height: 6.0rem;
+	text-align: center;
+	color: var(--dark-primary);
+	font-size: 3.0rem;
+	line-height: 3.0rem;
+	text-shadow: 0 0.125rem 0.3125rem var(--bright-primary);
+	
+	margin: 1.5rem 0;
+	padding: 0;
+	flex-basis: 100%;
+	flex-grow: 1;
+}
+h1 a
+{
+	display: block;
+	text-decoration: none;
+	color: var(--dark-primary);
+	background: hsla(0, 0%, 0%, 0);
+	
+	background: var(--heading-base-gradient);
+	background-size: 100% 100%;
+	background-position: bottom 0;
+	background-origin: content-box;
+}
+h1 a:hover
+{
+	background: var(--heading-hover-gradient);
+}
+.logo
+{
+	opacity: 20%;
+	position: absolute;
+	width: 6rem;
+	height: 6rem;
+	top: 1.5rem;
+	left: calc(50% - 3rem);
+	z-index: -1;
+	background-image: url("../../media/logo/renegade-basic.svg");
+	background-origin: content-box;
+	background-repeat: no-repeat;
+}
+/******************************************************************************
+ ** Nav (w/ collapsible script) ***********************************************
+ *****************************************************************************/
+#topNav /* header nav */
+{	
+	margin: 0.5rem 0;
+	padding: 0;
+}
+#topNav_list /* header nav ul */
+{	
+	flex-basis: 100%;
+	border-radius: 0.3125rem;
+	
+	border: none;
+	margin: 0;
+	padding: 0.25rem;
+	background: linear-gradient(
+		hsla(0, 0%, 0%, 0.035) 0%,
+		hsla(0, 0%, 0%, 0.015) 5%,
+		hsla(0, 0%, 0%, 0.015) 95%,
+		hsla(0, 0%, 0%, 0.035) 100%),
+	linear-gradient(
+		90deg,
+		hsla(0, 0%, 0%, 0.035) 0%,
+		hsla(0, 0%, 0%, 0.015) 2.5%,
+		hsla(0, 0%, 0%, 0.015) 97.5%,
+		hsla(0, 0%, 0%, 0.035) 100%);
+	box-shadow: 0.5px 0.5px 0.5px 0.5px hsla(0, 0%, 0%, 0.1);
+}
+.topNav_item /* header nav ul li */
+{
+	font-weight: 400;
+	font-size: 1.5rem;
+	line-height: 1.5rem;
+	text-align: center;
+	list-style: none;
+	
+	border-radius: 5px;
+	
+	margin: 0.25rem;
+	padding: 0 0 0 0;
+	
+	border: none;
+	background: linear-gradient(
+		hsla(0, 0%, 100%, 0.15) 0%,
+		hsla(0, 0%, 0%, 0.015) 5%,
+		hsla(0, 0%, 0%, 0.015) 95%,
+		hsla(0, 0%, 0%, 0.035) 100%),
+	linear-gradient(
+		90deg,
+		hsla(0, 0%, 100%, 0.15) 0%,
+		hsla(0, 0%, 0%, 0.015) 2.5%,
+		hsla(0, 0%, 0%, 0.015) 97.5%,
+		hsla(0, 0%, 0%, 0.035) 100%);
+	
+	box-shadow: 0.5px 0.5px 0.5px 0.5px hsla(0, 0%, 0%, 0.1);
+	
+	transition: 0.1s;
+}
+.topNav_item:hover
+{
+	/*background: linear-gradient(
+		hsla(0, 0%, 0%, 0.035) 0%,
+		hsla(0, 0%, 0%, 0.015) 5%,
+		hsla(0, 0%, 0%, 0.015) 95%,
+		hsla(0, 0%, 100%, 0.15) 100%),
+	linear-gradient(
+		90deg,
+		hsla(0, 0%, 0%, 0.035) 0%,
+		hsla(0, 0%, 0%, 0.015) 2.5%,
+		hsla(0, 0%, 0%, 0.015) 97.5%,
+		hsla(0, 0%, 100%, 0.15) 100%);*/
+	background: linear-gradient(
+		hsla(0, 0%, 100%, 0.15) 0%,
+		hsla(0, 0%, 0%, 0.015) 5%,
+		hsla(0, 0%, 0%, 0.015) 95%,
+		hsla(0, 0%, 0%, 0.035) 100%),
+	linear-gradient(
+		90deg,
+		hsla(0, 0%, 100%, 0.15) 0%,
+		hsla(0, 0%, 0%, 0.015) 2.5%,
+		hsla(0, 0%, 0%, 0.015) 97.5%,
+		hsla(0, 0%, 0%, 0.035) 100%);
+	
+	box-shadow: 0px 0px 1px 1px hsla(0, 0%, 0%, 0.1);
+}
+.topNav_item a, topNav_item a:link
+{
+	color: hsla(0, 0%, 0%, 0.85);
+	text-shadow: 1.0px 1.0px 1px white;
+	text-decoration: none;
+	display: block;
+	height: 90%;
+	margin: 0;
+	padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+}
+#active_page
+{
+	padding-top: 0.25rem;
+	text-shadow: 1.0px 1.0px 1px white;
+	background: linear-gradient(
+		hsla(0, 0%, 0%, 0.055) 0%,
+		hsla(0, 0%, 0%, 0.045) 5%,
+		hsla(0, 0%, 0%, 0.045) 95%,
+		hsla(0, 0%, 100%, 0.35) 100%),
+	linear-gradient(
+		90deg,
+		hsla(0, 0%, 0%, 0.055) 0%,
+		hsla(0, 0%, 0%, 0.045) 2.5%,
+		hsla(0, 0%, 0%, 0.045) 97.5%,
+		hsla(0, 0%, 100%, 0.35) 100%);
+}
+#active_page:hover
+{
+	box-shadow: 0.5px 0.5px 0.5px 0.5px hsla(0, 0%, 0%, 0.1);
+}
+#topNav a:link, #topNav a:visited
+{
+	color: var(--dark-primary);
+}
+
+#topNav_toggle
+{
+	border: none;
+	width: 100%;
+	background: linear-gradient(
+		hsla(0, 0%, 100%, 0.15) 0%,
+		hsla(0, 0%, 0%, 0.015) 5%,
+		hsla(0, 0%, 0%, 0.015) 95%,
+		hsla(0, 0%, 0%, 0.035) 100%),
+	linear-gradient(
+		90deg,
+		hsla(0, 0%, 100%, 0.15) 0%,
+		hsla(0, 0%, 0%, 0.015) 2.5%,
+		hsla(0, 0%, 0%, 0.015) 97.5%,
+		hsla(0, 0%, 0%, 0.035) 100%);
+	box-shadow: 0.5px 0.5px 0.5px 0.5px hsla(0, 0%, 0%, 0.1);
+	
+	font-size: 1.6rem;
+	line-height: 1.6rem;
+	
+	border: none;
+	border-radius: 5px;
+	margin: 0;
+	padding: 0.1rem 0 0.3rem 0;
+}
+#topNav_toggle:hover
+{
+	border: none;
+	box-shadow: 0px 0px 1px 1px hsla(0, 0%, 0%, 0.1);
+}
+
+.js #topNav_list
+{
+	display: none;
+}
+.js #topNav_toggle
+{
+	display: block;
+}
+#topNav_list.is-active 
+{
+	display: block;
+}
+/******************************************************************************
+ ** Main **********************************************************************
+ *****************************************************************************/
+main
+{
+	margin: 0;
+	padding: 0.5rem 0;
+	padding-top: 2.0rem;
+	
+	background: linear-gradient(
+		hsla(0, 0%, 0%, 0) 0%,
+		var(--shade-secondary) 0.75rem,  
+		var(--shade-primary) 1.25rem,
+		hsla(0, 0%, 0%, 0) 1.5rem,
+		hsla(0, 0%, 0%, 0) 100%
+	);
+	background-position: top 0;
+	background-origin: border-box;
+}
+section
+{
+	margin: 0;
+	padding: 0;
+}
+article
+{
+	margin: 0;
+	padding: 0;
+}
+h2, h3, h4
+{
+	margin: 0;
+	padding: 0;
+	flex-basis: 100%;
+	flex-grow: 1;
+}
+h2
+{
+	font-size: 1.6rem;
+	line-height: 1.6rem;
+	padding-bottom: 0.5rem;
+}
+h3
+{
+	font-size: 1.3rem;
+	line-height: 1.3rem;
+	padding-bottom: 0.25rem;
+}
+h4
+{
+	font-size: 1.1rem;
+	line-height: 1.1rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+.card
+{
+	display: flex;
+	flex-wrap: wrap;
+}
+.content
+{
+	margin: 0.25rem auto;
+}
+.content_p
+{
+	margin: 0;
+	padding: 0;
+	padding-left: 1rem;
+	padding-bottom: 0.5rem;
+	flex-basis: 100%;
+	flex-grow: 1;
+}
+.art_title
+{
+	text-align: center;
+	text-decoration: underline;
+}
+ul
+{
+	margin: 0;
+	padding: 0;
+	padding-left: 2rem;
+}
+.to_blog_post
+{
+	font-size: 1.1rem;
+	margin: 0;
+	padding: 0;
+	padding-top: 0.5rem;
+	text-align: right;
+	text-decoration: underline;
+}
+.to_blog_post a:link, .to_blog_post a:visited
+{
+	color: var(--dark-primary);
+}
+.to_blog_post a:hover
+{
+	color: var(--accent-primary);
+	text-shadow: 0 0 1px var(--accent-secondary);
+}
+
+/******************************************************************************
+ ** Footer ********************************************************************
+ *****************************************************************************/
+#social_media_bar
+{
+	padding: 0;
+	padding-top: 2rem;
+	background: linear-gradient(
+		hsla(0, 0%, 0%, 0) 0%,
+		var(--shade-secondary) 0.75rem,  
+		var(--shade-primary) 1.25rem,
+		hsla(0, 0%, 0%, 0) 1.5rem,
+		hsla(0, 0%, 0%, 0) 100%
+	);
+	background-position: top 0;
+	background-origin: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.social_logo_container
+{
+	margin: 0;
+	padding: 0.5rem 0 0.3rem 0;
+}
+.social_logo_container a
+{
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+.social_logo_container img
+{
+	width: 3rem;
+	margin: 0;
+	padding: 0;
+}
+#site_copyright
+{
+	text-align: center;
+}
+
+/**************************
+ **** Embedded Content ****
+ *************************/
+
+.youtube_container
+{
+	margin: 0.5rem auto;
+	flex-basis: 100%;
+}
+.youtube_figure
+{
+	margin: 0 auto;
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 51.25%;
+}
+.youtube_figure iframe
+{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+/**************************
+ **** Media ***************
+ *************************/
+.card_banner
+{
+	margin: 0;
+	margin-bottom: 0.5rem;
+	padding: 0;
+	flex-basis: 100%;
+	background: var(--accent-secondary);
+}
+.card_banner img
+{
+	display: block;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+.card_banner figcaption
+{
+	text-align: center;
+}
+/***********************
+ *** Media Queries *****
+ ***********************/
+
+/* Placeholder for minimum design width */
+@media screen and (max-width:320px)
+{
+	
+}
+@media only screen and (min-width: 450px)
+{
+	/************
+	 ** Header **
+	 ************/
+	header
+	{
+		display: flex;
+		justify-content: space-between;
+	}
+	h1
+	{
+		text-align: center;
+		padding: 0 0;
+	}
+	.js #topNav_toggle 
+	{
+		display: none;
+	}
+	#topNav_toggle
+	{
+		display: none;
+	}
+	#topNav a
+	{
+		margin: 0 0 0.5rem 0;
+		padding: 0.25rem 0 0 0;
+	}
+	#topNav_list
+	{
+		background: none;
+		padding: 0;
+		box-shadow: none;
+	}
+	.js #topNav_list 
+	{
+		display: flex;
+		justify-content: center;
+		grid-template-columns: 1fr 1fr 1fr;
+		
+		border: none;
+	}
+	.js .topNav_item
+	{
+		width: 7rem;
+		padding: 0;
+	}
+	.js .topNav_item a
+	{
+		margin: 0;
+		padding: 0 0 0 0;
+	}
+}
+@media only screen and (min-width: 900px)
+{
+	header
+	{
+		height: 6rem;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1.5rem;
+	}
+	h1
+	{
+		text-align: center;
+		height: 3rem;
+		flex-basis: 40%;
+		flex-grow: 0;
+	}
+	.logo
+	{
+		display: block;
+		position: absolute;
+		top: 0.75rem;
+		left: calc(50% - (3.75rem));
+		opacity: 100%;
+		width: 7.5rem;
+		height: 7.5rem;
+		z-index: 0;
+		background-image: url("../../media/logo/renegade-basic.svg");
+		background-origin: content-box;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	#topNav
+	{
+		margin: 0;
+		flex-basis: 40%;
+		flex-grow: 0;
+	}
+	#topNav_list, .js #topNav_list
+	{
+		justify-content: flex-start;
+	}
+
+	.logo
+	{
+		opacity: 50%;
+		animation-duration: 0.75s;
+		animation-timing-function: ease;
+		animation-iteration-count: infinite;
+	}
+	.logo-renegade
+	{
+		opacity: 100%;
+		animation-name: opacityChange2;
+		z-index: 1;
+	}
+	.logo-renegade1
+	{
+		filter: invert(17%) sepia(31%) saturate(4660%) hue-rotate(221deg) brightness(84%) contrast(110%);
+		left: calc(50% - 3.60rem);
+		animation-name: swipeLeft, opacityChange;
+	}
+	.logo-renegade2
+	{
+		filter: invert(17%) sepia(31%) saturate(4660%) hue-rotate(190deg) brightness(89%) contrast(93%);
+		left: calc(50% - 3.90rem);
+		animation-name: swipeRight, opacityChange;
+	}
+	/*
+	@keyframes swipeLeft
+	{
+		0%	{left: calc(50% - 3.75rem);}
+		50% {left: calc(50% - 3.65rem);}
+		100%{left: calc(50% - 3.75rem));}
+	}
+	@keyframes swipeRight
+	{
+		0%	{left: calc(50% - 3.75rem);}
+		50% {left: calc(50% - 3.85rem);}
+		100%{left: calc(50% - 3.75rem);}
+	}
+	@keyframes opacityChange
+	{
+		0%	{opacity: 0%;}
+		50% {opacity: 50%;}
+		100%{opacity: 0%;}
+	}
+	@keyframes opacityChange2
+	{
+		0%	{opacity: 100%;}
+		50% {opacity: 70%;}
+		100%{opacity: 100%;}
+	}*/
+}
+
+@media only screen and (min-width: 1000px)
+{
+	
+}

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<title>Crofton Crew - Blog</title>
+		<meta name="description" content="Crofton Crew blog page, featuring the a blog entry about the latest podcast episode and a selection of blog entries from past episodes.">
+		<meta name="author" content="Reilly Thate">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/common.css" type="text/css">
+		<link rel="stylesheet" href="css/blog.css" type="text/css">
+	</head>
+
+	<body>
+		
+		<header>
+			<figure><a href="index.html">
+				<img src="img/CC_Logo.svg" alt="A Maryland Flag wrapped over two C's, one within the other." id="main_logo"></a>
+			</figure>
+			<h1><a href="index.html">Crofton Crew</a></h1>
+			<nav id="topNav">
+    			<button id="topNav_toggle" aria-expanded="false">Menu</button>
+				<ul id="topNav_list">
+					<li class="topNav_item"><a href="episodes.html">Episodes</a></li>
+					<li class="topNav_item"><a href="about.html">About</a></li>
+					<li class="topNav_item" id="active_page"><a href="blog.html">Blog</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<main>
+			<h2>Crofton Crew on...</h2>
+			<section class="blog_entry">
+				<article class="header"  id="entry_pilot">
+					<h3>Podcast Pilot</h3>
+					<p class="author">By Reilly Thate</p>
+				</article>
+				<article class="content">
+					<p>
+						When my Responsive Web Design teacher, Erik, assigned us to build a podcast website, he gave us the option to base it off either a podcast that already exists, or one that we would create from scratch. Rising to the challenge, I decided to put in the extra work and create a podcast of my own!
+					</p>
+					<p>
+						The first idea I landed on was "Crofton Crew". The name comes from a short series of comedy YouTube videos I made with some of my friends during my junior year at Rochester Institute of Technology. I wanted to put together a casual social podcast with my buddy, Brad, and he was totally down to help me record something.
+					</p>
+					<p>
+						He came to my house one night to record, and since my 75-meter long driveway is harder to back down than it should be, Brad parked at the top of the driveway. As the fates would have it, it was raining, and Brad raced down my driveway to avoid getting drenched... unfortunately, his phone fell out of his pocket along the way and its touch screen shattered, rendering it useless.
+					</p>
+					<p>
+						What was supposed to be a short recording session turned into an outing to the Sprint store in Annapolis, where the clerks were awesome enough to replace the touch screen before the store closed. While we were waiting, Brad and I went to the Annapolis Mall to chill out and share some fries from Five Guys.
+					</p>
+					<p>
+						The conversation we had while eating was awesome&mdash;we got to catch up and talk politics. After we retrieved his good-as-new phone and went back to record the podcast, I said we can just talk about "whatever", and that's what we did.
+					</p>
+					<p>
+						We ended up with a halfway-decent podcast episode (for our first unorganized recording session), and we've set the stage for future episodes if we decide to pursue a full-on podcast.
+					</p>
+				</article>
+			</section>
+			<section class="blog_entry">
+				<article class="header"  id="entry_BoN">
+					<h3>Beauty of Nature</h3>
+					<p class="author">By Reilly Thate</p>
+				</article>
+				<article class="content">
+					<p>
+						During Thanksgiving Break of 2016, me and Brad got together with a couple of our friends to make a sketch video that combined comedy and horror&mdash;a genre that I continue to enjoy playing around with to this day.
+					</p>
+					<p>
+						This wasn't my first time making a silly video with him, but this <em>was</em> my first time organizing a crew to produce the video. Brad's girlfriend, a photographer named Britney, was more than happy to operate the camera, and our friends Thaddeus and Vangjel were eager to act as the Angel and Devil characters.
+					</p>
+					<p>
+						Me and Brad had some creative differences during the beginning of filming, particularly because I wasn't as open-minded to his suggestions as I should have been as a director. Luckily, I ended up implementing his ideas, and we were able to put together something that ended up being my favorite "for fun" production to this day.
+					</p>
+					<p>
+						Part of me longs for the days where I would be content making silly videos like that just for the fun of it. While my professional goals lead to me putting the production of those kinds of videos on the back-burner, those old videos mark the beginning of my ambitious career as a filmmaker.
+					</p>
+				</article>
+			</section>
+		</main>
+		
+		<footer>
+			<section id='social_media_bar'>
+				<figure class='social_logo_container'>
+					<a href="https://www.youtube.com/channel/UCr9bNNf2-HwIflgvgbjnnOQ" target="_blank" class="social_media_link">
+						<img src="img/yt_icon.svg" alt="YouTube logo: a red television screen with a white play button.">
+					</a>
+				</figure>
+			</section>
+			
+			<p id="site_copyright">Copyright &copy; 2020 Reilly Thate</p>
+			
+		</footer>
+	
+		<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/182774/modernizr_copy.js'></script>
+  		<script>
+  
+			var toggle = document.querySelector('#topNav_toggle');
+			var menu = document.querySelector('#topNav_list');
+			//var menuItems = document.querySelectorAll('#menu li a');
+
+			toggle.addEventListener('click', function()
+			{
+				if (menu.classList.contains('is-active')) 
+				{
+					this.setAttribute('aria-expanded', 'false');
+					menu.classList.remove('is-active');
+				} else 
+				{
+					menu.classList.add('is-active'); 
+					this.setAttribute('aria-expanded', 'true');
+					//menuItems[0].focus();
+				}
+			});
+  
+  		</script>
+		
+	</body>
+</html>

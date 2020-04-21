@@ -1,0 +1,27 @@
+main
+{
+	@include edge(0, 2.5rem 1rem);
+
+    background: 
+    linear-gradient(
+		$shade-transparent 0%,
+		$shade-secondary 0.75rem,  
+		$shade-primary 1.25rem,
+		$shade-transparent 1.5rem,
+		$shade-transparent 100%
+    ),
+    linear-gradient(
+        0deg,
+        $shade-transparent  0%,
+		$shade-secondary 0.75rem,  
+		$shade-primary 1.25rem,
+		$shade-transparent  1.5rem,
+		$shade-transparent  100%
+    );
+	background-position: top 0, bottom 0;
+	background-origin: border-box;
+}
+ul
+{
+    @include edge(0.5rem 0, 0 0 0 2rem);
+}

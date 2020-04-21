@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document */
+
+.blog_entry
+{
+	margin-bottom: 1rem;
+}
+h3
+{
+	margin: 0;
+	padding: 0;
+	text-decoration: underline;
+}
+.header
+{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+.author
+{
+	margin: 0;
+	padding: 0;
+	padding-left: 0.5rem;
+	font-size: 0.9rem;
+	font-style: italic;
+}
+
+.content
+{
+	padding-left: 1rem;
+}
+.content p
+{
+	margin: 0.5rem 0 0.5rem 0;
+	padding: 0;
+}

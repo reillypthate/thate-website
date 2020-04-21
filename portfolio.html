@@ -1,0 +1,151 @@
+<!doctype html>
+<html class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<title>Home - Reilly Thate</title>
+		<meta name="description" content="Reilly Thate's portfolio.">
+		<meta name="author" content="Reilly Thate">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/main-pages/portfolio.css" type="text/css">
+	</head>
+
+	<body>
+		
+		<header>
+			<h1><a href="index.html">Reilly Thate</a></h1>
+			<span class="logo logo-renegade"></span>
+			<nav id="topNav">
+    			<button id="topNav_toggle" aria-expanded="false">Menu</button>
+				<ul id="topNav_list">
+					<li class="topNav_item" id="active_page"><a href="#">Portfolio</a></li>
+					<li class="topNav_item"><a href="blog.html">Blog</a></li>
+					<li class="topNav_item"><a href="about.html">About</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<main>
+			<section class="portfolio_category" id="programming">
+				<h2>Featured Program</h2>
+				<article class="card">
+					<h3 class="art_title">"n-Body Orbital Simulator"</h3>
+					<figure>
+						<img src="media/images/blogTeasers/blog_n-body.jpg">
+					</figure>
+					<article class="content">
+						<h4>Description</h4>
+						<p class="content_p">
+							A physics engine rendered in JavaScript that simulates gravitational forces between numerous particles of random mass.
+						</p>
+						<p class="to_blog_post"><a href="portfolio/personal/web/n-body-orbital.html">Blog: "n-Body Orbital Simulator"</a></p>
+					</article>
+				</article>
+			</section>
+			<section class="portfolio_category" id="filmmaking">
+				<h2>Featured Films</h2>
+				<article class="card">
+					<h3 class="art_title">"Birthday Toast"</h3>
+					<div class="youtube_container">
+						<figure class="youtube_figure">
+							<iframe src="https://www.youtube.com/embed/19ghZuSgtuU" alt="Short film by Reilly Thate called Birthday Toast, embedded from YouTube." frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						</figure>
+					</div>
+					<article class="content">
+						<h4>Description</h4>
+						<p class="content_p">
+							An 18th birthday party doesn't go quite according to plan...
+						</p>
+						<h4>Credits</h4>
+						<ul>
+							<li>Writer</li>
+							<li>Director</li>
+							<li>Actor</li>
+							<li>Editor</li>
+						</ul>
+						<!--<p class="to_blog_post"><a href="#">Blog: "Birthday Toast"</a></p>-->
+					</article>
+				</article>
+				<article class="card">
+					<h3 class="art_title">"Ruthless: The Final Chapter"</h3>
+					<div class="youtube_container">
+						<figure class="youtube_figure">
+							<iframe src="https://www.youtube.com/embed/FtKwKWFR57A" alt="Student film project created by Reilly Thate called Ruthless: The Final Chapter, embedded from YouTube." frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						</figure>
+					</div>
+					<article class="content">
+						<h4>Description</h4>
+						<p class="content_p">
+							A (fake) movie trailer in which Reilly plays a man whose dark side emerges with a violent streak.
+						</p>
+						<h4>Credits</h4>
+						<ul>
+							<li>Actor</li>
+							<li>Editor</li>
+						</ul>
+						<!--<p class="to_blog_post"><a href="#">Blog: "Ruthless: The Final Chapter"</a></p>-->
+					</article>
+				</article>
+			</section>
+			
+			<section class="portfolio_category" id="web_design">
+				<h2>Featured Web Design</h2>
+				<article class="card">
+					<h3 class="art_title">"Crofton Crew"</h3>
+					<article class="design_gallery">
+						<figure>
+							<img src="portfolio/academic/aacc/responsive-web-design/crofton-crew/img/CC-design_preview1.jpg" class="CC-preview">
+						</figure>
+						<figure>
+							<img src="portfolio/academic/aacc/responsive-web-design/crofton-crew/img/CC-design_preview2.jpg" class="CC-preview">
+						</figure>
+					</article>
+					<article class="content">
+						<h4>Description</h4>
+						<p class="content_p">
+							A responsive web design for a podcast website, featuring an amateur podcast I recorded for the assignment.
+						</p>
+						<p class="to_web_design"><a href="portfolio/academic/aacc/responsive-web-design/crofton-crew/index.html">Visit Site: "Crofton Crew"</a></p>
+						<!--<p class="to_blog_post"><a href="#">Blog: "Crofton Crew (Web Design)"</a></p>-->
+					</article>
+				</article>
+			</section>
+		</main>
+		
+		<footer>
+			<section id="social_media_bar">
+				<figure class="social_logo_container">
+					<a href="https://www.youtube.com/channel/UCr9bNNf2-HwIflgvgbjnnOQ" target="_blank" class="social_media_link">
+						<img src="media/icons/yt_icon.svg" alt="YouTube logo: a red television screen with a white play button.">
+					</a>
+				</figure>
+			</section>
+			
+			<p id="site_copyright">Copyright &copy; 2020 Reilly Thate</p>
+			
+		</footer>
+	
+		<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/182774/modernizr_copy.js"></script>
+  		<script>
+  
+			var toggle = document.querySelector('#topNav_toggle');
+			var menu = document.querySelector('#topNav_list');
+			//var menuItems = document.querySelectorAll('#menu li a');
+
+			toggle.addEventListener('click', function()
+			{
+				if (menu.classList.contains('is-active')) 
+				{
+					this.setAttribute('aria-expanded', 'false');
+					menu.classList.remove('is-active');
+				} else 
+				{
+					menu.classList.add('is-active'); 
+					this.setAttribute('aria-expanded', 'true');
+					//menuItems[0].focus();
+				}
+			});
+  
+  		</script>
+		
+	</body>
+</html>

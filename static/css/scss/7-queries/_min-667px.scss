@@ -1,0 +1,80 @@
+@media screen and (min-width:667px)
+{
+    // 3-Basics
+
+    // 4-Layout
+
+    // 5-Modules
+
+    // _youtubeEmbed.scss
+	.youtube_container
+	{
+		flex-basis: 40%;
+		flex-grow: 1;
+		margin: 0;
+	}
+
+
+    // 6-Pages
+
+    // _home.scss
+    #featured_projects
+    {
+        .tiles
+        {
+            @include flex(row);
+        }
+        .home_card
+        {
+            flex: 1 0 40%;
+        }
+    }
+    #recent_posts
+    {
+        .home_card
+        {
+            @include flex(row);
+
+            figure
+            {
+                flex-basis: 30%;
+            }
+        }
+    }
+
+    // _blog.scss
+    .page_preview
+    {
+        @include flex(row, flex-start, center);
+
+        .blog_post
+        {
+            @include flex(row);
+            figure
+            {
+                flex: 1 0 35%;
+            }
+            .blog_summary
+            {
+                @include edge(0, 0 0 0 0.5rem);
+                flex: 1 0 50%;
+            }
+        }
+    }
+    .blog_post
+    {
+        flex: 0 1 70%;
+    }
+
+    // _about.scss
+    #portfolio_supercategory_card
+	{
+        flex: 0 1 100%;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: 1fr;
+		grid-gap: 0.5rem;
+
+		padding-bottom: 0.5rem;
+    }
+}

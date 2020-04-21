@@ -1,0 +1,30 @@
+@-moz-document url-prefix()
+{
+	main
+	{
+		background: 
+			linear-gradient(
+				$transparent 0,
+				$transparent 0.75rem,
+				$shade-secondary 0.75rem,
+				$shade-primary 1.5rem,
+				transparent 1.5rem
+			),
+			linear-gradient(
+				0deg,
+				$transparent 0,
+				$transparent 0.75rem,
+				$shade-secondary 0.75rem,
+				$shade-primary 1.5rem,
+				transparent 1.5rem
+			);
+	}
+	@media screen and (max-width: 450px)
+	{
+		#topNav
+		{
+			background: white;
+		}
+
+	}
+}

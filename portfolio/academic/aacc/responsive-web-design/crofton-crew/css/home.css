@@ -1,0 +1,129 @@
+@charset "utf-8";
+/* CSS Document */
+
+main
+{
+	margin: 1rem 0;
+	padding: 0 0 0 0;
+	border-top: 0.25rem groove var(--underline-main);
+}
+.article_link
+{
+	padding-top: 0.5rem;
+	text-align: right;
+}
+.article_link a
+{
+	text-align: right;
+	color: hsla(0, 0%, 100%, 0.85);
+}
+.article_link a:hover
+{
+	color: white;
+}
+#small_logo
+{
+	display: none;
+}
+
+#featured
+{
+	
+}
+#about_blurb figure
+{
+	display: none;
+}
+#about_blurb p
+{
+	margin: 0;
+}
+#store_merch
+{
+	display: none;
+}
+#store_merch section
+{
+	padding-left: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+#store_merch figure
+{
+	margin: 0;
+	padding: 1rem;
+	
+	width: 45vw;
+	
+	border-radius: 5px;
+	border: 1px dotted hsla(0, 0%, 100%, 0.25);
+}
+#store_merch #small_logo
+{
+	display: block;
+}
+@media screen and (min-width:500px)
+{
+	#store_merch section
+	{
+		flex-direction: row;
+	}
+}
+@media screen and (min-width:750px)
+{
+	main
+	{
+		display: grid;
+		grid-template-columns: 55% auto;
+		grid-template-rows: 50% auto;
+		grid-column-gap: 2rem;
+		grid-template-areas:
+			"#featured #about_blurb"
+			"#store_merch #store_merch";
+	}
+	section
+	{
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+	section p
+	{
+		max-width: 100%;
+	}
+	#about_blurb figure
+	{
+		display: block;
+		padding-top: 1rem;
+	}
+	#about_blurb figure img
+	{
+		max-width: 100%;
+	}
+	#about_blurb #small_logo
+	{
+		max-width: 281px;
+		margin: 0 auto;
+	}
+	#featured section, #about_blurb section
+	{
+		display: block;
+	}
+	#store_merch
+	{
+		margin-top: 0;
+		width: 100%;
+		grid-area: 2 / 1 / end / end;
+	}
+	#store_merch section
+	{
+		margin: 0;
+	}
+	#store_merch figure
+	{
+		margin: 0;
+		width: 100%;
+	}
+}

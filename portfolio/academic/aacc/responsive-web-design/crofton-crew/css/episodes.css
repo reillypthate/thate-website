@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+
+.article_link
+{
+	text-align: right;
+}
+.article_link a
+{
+	text-align: right;
+	color: hsla(0, 0%, 100%, 0.85);
+}
+.article_link a:hover
+{
+	color: white;
+}
+.yt_video
+{
+	margin: 0 auto;
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 51.25%;
+}
+.yt_video iframe
+{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+.content p
+{
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+@media screen and (min-width:500px)
+{
+	
+}
+@media screen and (min-width:750px)
+{
+	.main
+	{
+		display: grid;
+		grid-template-columns: 55% auto;
+		grid-template-rows: 50% auto;
+		grid-column-gap: 0.5rem;
+	}
+	article
+	{
+		margin: 0;
+		padding: 0;
+	}
+	article p
+	{
+		margin-left: 1rem;
+	}
+	.content p
+	{
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
+		margin-left: 1rem;
+	}
+	.article_link
+	{
+		padding-top: 1rem;
+	}	
+}

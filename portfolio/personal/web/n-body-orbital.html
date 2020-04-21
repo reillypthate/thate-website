@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<title>N-Body Orbitals (Javascript)</title>
+		<meta name="description" content="This JavaScript project takes on the n-body problem in a 2D environment, using colorful particles of different mass to demonstrate orbital mechanics.">
+		<meta name="author" content="Reilly Thate">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="ie-edge">
+		
+		<link rel="stylesheet" href="../../../css/common/common.css" type="text/css">
+		<link rel="stylesheet" href="../../../css/projects/orbital-mass.css" type="text/css">
+
+		<link rel="icon" type="image/ico" href="../../../favicon.ico" sizes="16x16" />
+	</head>
+
+	<body>
+		<header>
+			<h1><a href="../../../index.html">Reilly Thate</a></h1>
+			<nav id="topNav">
+    			<button id="topNav_toggle" aria-expanded="false">Menu</button>
+				<ul id="topNav_list">
+					<li class="topNav_item"><a href="../../../portfolio.html">Portfolio</a></li>
+					<li class="topNav_item"><a href="../../../blog.html">Blog</a></li>
+					<li class="topNav_item"><a href="#">About</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<main>
+			<section id="project">
+				<article class="card" id="n-body-orbital-container">
+					<h2>Project: "n-Body Orbitals"</h2>
+					<canvas id="n-body-orbital"></canvas>
+					<script type="text/javascript" src="../../../js/orbitalTest.js"></script>
+				</article>
+				<article class="content">
+					<h3>Introduction</h3>
+					<p>My first JavaScript project was an attempt to implement a database structure for my website (that doesn't involve server-side scripting). For my second JavaScript project, I challenged myself to build a physics engine; more specifically, I wanted to tackle n-body orbital mechanics (gravity).
+					</p>
+					<p>When I switched majors from Computer Engineering to Bioinformatics at RIT, I was disappointed to learn that the two semesters of University Physics I grinded through weren't specifically required for my new major, but I was able to leverage them into elective credits. Today, I was able to incorporate some of the stuff I learned from those courses into this project, along with stuff from linear algebra and computer science.
+					</p>
+					<p>
+					Beyond digging into my disconnected long-term memory, I still had to teach myself some JavaScript. So I went on a YouTube binge and discovered this awesome channel, Frank's Laboratory. In particular, his video on <a href="https://www.youtube.com/watch?v=d620nV6bp0A">Pure Vanilla JavaScript: Particles Effect</a> taught me everything I needed to implement a gravity simulator.
+					</p>
+					<p>Every object, or body, exerts gravity, and every gravitational force interacts with one another. In a system with two bodies, the force they exert on each other depends on their masses and the distance between them: large masses that are close together have stronger gravitational forces than small masses that are far apart.</p>
+					<h3>Process</h3>
+					<p>Frank's video taught me how to create graphics in JavaScript, but the heart of this project is the physics algorithm:</p>
+					<h4>Part 1: Initializing the Particles</h4>
+					<p>I implemented a Particle class with <em>draw()</em> and <em>update()</em> methods and the following attributes: </p>
+					<ul>
+						<li>Position (x, y)</li>
+						<li>Velocity (x, y)</li>
+						<li>Mass</li>
+						<li>Radius</li>
+						<li>Color</li>
+						<li>Array of Acceleration vectors</li>
+					</ul>
+					<p>Each Particle object gets initialized into an array with a random fixed position, a random mass and proportional radius, and a random color. The Acceleration vector array is left empty, representing a Particle with no other forces acting upon it. Without physics logic, the array is left empty and the Particles are stuck in their initial positions.</p>
+					<h4>Part 2: Implementing Gravity</h4>
+					<p>With physics logic, we can populate the force vector arrays for each Particle and allow them to attract one another. The script iterates through every Particle to determine the sum of all the gravitational forces shared with every other Particle, a nested loop. The following algorithm describes a single iteration:</p>
+					<ol>
+						<li>
+							<h5>Calculate the distance between Particle 1 and Particle 2.</h5>
+							<p>In a 2D system, this formula is as follows: &#8730;<span class="under_root">(x2 - x1)<sup>2</sup> + (y2 - y1)<sup>2</sup></span></p>
+							<p>In the script, we break the formula down:</p>
+							<code>distance = Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1)) /* JavaScript */</code>
+						</li>
+						<li>
+							<h5>Calculate the gravitational force scalar value between Particle 1 and Particle 2.</h5>
+							<p>A force is typically represented by a vector, which consists of a scalar value and the direction it's pointing in. For the purpose of this script, we just want the scalar itself for now&mdash;the vector comes into play in the next step.</p>
+							<p>The equation for the gravitational force exerted between two bodies is as follows: F<sub>G</sub> = G * (m<sub>1</sub>m<sub>2</sub>)/r<sup>2</sup>, where:</p>
+							<ul>
+								<li>G is the universal gravitational constant (6.674 * 10<sup>-11</sup> Nm<sup>2</sup>/kg<sup>2</sup>... but we can make this value whatever we want);</li>
+								<li>m<sub>1</sub> and m<sub>2</sub> are the mass values for Particle 1 and Particle 2, respectively; and</li>
+								<li>r<sup>2</sup> is the square of the distance between Particle 1 and Particle 2, which we calculated in Step 1.</li>
+							</ul>
+							<p>In the script, we break the formula down:</p>
+							<code>forceG = G * ((particle[1].mass * particle[2].mass)/(distance*distance)) /* JavaScript */</code>
+						</li>
+						<li>
+							<h5>Calculate the directional unit vector corresponding with the gravitational force between Particle 1 and Particle 2.</h5>
+							<p>After a couple of hours messing with trignometry and calculus to no avail, I remembered this simple Linear Algebra concept, and my whole world changed for the better: a unit vector is any vector with a magnitude of 1 unit. In other words, it's the basis for a one-dimensional number line.</p>
+							<p>The equation for a unit vector is as follows: U = &lt; (x2-x1)/r<sup>2</sup> | (y2-y1)/r<sup>2</sup> &gt;.</p>
+							<p>We already have r<sup>2</sup> from Step 1. In the script, we break the formula down for the unit vector pointing from Particle 1 to Particle 2:</p>
+							<code>u1 = new Vector((x2-x1)/distance, (y2-y1)/distance); // Particle 1 to Particle 2: </code>
+							<p>The added benefit of the scalar vector is that we can implement the unit vector pointing in the opposite direction by simply multiplying both the x and y components by -1:</p>
+							<code>u2 = new Vector(-uAB.x, -uAB.y); // Particle 1 to Particle 2: </code>
+						</li>
+						<li>
+							<h5>Update acceleration vectors for Particle 1 and Particle 2.</h5>
+							<p>Now that we have the gravitational force and their respective vectors, we can apply them to each Particle. For both Particle 1 and Particle 2, they accelerate toward each other (in the direction of U1 and U2, respectively) at a rate dependent on their respective masses.</p>
+							<p>Using the equation <em>F = m*a</em>, we can solve for acceleration and apply the equation to each component of the unit vector: &lt; a<sub>x</sub> = F<sub>x</sub> / mass | a<sub>y</sub> = F<sub>y</sub> / mass &gt;
+							<p>We apply this to both Particle A and Particle B to append their respective acceleration vector arrays:</p>
+							<code>
+								particle[1].accelerationArray.push(new Vector(forceG *u1.x / particle[1].mass, forceG * u1.y / particle[1].mass));
+								<br>
+								particle[2].accelerationArray.push(new Vector(forceG *u2.x / particle[2].mass, forceG * u2.y / particle[2].mass));
+							</code>
+						</li>
+						<li>
+							<h5>Update position values for Particle 1 and Particle 2.</h5>
+							<p>Assuming we've iterated through every combination of Particles, each Particle will have a populated array containing the forces exerted on it by all other Particles. Summing up the components of the array gives us a velocity vector. The X and Y components of the velocity vector are added to the X and Y coordinates, representing where each Particle will be positioned next.
+						</li>
+					</ol>
+					<h4>Part 3: Watching it All Come Together</h4>
+					<p>The animation loop runs through the above algorithm from Steps 1&ndash;4, and then calls the <em>update()</em> function for each Particle.</p>
+					<p>The <em>update()</em> function checks the Particle's position to ensure it isn't about to move off-screen; if it does, we push a unit vector onto the acceleration vector array pointing in the opposite direction of the Particle's travel (i.e. if the Particle crosses the left bounds, we push a unit vector pointing right).</p>
+					<p>By pushing an opposing acceleration vector, we're doing three things:</p>
+					<ul>
+						<li>We're preventing the use of a conventional approach that involves simply flipping the velocity vector, but if this happens during one <em>update()</em> call, we get an abrupt change in direction at best...</li>
+						<li>We're preventing the Particle from getting "stuck" on the edge of the screen. If a second <em>update()</em> call leads to another "flip", this means the velocity vector is smaller than the distance between the edge of the Particle and the edge of the screen, leading to a boundary check that repeats indefinitely.</li>
+						<li>We're making the bounce look like an actual bounce. Because the boundary check pushes an opposing acceleration vector after every update, we're letting the Particle slow to a stop, and then speed up back across the boundary.</li>
+					</ul>
+					<p>After this boundary check is complete, we implement Step 5, and we're set!</p>
+					<h3>Conclusion</h3>
+					<p>At the end of my first day working on this, I feel more confident in my Web Design skills. This was fun to work on.</p>
+					<p>Thanks for reading!</p>
+					<p><strong>P.S. BONUS: Click on the simulator and hit the Space Bar to toggle between particle Attraction and particle Repulsion.</strong></p>
+					<h3>Planned Features</h3>
+					<ul>
+						<li>UI: Full-Screen Toggle</li>
+						<li>UI: Value Sliders (# Particles, Variance in Mass, etc.)</li>
+						<li>UI: Start/Stop Button</li>
+						<li>UI: Presets</li>
+					</ul>
+					<h3>Bug List</h3>
+					<ul>
+						<li><span class="fixed">In Mozilla Firefox, the particles aren't being colored properly.</span><br>Fix: RGB values were randomly generated as floats (X.xxx) rather than integers (X).</li>
+						<li>In iOS, resize event is activated when top/bottom bars on browser move.</li>
+					</ul>
+				</article>
+			</section>
+		</main>
+		
+		<footer>
+			<section id="social_media_bar">
+				<figure class="social_logo_container">
+					<a href="https://www.youtube.com/channel/UCr9bNNf2-HwIflgvgbjnnOQ" target="_blank" class="social_media_link">
+						<img src="../../../media/icons/yt_icon.svg" alt="YouTube logo: a red television screen with a white play button.">
+					</a>
+				</figure>
+			</section>
+			
+			<p id="site_copyright">Copyright &copy; 2020 Reilly Thate</p>
+			
+		</footer>
+	</body>
+	<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/182774/modernizr_copy.js"></script>
+	<script>
+
+		var toggle = document.querySelector('#topNav_toggle');
+		var menu = document.querySelector('#topNav_list');
+		//var menuItems = document.querySelectorAll('#menu li a');
+
+		toggle.addEventListener('click', function()
+		{
+			if (menu.classList.contains('is-active')) 
+			{
+				this.setAttribute('aria-expanded', 'false');
+				menu.classList.remove('is-active');
+			} else 
+			{
+				menu.classList.add('is-active'); 
+				this.setAttribute('aria-expanded', 'true');
+				//menuItems[0].focus();
+			}
+		});
+
+	</script>
+</html>

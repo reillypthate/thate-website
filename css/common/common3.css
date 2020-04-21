@@ -1,0 +1,191 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald:300,400,500&display=swap');
+/* CSS Document */
+*
+{
+	--header-height: 90vmin;
+	--left-center: 0vmin;
+
+	--transparent: hsla(0, 0%, 0%, 0);
+	--shade-primary: hsla(230, 75%, 50%, 0.9);
+	--shade-secondary: hsla(230, 75%, 50%, 0.45);
+	--accent-primary: hsla(207, 85%, 23%, 0.9);
+	--accent-secondary: hsla(207, 85%, 23%, 0.45);
+	--bright-primary: hsla(135, 2%, 100%, 1.0);
+	--bright-secondary: hsla(135, 2%, 60%, 1.0);
+	--dark-primary: hsla(0, 0%, 0%, 1.0);
+	
+	--button-border-default: hsla(0, 0%, 0%, 0.25);
+	--button-border-highlight: hsla(0, 0%, 0%, 0.45);
+	--button-background-default: var(--bright-primary);
+	--button-background-hover: hsla(0, 0%, 0%, 0.1);
+	--button-background-active-default: var(--button-border-default);
+	--button-background-active-hover: var(--button-border-highlight);
+	
+	--background-color: hsla(0, 0%, 0%, 0.075);
+	
+	
+	--border-blue: hsla(230, 75%, 50%, 1.0);
+	--underline-blue: hsla(230, 75%, 50%, 0.5);
+	
+	--heading-base-gradient: linear-gradient(
+		var(--transparent) 0%,
+		var(--transparent) 80%,
+		var(--shade-secondary) 80%,  
+		var(--shade-primary) 100%
+	);
+	--heading-hover-gradient: linear-gradient(
+		var(--transparent) 0%,
+		var(--transparent) 80%,
+		var(--accent-secondary) 80%,  
+		var(--accent-primary) 100%
+	);
+	/*
+	outline: 2px solid hsla(0, 0%, 0%, 0.25);
+	*/
+	margin: 0;
+	padding: 0;
+}
+html
+{
+	max-width: 1000px;
+	margin: 0 auto;
+}
+body
+{
+	background: var(--background-color);
+	padding: 1rem;
+	
+	font-family: 'Open Sans', Arial, "sans-serif";
+}
+h1, h2, h3, nav li, button
+{
+	font-family: 'Oswald', sans-serif;
+	font-weight: 500;
+}
+
+a, a:link, a:visited
+{
+	color: hsla(0, 0%, 0%, 0.95);
+	text-decoration: none;
+}
+/******************************************************************************
+ ** Header ********************************************************************
+ *****************************************************************************/
+header
+{
+	margin: 0;
+	padding: 1rem;
+	
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	/*	outline: 2px dashed black; */
+}
+h1
+{
+	text-align: center;
+	color: var(--dark-primary);
+	font-size: 3.0rem;
+	line-height: 3.0rem;
+	text-shadow: 0 0.125rem 0.3125rem var(--bright-primary);
+	
+	margin: 0;
+	padding: 0;
+}
+h1 a
+{
+	display: block;
+	text-decoration: none;
+	color: var(--dark-primary);
+	
+	background: var(--heading-base-gradient);
+	/*border-radius: 0 0 2rem 2rem / 0 0 30% 30%;*/
+	background-origin: content-box;
+	background-position: bottom 0;
+	background-size: 100% 100%;
+}
+h1 a:hover
+{
+	background: var(--heading-hover-gradient);
+}
+nav
+{
+	width: 100%;
+	display: block;
+}
+nav ul
+{
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+nav ul li
+{
+	border-radius: 0.2rem;
+	font-size: 1.1rem;
+	line-height: 6.0vh;
+	text-align: center;
+	align-content: center;
+	flex-basis: 33%;
+}
+@media screen and (max-width:320px){}
+
+/******************************************************************************
+ ** Main **********************************************************************
+ *****************************************************************************/
+main
+{
+	padding: 1rem;
+}
+h2
+{
+	text-align: left;
+}
+p
+{
+	text-align: left;
+}
+/******************************************************************************
+ ** Renegade Logo *************************************************************
+ *****************************************************************************/
+#renegade_container
+{
+	position: relative;
+	margin: 0 auto;
+	width: 70vmin;
+	height: 70vmin;
+}
+.icon
+{
+	position: absolute;
+	top: 0;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background-image: url("../../media/logo/renegade-basic.svg");
+	background-size: fill;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	opacity: 60%;
+}
+.icon-renegade_main
+{
+	opacity: 80%;
+	z-index: 2;
+}
+.icon-renegade_primary
+{
+	right: 1.5%;
+	filter: invert(17%) sepia(31%) saturate(4660%) hue-rotate(221deg) brightness(84%) contrast(110%);
+}
+.icon-renegade_accent
+{
+	left: 1.5%;
+	filter: invert(17%) sepia(31%) saturate(4660%) hue-rotate(190deg) brightness(89%) contrast(93%);
+}

@@ -1,0 +1,18 @@
+header
+{
+    @include edge(0, 1rem 0 0 0);
+    @include flex(column, center);
+}
+.logo
+{
+    opacity: 20%;
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+    top: 1.5rem;
+    left: calc(50% - 3rem);
+    z-index: -1;
+    background-image: url("../../../media/logo/renegade-basic.svg");
+    background-origin: content-box;
+    background-repeat: no-repeat;
+}

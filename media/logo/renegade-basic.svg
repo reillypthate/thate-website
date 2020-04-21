@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 792 792">
+  <defs>
+    <style>
+      .a {
+        fill: #231f20;
+      }
+    </style>
+  </defs>
+  <rect class="a" x="349.33" y="-117.36" width="93.34" height="1026.72" transform="translate(396 -164.03) rotate(45)"/>
+  <rect class="a" x="-117.36" y="349.33" width="1026.72" height="93.34" transform="translate(396 -164.03) rotate(45)"/>
+  <rect class="a" x="519.99" y="85.33" width="280.01" height="93.34" transform="translate(286.65 -428.03) rotate(45)"/>
+  <rect class="a" x="613.33" y="519.99" width="93.34" height="280.01" transform="translate(660 -273.38) rotate(45)"/>
+  <rect class="a" x="85.33" y="-8.01" width="93.34" height="280.01" transform="translate(132 -54.68) rotate(45)"/>
+  <rect class="a" x="-8.01" y="613.33" width="280.01" height="93.34" transform="translate(505.35 99.97) rotate(45)"/>
+  <path class="a" d="M561,231c-91.13-91.13-238.87-91.13-330,0s-91.13,238.87,0,330,238.87,91.13,330,0S652.13,322.13,561,231ZM297,495a140,140,0,1,1,198,0A140,140,0,0,1,297,495Z" transform="translate(0)"/>
+</svg>

@@ -1,0 +1,40 @@
+// JSON Document
+
+[
+	{
+		"name": 	"n-Body Orbital Simulator (Web Design)", 
+		"date": 	"March 18, 2020", 
+		"preview" : "A physics engine rendered in JavaScript that simulates gravitational forces between numerous particles of random mass.", 
+		"page": 	"portfolio/web/n-body-orbital.html"
+	},{
+		"name": 	"Crofton Crew (Web Design)", 
+		"date":		"March 2, 2020", 
+		"preview":	"A responsive web design for a podcast website, featuring an amateur podcast I recorded for the assignment.", 
+		"page": 	"#"//"blog-crofton-crew-web-design.html"
+	},{
+		"name": 	"Bud Light (For a Soul)", 
+		"date": 	"February 25, 2020", 
+		"preview": 	"Your typical basement dweller finds himself on the wrong side of a bargain...", 
+		"page": 	"#"//"blog-bud-light-for-a-soul.html"
+	},{
+		"name": 	"Birthday Toast", 
+		"date": 	"December 13, 2019", 
+		"preview": 	"An 18th birthday party doesn't go quite according to plan...", 
+		"page": 	"#"//"blog-birthday-toast.html"
+	},{
+		"name": 	"Ruthless: The Final Chapter", 
+		"date": 	"November 18, 2019", 
+		"preview": 	"A (fake) movie trailer in which Reilly plays a man whose dark side emerges with a violent streak...", 
+		"page": 	"#"//"blog-ruthless-the-final-chapter.html"
+	},{
+		"name": 	"Due @ 11:59pm", 
+		"date": 	"January 15, 2018", 
+		"preview": 	"A serial procrastinator in a fit of panic from missing the deadline for an important project gets more than he bargained for when he texts his best friend for help in the middle of the night.", 
+		"page": 	"#"//"blog-due-at-1159pm.html"
+	},{
+		"name": 	"Beauty of Nature",
+		"date": 	"June 17, 2017", 
+		"preview": 	"All Reilly wants is to be able to enjoy a peaceful stroll through the forest and enjoy the beauty of nature... What could possibly go wrong?", 
+		"page": 	"#"//"blog-beauty-of-nature.html"
+	}
+]
