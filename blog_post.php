@@ -11,7 +11,7 @@
 <?php $thisPage="blog_post"; ?>
 <?php require_once(ROOT_PATH . '/includes/head_section.php'); ?>
         
-        <title><?php echo $post['title'] ?> | Reilly Thate</title>
+        <title><?php echo $post['name'] ?> | Reilly Thate</title>
         <meta name="description" content="Featuring the creative works of Reilly Thate.">
         <link rel="stylesheet" href="static/css/home.css" type="text/css">
         <link rel="stylesheet" href="static/css/blog.css" type="text/css">
@@ -32,10 +32,10 @@
 					<?php endif ?>
 
 					<p class="date_published"><?php echo date_format(date_create($post['created_at']), "M d, Y"); ?></p>
-					<h2><?php echo $post['title']; ?></h2>
+					<h2 class="trick-highlight"><?php echo $post['name']; ?></h2>
 
 					<article class="post_content">
-						<?php echo html_entity_decode($post['content']); ?>
+						<?php echo html_entity_decode($post['body']); ?>
 					</article>
 					<blockquote class="post_closer">
 						Posted by <?php echo getPostAuthor($post['author_id']); ?> on <?php echo date_format(date_create($post['created_at']), "F d, Y"); ?> at around <?php echo date_format(date_create($post['created_at']), "g a"); ?>.</p>

@@ -20,6 +20,195 @@ function makeSlug(String $string)
     $slug = preg_replace('/[^A-Za-z0-9-]+/', '-', $string);
     return $slug;
 }
+
+
+/******************************************************************************
+ ** Media Manager | Variables & Functions *************************************
+ ******************************************************************************/
+/**
+ * Return the number of rows in the `media` table.
+ */
+ function getMediaCount()
+{
+    global $conn;
+    
+    $query = "SELECT * FROM `media`";
+    $result = mysqli_query($conn, $query);
+    $row_cnt = mysqli_num_rows($result);
+    return $row_cnt;
+}
+function getBlogPostBanner($media_id)
+{
+    global $conn;
+
+    $query = "SELECT * FROM media WHERE id=$media_id";
+
+    $result = mysqli_query($conn, $query);
+    $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    $final_posts = array();
+    
+    foreach($posts as $post)
+    {
+        array_push($final_posts, $post);
+    }
+    foreach($final_posts as $post)
+    {
+        return "<img src='../".$post['base_path']."' alt='".$post['alt']."'>";
+    }
+}
+/**
+ * Return an array of all the rows in the `media` table.
+ */
+function getAllPictures()
+{
+    global $conn;
+
+    $sql = "SELECT * FROM media ORDER BY id DESC";
+
+    $result = mysqli_query($conn, $sql);
+    $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    $final_posts = array();
+    foreach($posts as $post)
+    {
+        array_push($final_posts, $post);
+    }
+    return $final_posts;
+}
+
+$isEditingMedia = false;
+$mediaId = 0;
+$media_name = "";
+$media_alt = "";
+$media_path = "";
+
+if(isset($_POST['add_media']))
+{
+    addMedia($_POST);
+}
+if(isset($_GET['edit-media']))
+{
+    $isEditingMedia = true;
+    $mediaId = $_GET['edit-media'];
+    
+    editMedia($mediaId);
+}
+if(isset($_POST['update_media']))
+{
+    $isEditingMedia = false;
+    $media_name = "";
+    $media_alt = "";
+    $media_path = "";
+
+    updateMedia($_POST);
+}
+if(isset($_GET['delete-media']))
+{
+    deleteMedia($_GET['delete-media']);
+}
+
+function addMedia($request_values)
+{
+    global $conn, $errors, $img_name, $img_alt, $img_path;
+
+    $img_name = esc($request_values['media_name']);
+    $img_alt = esc($request_values['media_alt']);
+    $img_path = esc($request_values['media_path']);
+    
+    // Validate form
+    if(empty($img_name))
+    {
+        array_push($errors, "Image name required");
+    }
+    if(empty($img_alt))
+    {
+        array_push($errors, "Image alt description required");
+    }
+    if(empty($img_path))
+    {
+        array_push($errors, "Image upload required");
+    }
+
+    $img_path = 'media/images/blogTeasers/' . $img_path;
+    
+    if(count($errors) == 0)
+    {
+        $query = "INSERT INTO media (name, alt, base_path) VALUES('$img_name', '$img_alt', '$img_path')";
+        mysqli_query($conn, $query);
+
+        $_SESSION['message'] = "Media added successfully!";
+        header('location: media_manager.php');
+        exit(0);
+    }
+}
+function editMedia($media_id)
+{
+    global $conn, $media_name, $media_alt, $media_path, $isEditingMedia, $mediaId;
+
+    $sql = "SELECT * FROM media WHERE id=$media_id LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+    $media = mysqli_fetch_assoc($result);
+
+    $media_name = $media['name'];
+    $media_alt = $media['alt'];
+    $media_path = $media['base_path'];
+}
+function updateMedia($request_values)
+{
+    global $conn, $errors, $img_name, $img_alt, $img_path;
+
+    $img_name = esc($request_values['media_name']);
+    $img_alt = esc($request_values['media_alt']);
+    
+    // Validate form
+    if(empty($img_name))
+    {
+        array_push($errors, "Image name required");
+    }
+    if(empty($img_alt))
+    {
+        array_push($errors, "Image alt description required");
+    }
+    // If no new file is uploaded, ignore it.
+    if(isset($request_values['media_path']))
+    {
+        $img_path = esc($request_values['media_path']);
+        if(empty($img_path))
+        {
+            $query = "UPDATE media SET name='$img_name', alt='$img_alt' WHERE id=" . $request_values['media_id'];
+        }else
+        {
+            $img_path = 'media/images/blogTeasers/' . $img_path;
+            $query = "UPDATE media SET name='$img_name', alt='$img_alt', base_path='$img_path' WHERE id=" . $request_values['media_id']; 
+        }
+    }
+    
+    if(count($errors) == 0)
+    {
+        mysqli_query($conn, $query);
+
+        $_SESSION['message'] = "Media updated successfully";
+        header('location: media_manager.php');
+        exit(0);
+    }
+}
+
+function deleteMedia($media_id)
+{
+    global $conn;
+
+    $query = "DELETE FROM media WHERE id=$media_id";
+
+    if(mysqli_query($conn, $query))
+    {
+        $_SESSION['message'] = "Media successfully deleted";
+        header("location: media_manager.php");
+        exit(0);
+    }
+}
+
+
 /******************************************************************************
  ** Category Manager | Variables & Functions **********************************
  ******************************************************************************/

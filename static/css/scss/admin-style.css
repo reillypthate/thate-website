@@ -973,4 +973,296 @@ ol li {
     }
   }
 }
-/*# sourceMappingURL=common-style.css.map */
+
+h1, h2, h3, nav li, button {
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+}
+
+button {
+  border-radius: 1rem;
+  background: var(--bright-primary);
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+button:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.45);
+}
+
+/******************************************************************************
+ ** Dashboard *****************************************************************
+ *****************************************************************************/
+.manager_preview {
+  /* Spacing & Border */
+  margin: 1rem;
+  padding: 1rem;
+  /* */
+  border: 3px solid rgba(9, 64, 109, 0.45);
+  border-radius: 1rem;
+}
+
+.manager_preview table {
+  margin: 0 auto;
+}
+
+.manager_preview table tr {
+  border: 1px solid rgba(9, 64, 109, 0.45);
+}
+
+.manager_preview table tr td:first-child {
+  width: 16rem;
+  text-align: left;
+}
+
+table {
+  /* Spacing & Border */
+  margin: 1rem;
+  padding: 1rem;
+  /* */
+  border: 2px solid rgba(9, 64, 109, 0.45);
+  border-radius: 1rem;
+}
+
+table tr td {
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+table tr td:first-child {
+  text-decoration: underline;
+}
+
+.manager_control_center {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.manager_control_center button {
+  /* Spacing & Border */
+  margin: 0.5rem;
+  padding: 1rem 2rem;
+  /* */
+}
+
+.manager_control_center h3 {
+  width: 100%;
+}
+
+.to_manager {
+  /* Spacing & Border */
+  margin: 2rem;
+  padding: 0;
+  /* */
+  text-align: center;
+  font-size: 1.3rem;
+  border: 2px groove rgba(9, 64, 109, 0.9);
+  border-radius: 1rem;
+}
+
+.to_manager a {
+  /* Spacing & Border */
+  margin: 0;
+  padding: 1rem 2rem;
+  /* */
+  display: block;
+  text-decoration: none;
+  line-height: 1.3rem;
+}
+
+.to_manager a:hover {
+  background: rgba(9, 64, 109, 0.45);
+  border-radius: 1rem;
+}
+
+/******************************************************************************
+ ** Category Manager **********************************************************
+ *****************************************************************************/
+.action {
+  /* Spacing & Border */
+  margin: 1rem 0;
+  padding: 1rem 0;
+  /* */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.action form {
+  /* Spacing & Border */
+  margin: 1rem;
+  padding: 1rem;
+  /* */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 0.25rem solid rgba(9, 64, 109, 0.45);
+  border-radius: 1rem;
+  flex-basis: 100%;
+}
+
+.action form input {
+  /* Spacing & Border */
+  margin: 0.5rem;
+  padding: 0.5rem 0 0.5rem 0.25rem;
+  /* */
+}
+
+.action form button {
+  /* Spacing & Border */
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  /* */
+}
+
+.categories, .tags {
+  /* Spacing & Border */
+  margin: 0 auto;
+  padding: 1rem;
+  /* */
+  border: 0.25rem solid rgba(9, 64, 109, 0.45);
+  border-radius: 1rem;
+}
+
+.indices {
+  width: 4rem;
+}
+
+.names {
+  width: 16rem;
+}
+
+form fieldset {
+  /* Spacing & Border */
+  margin: 1rem 0;
+  padding: 1rem;
+  /* */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+form fieldset legend {
+  /* Spacing & Border */
+  margin: 0;
+  padding: 0;
+  /* */
+}
+
+form fieldset label {
+  /* Spacing & Border */
+  margin: 0.5rem 0 0 0;
+  padding: 0.25rem;
+  /* */
+  flex: 0 1 100%;
+}
+
+form fieldset select, form fieldset input, form fieldset textarea {
+  /* Spacing & Border */
+  margin: 0.25rem 0;
+  padding: 0.25rem;
+  /* */
+  flex: 0 1 100%;
+}
+
+form fieldset #cke_body {
+  flex: 0 1 100%;
+}
+
+form fieldset #pub_container {
+  /* Spacing & Border */
+  margin: 0.25rem 0 1rem 0;
+  padding: 0;
+  /* */
+  flex: 0 1 100%;
+}
+
+form button {
+  flex: 0 1 100%;
+  /* Spacing & Border */
+  margin: 0.5rem;
+  padding: 0.5rem;
+  /* */
+}
+
+.single {
+  /* Spacing & Border */
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-radius: 0.25rem;
+  /* */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.single figure {
+  flex: 0 1 45%;
+}
+
+.single figure img {
+  display: block;
+  max-width: 100%;
+}
+
+.single .single_details {
+  flex: 1 0 45%;
+  /* Spacing & Border */
+  margin: 0.5rem;
+  padding: 0.5rem;
+  /* */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: space-around;
+  flex-wrap: wrap;
+}
+
+.single .single_details p {
+  flex: 0 1 100%;
+}
+
+.single .single_details .edit_remove {
+  flex: 0 1 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: space-between;
+  flex-wrap: wrap;
+}
+
+.single .single_details .edit_remove button {
+  flex: 0 1 45%;
+}
+
+#pictures table td img {
+  display: block;
+  max-width: 100%;
+}
+
+.error {
+  color: red;
+}
+
+.error p:before {
+  content: '* ';
+}
+
+.admin .topNav_item a {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.admin #active_page {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+/*# sourceMappingURL=admin-style.css.map */

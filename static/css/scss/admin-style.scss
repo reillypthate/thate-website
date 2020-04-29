@@ -1,0 +1,270 @@
+@import 'common-style';
+
+h1, h2, h3, nav li, button
+{
+    font-family: $heading-family;
+    font-weight: $heading-weight;
+}
+
+button
+{
+    border-radius: 1rem;
+    background: $button-background-default;
+    border: 2px solid $button-border-default;
+
+    cursor: pointer;
+
+    font-size: 1.2rem;
+
+    &:hover
+    {
+        background: $button-background-hover;
+        border: 2px solid $button-border-highlight;
+    }
+}
+/******************************************************************************
+ ** Dashboard *****************************************************************
+ *****************************************************************************/
+
+.manager_preview
+{
+    @include edge(1rem, 1rem);
+    
+    border: 3px solid $accent_secondary;
+    border-radius: 1rem;
+
+    table
+    {
+        margin: 0 auto;
+
+        tr
+        {
+            border: 1px solid $accent_secondary;
+            td
+            {
+                &:first-child
+                {
+                    width: 16rem;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+table
+{
+    @include edge(1rem, 1rem);
+
+    border: 2px solid $accent_secondary;
+    border-radius: 1rem;
+
+    tr
+    {
+        td
+        {
+            text-align: center;
+            font-size: 1.1rem;
+
+            
+            &:first-child
+            {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.manager_control_center
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    button
+    {
+        @include edge(0.5rem, 1rem 2rem);
+    }
+    h3
+    {
+        width: 100%;
+    }
+}
+.to_manager
+{
+    @include edge(2rem, 0);
+    text-align: center;
+    font-size: 1.3rem;
+    border: 2px groove $accent_primary;
+    border-radius: 1rem;
+
+    a
+    {
+        @include edge(0, 1rem 2rem);
+        display: block;
+        text-decoration: none;
+        line-height: 1.3rem;
+        &:hover
+        {
+            background: $accent_secondary;
+            border-radius: 1rem;
+        }
+    }
+}
+
+/******************************************************************************
+ ** Category Manager **********************************************************
+ *****************************************************************************/
+.action
+{
+    @include edge(1rem 0);
+    @include flex(row, center, center);
+
+    form
+    {
+        @include edge(1rem, 1rem);
+        @include flex(row, center, center);
+
+        border: 0.25rem solid $accent_secondary;
+        border-radius: 1rem;
+
+        flex-basis: 100%;
+        input
+        {
+            @include edge(0.5rem, 0.5rem 0 0.5rem 0.25rem);
+        }
+        button
+        {
+            @include edge(0.5rem, 0.5rem 1rem);
+        }
+    }
+}
+.categories, .tags
+{
+    @include edge(0 auto, 1rem);
+
+    border: 0.25rem solid $accent_secondary;
+    border-radius: 1rem;
+}
+.indices
+{
+    width: 4rem;
+}
+.names
+{
+    width: 16rem;
+}
+
+form
+{
+    fieldset
+    {
+        @include edge(1rem 0, 1rem);
+        @include flex(row);
+        legend
+        {
+            @include edge(0);
+        }
+        label
+        {
+            @include edge(0.5rem 0 0 0, 0.25rem);
+            flex: 0 1 100%;
+        }
+        select, input, textarea
+        {
+            @include edge(0.25rem 0, 0.25rem);
+            flex: 0 1 100%;
+        }
+        #cke_body
+        {
+            flex: 0 1 100%;
+        }
+
+        #pub_container
+        {
+            @include edge(0.25rem 0 1rem 0, 0);
+            flex: 0 1 100%;
+        }
+    }
+    button
+    {
+        flex: 0 1 100%;
+        @include edge(0.5rem);
+    }
+}
+.single
+{
+    @include edge(0.5rem 0, 0.5rem, 2px solid hsla(0, 0%, 0%, 0.25), 0.25rem);
+    @include flex(row, space-between);
+    figure
+    {
+        flex: 0 1 45%;
+        img
+        {
+            display: block;
+            max-width: 100%;
+        }
+    }
+    .single_details
+    {
+        flex: 1 0 45%;
+        @include edge(0.5rem);
+        @include flex(row, center, space-around);
+
+        p
+        {
+            flex: 0 1 100%;
+        }
+        .edit_remove
+        {
+            flex: 0 1 100%;
+            @include flex(row, space-around, space-between);
+            button
+            {
+                flex: 0 1 45%;
+            }
+        }
+    }
+}
+#pictures
+{
+    table
+    {
+        td
+        {
+            img
+            {
+                display: block;
+                max-width: 100%;
+            }
+        }
+    }
+}
+.error
+{
+    color:red;
+    p
+    {
+
+        &:before
+        {
+            content: '* ';
+        }
+    }
+}
+
+.admin
+{
+    .topNav_item
+    {
+        a
+        {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+    #active_page
+    {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+}

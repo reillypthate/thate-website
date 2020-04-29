@@ -1,21 +1,10 @@
 <?php
 
-// Blog Post Variables
-$post_id = 0;
-$post_title = "";
-$isEditingPost = false;
-$published = 0;
-$post_title = "";
-$post_slug = "";
-$content = "";
-$featured_image = "";
-$post_category = "";
-
 function getAllPosts()
 {
     global $conn;
 
-    $sql = "SELECT * FROM blog_post";
+    $sql = "SELECT * FROM blog_post ORDER BY created_at DESC";
 
     $result = mysqli_query($conn, $sql);
     $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -28,172 +17,155 @@ function getAllPosts()
     return $final_posts;
 }
 
-if (isset($_POST['create_post']))
+
+/******************************************************************************
+ ** Blog Manager | Variables & Functions **************************************
+ ******************************************************************************/
+
+$isEditingPost = false;
+$postId = 0;
+$post_name = "";
+$post_summary = "";
+$post_body = "";
+$post_published = 0;
+$post_banner = "";
+
+if(isset($_POST['create_post']))
 {
     createPost($_POST);
 }
 
-if (isset($_GET['edit-post']))
+if(isset($_GET['edit-post']))
 {
     $isEditingPost = true;
-    $post_id = $_GET['edit-post'];
-    editPost($post_id);
+    $postId = $_GET['edit-post'];
+    
+    editPost($postId);
 }
-
-if (isset($_GET['delete-post']))
+if(isset($_POST['update_post']))
 {
-    $post_id = $_GET['delete-post'];
-    deletePost($post_id);
+    $isEditingPost = false;
+    $post_name = "";
+    $post_summary = "";
+    $post_body = "";
+
+    updatePost($_POST);
+}
+if(isset($_GET['delete-post']))
+{
+    deletePost($_GET['delete-post']);
 }
 
 function createPost($request_values)
 {
-    global $conn, $errors, $post_title, $featured_image, $category_id, $content, $published;
+    global $conn, $errors, $post_name, $post_summary, $post_body, $post_banner, $post_published;
 
-    $post_title = esc($request_values['title']);
-    /*$content = htmlentities(esc($request_values['content']));
-    if (isset($request_values['category_id']))
+    $post_name = esc($request_values['post_name']);
+    $post_summary = esc($request_values['post_summary']);
+    $post_body = esc($request_values['post_body']);
+    $post_banner = esc($request_values['post_banner']);
+    $post_published = esc($request_vlaues['post_published']);
+
+    // Validate form
+    if(empty($post_name))
     {
-        $category_id = esc($request_vlaues['category_id']);
+        array_push($errors, "Post title required");
     }
-    if (isset($request_values['publish']))
+    if(empty($post_summary))
     {
-        $published = esc($request_values['publish']);
+        array_push($errors, "Post summary required");
     }
-*/
-    $post_slug = makeSlug($post_title);
-
-    if(empty($post_title))
+    if(empty($post_body))
     {
-        array_push($errors, "Post title is required");
-    }/*
-    if(empty($content))
-    {
-        array_push($errors, "Post content is required");
+        array_push($errors, "Post body required");
     }
-    if(empty($category_id))
+    if(empty($post_banner))
     {
-        array_push($errors, "Post category is required");
+        array_push($errors, "Post banner required");
     }
-
-    $featured_image = $_FILES['featured_image']['name'];
-    if(empty($featured_image))
-    {
-        array_push($errors, "Featured image is required");
-    }
-    $target = "../static/images/" .basename($featured_image);
-    if(!move_uploaded_file($_FILES['featured_image']['tmp_name'], $target))
-    {
-        array_push($errors, "Failed to upload image. Please check file settings for your server");
-    }
-*/
-    $post_check_query = "SELECT * FROM blog_post WHERE slug='$post_slug' LIMIT 1";
-    $result = mysqli_query($conn, $post_check_query);
-
-    if(mysqli_num_rows($result) > 0)
-    {
-        array_push($errors, "A post already exists with that title");
-    }
-
-    if(count($errors) == 0)
-    {
-        $query = "INSERT INTO blog_post (author_id, title, slug, published, created_at) VALUES(1, '$post_title', '$post_slug', $published, now())";
-        //$query = "INSERT INTO blog_post(author_id, title, slug, image, content, published, created_at, updated_at) VALUES(1, '$post_title', '$post_slug', '$featured_image', '$content', $published, now(), now())";
-        mysqli_query($conn, $query);
-        //if(mysqli_query($conn, $query))
-        //{
-            /*
-            $inserted_post_id = mysqli_insert_id($conn);
-
-            $sql = "INSERT INTO blog_post_category (category_id, post_id) VALUES($category_id, $inserted_post_id)";
-            mysqli_query($conn, $sql);
-            */
-            $_SESSION['message'] = "Post created successfully";
-            header('location: post_manager.php');
-            exit(0);
-        //}else
-       //{
-        //    array_push($errors, "Post not created.");
-        //}
-    }
-}
-
-function editPost()
-{
-    global $conn, $post_title, $post_slug, $content, $published, $isEditingPost, $post_id;
-    $sql = "SELECT * FROM blog_post WHERE id=1 LIMIT 1";
-    $result = mysqli_query($conn, $sql);
-    $post = mysqli_fetch_assoc($result);
-
-    $post_title = $post['title'];
-    $content = $post['content'];
-    $published = $post['published'];
-}
-function updatePost($request_values)
-{
-    global $conn, $errors, $post_id, $post_title, $featured_image, $topic_id, $content, $published;
-
-    $post_title = esc($request_values['title']);
-    $content = esc($request_values['content']);
-    $post_id = esc($request_values['post_id']);
-
-    if (isset($request_values['category_id']))
-    {
-        $category_id = esc($request_calues['category_id']);
-    }
-    $post_slug = makeSlug($post_title);
     
-    if(empty($post_title))
-    {
-        array_push($errors, "Post title is required");
-    }
-    if(empty($content))
-    {
-        array_push($errors, "Post body is required");
-    }
-    if(isset($_POST['featured_image']))
-    {
-        $featured_image = $_FILES['featured_image']['name'];
-
-        $target = "../static/imiages/" . basename($featured_image);
-        if (!move_uploaded_file($_FILES['featured_image']['tmp_name'], $target))
-        {
-            array_push($errors, "Failed to upload image. Please check file settings for your server");
-        }
-    }
+    $post_slug = makeSlug($post_name);
 
     if(count($errors) == 0)
     {
-        $query = "UPDATE blog_post SET title='$post_title', slug='$post_slug', image='$featured_image', content='$content', published=$published, updated_at=now() WHERE id=$post_id";
+        $query = "INSERT INTO blog_post (author_id, name, slug, summary, body, published, created_at, image) VALUES(1, '$post_name', '$slug', '$post_summary', '$post_body', $post_published, now(), $post_banner)";
+        mysqli_query($conn, $query);
 
-        if(mysqli_query($conn, $query))
-        {
-            if(isset($category_id))
-            {
-                $inserted_post_id = mysqli_insert_id($conn);
-
-                $sql = "INSERT INTO blog_post_category (category_id, post_id) VALUES($category_id, $inserted_post_id)";
-                mysqli_query($conn, $sql);
-                $_SESSION['message'] = "Post created successfully";
-                header('location: post_manager.php');
-                exit(0);
-            }
-            $_SESSION['message'] = "Post updated successfully";
-            header('location: post_manager.php');
-            exit(0);
-        }
-    }
-}
-function deletePost($post_id)
-{
-    global $conn;
-    $sql = "DELETE FROM blog_post WHERE id=$post_id";
-    if(mysqli_query($conn, $sql))
-    {
-        $_SESSION['message'] = "Post successfully deleted";
-        header("location: post_manager.php");
+        $_SESSION['message'] = "Blog added successfully!";
+        header('location: blog_manager.php');
+        echo "Complete";
         exit(0);
     }
 }
 
+function editPost($post_id)
+{
+    global $conn, $post_name, $post_summary, $post_body, $isEditingPost, $postId, $post_published, $post_banner;
+
+    $query = "SELECT * FROM blog_post WHERE id=$post_id LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    $post = mysqli_fetch_assoc($result);
+
+    $post_name = $post['name'];
+    $post_summary = $post['summary'];
+    $post_body = $post['body'];
+    $post_published = $post['published'];
+    $post_banner = $post['image'];
+
+    echo $post_banner;
+}
+
+function updatePost($request_values)
+{
+    global $conn, $errors, $postId, $post_name, $post_summary, $post_body, $post_banner, $post_published;
+
+    $post_name = esc($request_values['post_name']);
+    $post_summary = esc($request_values['post_summary']);
+    $post_body = esc($request_values['post_body']);
+    $post_banner = esc($request_values['post_banner']);
+    $post_published = esc($request_values['post_published']);
+    
+    // Validate form
+    if(empty($post_name))
+    {
+        array_push($errors, "Post title required");
+    }
+    if(empty($post_summary))
+    {
+        array_push($errors, "Post summary required");
+    }
+    if(empty($post_body))
+    {
+        array_push($errors, "Post body required");
+    }
+    if(empty($post_banner))
+    {
+        array_push($errors, "Post banner required");
+    }
+    $post_slug = makeSlug($post_name);
+
+    if(count($errors) == 0)
+    {
+        $query = "UPDATE blog_post SET name='$post_name', slug='$post_slug', summary='$post_summary', body='$post_body', image=$post_banner, published=$post_published WHERE id=" . $request_values['post_id'] . "";
+        mysqli_query($conn, $query);
+
+        $_SESSION['message'] = "Blog updated successfully!";
+        header('location: blog_manager.php');
+        exit(0);
+    }
+}
+
+function deletePost($post_id)
+{
+    global $conn;
+
+    $query = "DELETE FROM blog_post WHERE id=$post_id";
+
+    if(mysqli_query($conn, $query))
+    {
+        $_SESSION['message'] = "Post successfully deleted";
+        header("location: blog_manager.php");
+        exit(0);
+    }
+}
 ?>

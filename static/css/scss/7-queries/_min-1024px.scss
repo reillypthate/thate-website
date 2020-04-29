@@ -6,14 +6,10 @@
 	.page_preview
 	{
 		@include flex(row, center, flex-start, none);
-	}
-	#featured_projects
-	{
-		@include flex(row, center, flex-start, none);
-
 		.home_card
 		{
 			@include flex(row);
+			flex: 0 1 100%;
 			height: 100%;
 		}
 		.description
@@ -23,6 +19,13 @@
 		.tiles
 		{
 			flex: 1 0 30%;
+		}
+	}
+	#featured_projects
+	{
+		.home_card
+		{
+			flex: 0 1 100%;
 		}
 	}
 	#recent_posts

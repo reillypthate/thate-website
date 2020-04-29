@@ -1,6 +1,6 @@
         
         <header>
-			<h1><a href="index.php" class="trick-highlight">Reilly Thate</a></h1>
+			<h1><a href="index.php" class="trick-highlight trick-hover">Reilly Thate</a></h1>
 			<span class="logo logo-renegade"></span>
 			<nav id="topNav">
 				<ul id="topNav_list">

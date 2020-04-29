@@ -46,8 +46,20 @@
     .page_preview
     {
         @include flex(row, flex-start, center);
-
         .blog_post
+        {
+            @include flex(row);
+            figure
+            {
+                flex: 1 0 35%;
+            }
+            .blog_summary
+            {
+                @include edge(0, 0 0 0 0.5rem);
+                flex: 1 0 50%;
+            }
+        }
+        .blog-post__preview
         {
             @include flex(row);
             figure
@@ -65,7 +77,10 @@
     {
         flex: 0 1 70%;
     }
-
+    .blog-post__preview
+    {
+        flex: 0 1 70;
+    }
     // _about.scss
     #portfolio_supercategory_card
 	{

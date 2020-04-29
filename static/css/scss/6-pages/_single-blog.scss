@@ -1,0 +1,8 @@
+.post_content
+{
+    p
+    {
+        @include edge(0.75rem 0.5rem, 0);
+        line-height: 1.75rem;
+    }
+}

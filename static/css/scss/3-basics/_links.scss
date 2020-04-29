@@ -10,9 +10,42 @@ a
     background: $heading-base-gradient;
     background-size: 100% 100%;
     background-origin: content-box;
-
+    color: $heading-color-primary;
+}
+.trick-hover
+{
     &:hover
     {
         background: $heading-hover-gradient;
+    }
+}
+.img_link
+{
+    display: block;
+    max-width: 100%;
+}
+.to_more
+{
+    flex: 0 1 100%;
+    align-self: flex-end;
+    text-align: right;
+    a
+    {
+        text-decoration: underline;
+        color: $shade-primary;
+
+        &:hover
+        {
+            color: $shade-secondary;
+        }
+    }
+}
+.to_main_page
+{
+    text-align: right;
+    a
+    {
+        text-decoration: underline;
+        color: $shade_primary;
     }
 }

@@ -12,23 +12,13 @@
     <body>
         <?php require_once(ROOT_PATH . '/includes/header_section.php'); ?>
         <main>
-			<section id="portfolio_supercategory_card">
-				<article class="portfolio_supercategory_card">
-					<h2>Film</h2>
-					<p class="supercategory_tagline">Ambitious filmmaker</p>
-				</article>
-				<article class="portfolio_supercategory_card">
-					<h2>Science</h2>
-					<p class="supercategory_tagline">Background in STEM</p>
-				</article>
-				<article class="portfolio_supercategory_card">
-					<h2>Design</h2>
-					<p class="supercategory_tagline">Well-rounded artist</p>
-				</article>
-			</section>
-			<section id="about_portfolio">
-				<article class="portfolio_category_about">
-					<h2>Film</h2>
+			<section class="page_preview">
+				<article class="description">
+					<h2>
+						<a href="#" class="trick-highlight">
+							Film
+						</a>
+					</h2>
 					<p>
 						Experienced in roles throughout all phases of production.
 					</p>
@@ -45,8 +35,14 @@
 						In addition to work behind the camera, Reilly brings finely-tuned acting instincts from the stage (as Juror Three in Twelve Angry Men) to the screen with a diverse character range that enables him to bring his visions to life.
 					</p>
 				</article>
-				<article class="portfolio_category_about">
-					<h2>Science</h2>
+			</section>
+			<section class="page_preview">
+				<article class="description">
+					<h2>
+						<a href="#" class="trick-highlight">
+							Science
+						</a>
+					</h2>
 					<p>
 						Reilly graduated from Rochester Institute of Technology in 2018 with a B.S. in Bioinformatics and immersion in Mathematics.
 					</p>
@@ -63,8 +59,14 @@
 						Reilly hopes to apply his extensive STEM background and scientific mind to his creative endeavors.
 					</p>
 				</article>
-				<article class="portfolio_category_about">
-					<h2>Design</h2>
+			</section>
+			<section class="page_preview">
+				<article class="description">
+					<h2>
+						<a href="#" class="trick-highlight">
+							Design
+						</a>
+					</h2>
 					<p>
 						Skilled in web design, graphic design, and still art.
 					</p>
@@ -78,7 +80,6 @@
 						By combining his unique creative mind with a professional approach to tasks, Reilly is able to apply his talents to professional endeavors. 
 					</p>
 				</article>
-			
 			</section>
 			
         </main>

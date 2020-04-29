@@ -2,7 +2,7 @@
 function getPublishedPosts()
 {
     global $conn;
-    $sql = "SELECT * FROM blog_post WHERE published=true ORDER BY id DESC";
+    $sql = "SELECT * FROM blog_post WHERE published=true ORDER BY created_at DESC";
     $result = mysqli_query($conn, $sql);
 
     $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -17,7 +17,41 @@ function getPublishedPosts()
 
     return $final_posts;
 }
+function getNumPublishedPosts($limit)
+{
+    global $conn;
+    $sql = "SELECT * FROM blog_post WHERE published=true ORDER BY created_at DESC LIMIT $limit";
+    $result = mysqli_query($conn, $sql);
 
+    $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    $final_posts = array();
+
+    foreach($posts as $post)
+    {
+        $post['category'] = getPostCategory($post['id']);
+        array_push($final_posts, $post);
+    }
+
+    return $final_posts;
+}
+function getPublishedProjects($scope_id)
+{
+    global $conn;
+    $sql = "SELECT * FROM blog_post INNER JOIN project ON (project.blog_id=blog_post.id) WHERE published=true AND portfolio_scope_id=$scope_id ORDER BY created_at DESC";
+    $result = mysqli_query($conn, $sql);
+
+    $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    $final_posts = array();
+
+    foreach($posts as $post)
+    {
+        array_push($final_posts, $post);
+    }
+
+    return $final_posts;
+}
 function getPostCategory($post_id)
 {
     global $conn;
