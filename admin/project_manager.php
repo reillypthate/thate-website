@@ -3,15 +3,14 @@
     <?php include(ROOT_PATH . '/admin/includes/blog_functions.php'); ?>
     <?php include(ROOT_PATH . '/admin/includes/project_functions.php'); ?>
     <?php include(ROOT_PATH . '/admin/includes/head_section.php'); ?>
-    <title>Admin ~ Blog Manager | Reilly Thate</title>
+    <title>Admin ~ Project Manager | Reilly Thate</title>
 </head>
 <body>
     <?php $thisPage = "project_manager" ?>
     <?php include('includes/header_section.php'); ?>
     <main>
-    <?php $projects = getAllProjects();?>
-    
-        <section id="add_project">
+        <?php $projects = getAllProjects();?>
+        <section class="controller" id="add_post">
             <h2>
                 <?php if ($isEditingProject === true): ?>
                     Edit Project
@@ -19,11 +18,11 @@
                     Create Project
                 <?php endif ?>
             </h2>
-            <article>
+            <article class="ctrl-main">
                 <?php include(ROOT_PATH . '/includes/errors.php') ?>
                 <form method="post" action="<?php echo BASE_URL . 'admin/project_manager.php'; ?>">
                     <?php if ($isEditingProject === true): ?>
-                        <input type="hidden" name="project_id" value="<?php echo $projectId; ?>">
+                        <input type="hidden" name="project_id" value="<?php echo $project_id; ?>">
                     <?php endif ?>
                     <fieldset>
                         <legend>
@@ -33,64 +32,91 @@
                                 Create a New Project
                             <?php endif ?>
                         </legend>
-
-                        <label for="blog">Blog Post</label>
-                        <select id="blog" name="project_blog">
-                            <option value="">&mdash;</option>
-                            <?php foreach( getAllPosts() as $blog) : ?>
-                                <option value="<?php echo $blog['id']; ?>" 
-                                <?php if($isEditingProject) : if($projectBlogId == $blog['id']) : echo "selected"; endif; endif; ?>><?php echo $blog['id'] . ': ' . $blog['name']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-
-                        <label for="pub_container">Portfolio Scope</label>
-                        <div id="pub_container">
-                            <input type="radio" id="academic" name="portfolio_scope" value="1" onclick="changeScopeContent()" <?php if($isEditingProject): ?><?php if($projectScope == 1):echo "checked"; endif;?> <?php endif;?>><label for="academic" id="label_academic">Academic</label>
-                            <input type="radio" id="self-enrichment" name="portfolio_scope" value="2" onclick="changeScopeContent()" <?php if($isEditingProject): ?><?php if($projectScope == 2):echo "checked"; endif;?> <?php endif;?>><label for="self-enrichment" id="label_self">Self-Enrichment</label>
-                        </div>
-                        <div id="courses" hidden>
-                            <?php if ($isEditingProject): ?>
-                                <input type='hidden' name='no_course' value=<?php echo $noCourse; ?></input> 
-                            <?php endif; ?>
-                            <label for="course">Courses</label>
-                            <select id="course" name="project_course">
-                                <option value="">&mdash;</option>
-                                <?php foreach( getAllCourses() as $course) : ?>
-                                    <option value="<?php echo $course['id']; ?>" 
-                                    <?php if($isEditingProject) : if($projectCourse == $course['id']) : echo "selected"; endif; endif; ?>><?php echo $course['id'] . ': ' . $course['name']; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <div id="by_scope"></div>
-                        <script type="text/javascript">
-                            function changeScopeContent()
-                            {
-                                if(document.getElementById("academic").checked)
+                        <fieldset>
+                            <legend>Set a Portfolio Scope</legend>
+                            <!-- Project Scope / Course Selection -->
+                            <label for="pub_container">Portfolio Scope</label>
+                            <div id="pub_container">
+                                <input type="radio" id="academic" name="project_scope" value="1" onclick="changeScopeContent()" <?php if($isEditingProject): ?><?php if($project_scope == 1):echo "checked"; endif;?> <?php else: echo "checked"; endif;?>><label for="academic" id="label_academic">Academic</label>
+                                <input type="radio" id="self-enrichment" name="project_scope" value="2" onclick="changeScopeContent()" <?php if($isEditingProject): ?><?php if($project_scope == 2):echo "checked"; endif;?> <?php endif;?>><label for="self-enrichment" id="label_self">Self-Enrichment</label>
+                            </div>
+                            <div id="courses" hidden>
+                                <label for="course">Courses</label>
+                                <select id="course" name="project_course">
+                                    <option value="">&mdash;</option>
+                                    <?php foreach( getAllCourses() as $course) : ?>
+                                        <option value="<?php echo $course['id']; ?>" 
+                                        <?php if($isEditingProject) : if($project_course == $course['id']) : echo "selected"; endif; endif; ?>><?php echo $course['id'] . ': ' . $course['name']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div id="by_scope"></div>
+                            <script type="text/javascript">
+                                function changeScopeContent()
                                 {
-                                    document.getElementById("courses").removeAttribute("hidden");
-                                }else
-                                {
-                                    if(document.getElementById("self-enrichment").checked)
+                                    if(document.getElementById("academic").checked)
                                     {
-                                        document.getElementById("courses").setAttribute("hidden", true);
+                                        document.getElementById("courses").removeAttribute("hidden");
+                                    }else
+                                    {
+                                        if(document.getElementById("self-enrichment").checked)
+                                        {
+                                            document.getElementById("courses").setAttribute("hidden", true);
+                                        }
                                     }
                                 }
-                            }
-                            changeScopeContent();
-                        </script>
+                                changeScopeContent();
+                            </script>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Pick a Cover Image</legend>
+                            <!-- Banner Selection -->
+                            <label for="project_banner">Banner</label>
+                            <select id="project_banner" name="project_banner">
+                                <option value="">&mdash;</option>
+                                <?php foreach( getAllPictures() as $media) : ?>
+                                    <option value="<?php echo $media['id']; ?>"<?php if($isEditingProject) : if($project_banner == $media['id']) : echo "selected"; endif; endif; ?>><?php echo $media['id'] . ': ' . $media['name']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Title/Summary/Body</legend>
+                            <label for="project_name">Project Name</label>
+                            <input type="text" id="project_name" name="project_name" <?php if ($isEditingProject) : echo "value=\"" . $project_name . "\""; endif; ?>>
+
+                            <label for="project_summary">Project Summary</label>
+                            <textarea id="project_summary" name="project_summary" row="3" col="80"><?php if ($isEditingProject) : echo $project_summary; endif; ?></textarea>
+
+                            <label for="project_body">Project Body</label>
+                            <textarea id="project_body" name="project_body" row="20" col="80"><?php if ($isEditingProject) : echo $project_body; endif; ?></textarea>
+                            <script src="../../ckeditor/ckeditor.js">
+                            </script>
+                            <script>
+                                CKEDITOR.replace('project_body');
+                            </script>
+                        </fieldset>
+
+                        <div id="pub_container">
+                            <label for="project_published" id="label_published">Published</label> <input type="checkbox" id="project_published" name="project_published" value="0" <?php if($isEditingProject): ?><?php if($project_published == 1): echo "checked"; endif; endif; ?>>
+                        </div>
+
+                        
 
                         <?php if ($isEditingProject === true): ?>
                             <button type="submit" name="update_project">Update Project</button>
                         <?php else: ?>
                             <button type="submit" name="create_project">Create Project</button>
                         <?php endif ?>
+
                     </fieldset>
                 </form>
             </article>
         </section>
 
         <!-- Display records from database -->
-        <section id="projects">
+        <section id="projects" class="rows">
             <h2>Projects</h2>
             <?php if (empty($projects)): ?>
                 <p class="message">No projects in the database.</p>
@@ -113,8 +139,6 @@
                             <p<?php if ($project['published'] == 0) : ?> class="error">
                             *** Not published! ***<?php else: ?>>Published!<?php endif; ?>
                             </p>
-                            <p><?php echo $project['scope']; ?>
-                            <?php if ($project['scope'] == "Academic") : echo "(".getProjectCourse($project['id']).")"; endif; ?></p>
                             <div class="edit_remove">
                                 <button onclick="window.location.href='project_manager.php?edit-project=<?php echo $project['id']?>'">Edit</button>
                                 <button onclick="window.location.href='project_manager.php?delete-project=<?php echo $project['id']?>'">Delete</button>

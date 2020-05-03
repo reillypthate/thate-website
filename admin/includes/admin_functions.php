@@ -1,5 +1,20 @@
 <?php
 
+function returnRows($query)
+{
+    global $conn;
+
+    $result = mysqli_query($conn, $query);
+    $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    $final_rows = array();
+    foreach($rows as $row)
+    {
+        array_push($final_rows, $row);
+    }
+    return $final_rows;
+}
+
 // General variables
 $errors = [];
 
@@ -20,7 +35,6 @@ function makeSlug(String $string)
     $slug = preg_replace('/[^A-Za-z0-9-]+/', '-', $string);
     return $slug;
 }
-
 
 /******************************************************************************
  ** Media Manager | Variables & Functions *************************************

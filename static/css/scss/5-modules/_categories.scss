@@ -1,0 +1,27 @@
+.categories
+{
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr;
+}
+.card
+{
+    @include edge(0, 0.5rem, none, 0.25rem);
+    @include flex(row, flex-start, flex-start);
+    align-content: flex-start;
+
+	@include softBox(0.015, 0.035);
+	box-shadow: 1px 1px 1px 1px hsla(0, 0%, 0%, 0.1);
+    h3
+    {
+        @include edge(0, 0 0 0.5rem 0);
+        a
+        {
+            text-align: center;
+        }
+    }
+}
+.course
+{
+
+}

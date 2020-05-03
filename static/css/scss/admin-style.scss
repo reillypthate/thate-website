@@ -51,29 +51,18 @@ button
         }
     }
 }
-table
-{
-    @include edge(1rem, 1rem);
-
-    border: 2px solid $accent_secondary;
-    border-radius: 1rem;
-
-    tr
+.controller
+{ 
+    @include flex(row);
+    .ctrl-main
     {
-        td
-        {
-            text-align: center;
-            font-size: 1.1rem;
-
-            
-            &:first-child
-            {
-                text-decoration: underline;
-            }
-        }
+        flex: 0 1 100%;
+    }
+    .ctrl-secondary
+    {
+        flex: 0 1 40%;
     }
 }
-
 .manager_control_center
 {
     display: grid;
@@ -109,8 +98,66 @@ table
         }
     }
 }
-
 /******************************************************************************
+ ** Common ********************************************************************
+ *****************************************************************************/
+.rows
+{
+    .single
+    {
+        @include edge(0.5rem 0, 0.5rem, 2px solid hsla(0, 0%, 0%, 0.25), 0.25rem);
+        @include flex(row, space-between);
+        figure
+        {
+            flex: 0 1 45%;
+            img
+            {
+                display: block;
+                max-width: 100%;
+            }
+        }
+        .single_details
+        {
+            flex: 1 0 45%;
+            @include edge(0.5rem);
+            @include flex(row, center, space-around);
+    
+            p
+            {
+                flex: 0 1 100%;
+            }
+        }
+    }
+}
+.edit_remove
+{
+    flex: 0 1 100%;
+    @include flex(row, space-around, space-between);
+    button
+    {
+        flex: 0 1 45%;
+    }
+
+    .delete_button
+    {
+        background: hsla(0, 50%, 50%, 0.5);
+    }
+}
+.associates
+{
+    @include edge(0.5rem 0, 0.5rem, 2px solid hsla(0, 0%, 0%, 0.25), 0.25rem);
+
+    @include flex(row);
+    flex: 0 1 100%;
+
+    .single_associate
+    {
+        @include edge(0.5rem, 0.5rem, 2px solid hsla(0, 0%, 0%, 0.25), 0.25rem);
+
+        flex: 0 1 45%;
+    }
+}
+ /******************************************************************************
  ** Category Manager **********************************************************
  *****************************************************************************/
 .action
@@ -152,13 +199,26 @@ table
 {
     width: 16rem;
 }
-
+main
+{
+    @include flex(row);
+}
+section
+{
+    flex: 0 1 100%;
+}
+#add_post
+{
+    flex: 0 1 100%;
+}
 form
 {
+    flex: 0 1 100%;
     fieldset
     {
         @include edge(1rem 0, 1rem);
         @include flex(row);
+        flex: 0 1 100%;
         legend
         {
             @include edge(0);
@@ -180,8 +240,22 @@ form
 
         #pub_container
         {
-            @include edge(0.25rem 0 1rem 0, 0);
+            @include edge(1rem 0, 0.25rem);
             flex: 0 1 100%;
+        }
+        table
+        {
+            @include edge(0, 0.25rem, 2px solid hsla(0, 0%, 0%, 0.25), 0.25rem);
+            flex: 1 0 100%;
+
+            tr
+            {
+                @include edge(0);
+            }
+            th, td
+            {
+                @include edge(0, 0.25rem 1rem);
+            }
         }
     }
     button
@@ -190,37 +264,38 @@ form
         @include edge(0.5rem);
     }
 }
-.single
+.associate_manager
 {
-    @include edge(0.5rem 0, 0.5rem, 2px solid hsla(0, 0%, 0%, 0.25), 0.25rem);
-    @include flex(row, space-between);
-    figure
+    @include edge(0, 0, 1px solid hsla(0, 0%, 0%, 0.25), 0.25rem);
+    @include flex(row, space-between, center);
+    flex: 0 1 100%;
+
+    .up-down
     {
-        flex: 0 1 45%;
-        img
+        @include edge(0, 0.25rem);
+        @include flex(row);
+        flex: 0 1 10%;
+
+        button
         {
-            display: block;
-            max-width: 100%;
+            @include edge(0, 0.25rem, auto, 0.25rem);
+            flex: 0 1 100%;
         }
     }
-    .single_details
+    .proj_details
     {
-        flex: 1 0 45%;
-        @include edge(0.5rem);
-        @include flex(row, center, space-around);
-
-        p
+        @include edge(0, 0.5rem);
+        flex: 1 0 65%;
+    }
+    .remove_container
+    {
+        @include edge(0, 0.5rem);
+        @include flex(row);
+        flex: 0 1 15%;
+        button
         {
+            @include edge(0, 0.25rem, 2px solid hsla(0, 50%, 50%, 0.55), 0.25rem);
             flex: 0 1 100%;
-        }
-        .edit_remove
-        {
-            flex: 0 1 100%;
-            @include flex(row, space-around, space-between);
-            button
-            {
-                flex: 0 1 45%;
-            }
         }
     }
 }
@@ -253,6 +328,7 @@ form
 
 .admin
 {
+    flex-wrap: wrap;
     .topNav_item
     {
         a
@@ -266,5 +342,8 @@ form
         padding-left: 1rem;
         padding-right: 1rem;
     }
-
+}
+.cke_inner, .cke_reset
+{
+    flex: 0 1 100%;
 }

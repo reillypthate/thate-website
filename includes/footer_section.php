@@ -6,6 +6,11 @@
 						<img src="media/icons/yt_icon.svg" alt="YouTube logo: a red television screen with a white play button.">
 					</a>
 				</figure>
+				<figure class='social_logo_container'>
+					<a href="https://github.com/reillypthate" target="_blank" class="social_media_link">
+						<img src="media/icons/github_icon.svg" alt="GitHub logo: a silhouette of an octocat.">
+					</a>
+				</figure>
 			</section>
 			
 			<p id="site_copyright">Copyright &copy; 2020 Reilly Thate</p>

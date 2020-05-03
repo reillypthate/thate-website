@@ -76,8 +76,22 @@
         }
     }
 
+    #featured_projects
+    {
+        .tiles
+        {
+            @include flex(row);
+        }
+        .home_card
+        {
+            flex: 1 0 50%;
+        }
+    }
     // 5-Modules
-
+    .categories
+    {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
     // 6-Pages
 

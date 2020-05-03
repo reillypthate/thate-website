@@ -7,7 +7,7 @@
  }
  .social_logo_container
  {
-     @include edge(0, 0.5rem 0 0.3rem 0);
+     @include edge(0 1rem, 0.5rem 1rem 0.3rem 1rem);
 
      a
      {

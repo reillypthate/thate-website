@@ -37,9 +37,14 @@
 					<article class="post_content">
 						<?php echo html_entity_decode($post['body']); ?>
 					</article>
-					<blockquote class="post_closer">
-						Posted by <?php echo getPostAuthor($post['author_id']); ?> on <?php echo date_format(date_create($post['created_at']), "F d, Y"); ?> at around <?php echo date_format(date_create($post['created_at']), "g a"); ?>.</p>
-					</blockquote>
+					<div class="post_closer">
+						<figure>
+							<img src="media/images/reilly_thumbnail.jpg" alt="Reilly Thate">
+						</figure>
+						<p>
+							Posted by <?php echo getPostAuthor($post['author_id']); ?> on <?php echo date_format(date_create($post['created_at']), "F d, Y"); ?> at around <?php echo date_format(date_create($post['created_at']), "g a"); ?>.
+						</p>
+					</div>
 				<?php endif ?>
 			</section>
 			

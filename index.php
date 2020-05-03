@@ -66,7 +66,7 @@
 					</p>
 				</article>
 				<article class="tiles">
-					<h2 class="trick-highlight">Featured Projects</h2>
+					<h2 class="trick-highlight">Featured</h2>
 					<article class="home_card">
 						<a href="https://youtu.be/FtKwKWFR57A">
 							<figure class="card_banner">
@@ -97,7 +97,7 @@
 				<?php foreach($posts as $post): ?>
 					<article class="blog-post__preview">
 						<?php if (isset($post['image'])): ?>
-							<figure class="blog_banner">
+							<figure class="blog_banner ratio-container-a">
 								<a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>" class="img_link">
 									<?php echo getPostImg($post['image']); ?>
 							</a>

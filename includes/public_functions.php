@@ -1,22 +1,85 @@
 <?php
-function getPublishedPosts()
+
+/**
+ * Catch-all: Returns rows from a custom query.
+ */
+function returnRows($query)
 {
     global $conn;
-    $sql = "SELECT * FROM blog_post WHERE published=true ORDER BY created_at DESC";
-    $result = mysqli_query($conn, $sql);
 
-    $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $result = mysqli_query($conn, $query);
+    $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-    $final_posts = array();
-
-    foreach($posts as $post)
+    $final_rows = array();
+    foreach($rows as $row)
     {
-        $post['category'] = getPostCategory($post['id']);
-        array_push($final_posts, $post);
+        array_push($final_rows, $row);
     }
-
-    return $final_posts;
+    return $final_rows;
 }
+
+function getPublishedPosts()
+{
+    $query = "SELECT * FROM blog_post WHERE published=true ORDER BY created_at DESC";
+    return returnRows($query);
+}
+
+
+/**
+ * Return an array of all the `course` rows.
+ */
+function getAllCourses()
+{
+    return returnRows("SELECT * FROM `course` ORDER BY `name`");
+}
+function getCoursePreviewImage($course_id)
+{
+    $query = "SELECT
+        media.base_path AS 'base',
+        media.alt AS 'alt' FROM `projects`
+        INNER JOIN media ON (projects.image=media.id)
+        INNER JOIN project_academic_scope ON (projects.id=project_id)
+        WHERE course_id=$course_id 
+        ORDER BY projects.id DESC LIMIT 1";
+    
+    $result = returnRows($query);
+
+    if(sizeof($result) == 1)
+    {
+        return $result[0];
+    }
+    return false;
+}
+function getCourse($course_slug)
+{
+    $query = "SELECT * FROM `course` WHERE `slug`='$course_slug' LIMIT 1";
+
+    return returnRows($query)[0];
+}
+
+function getCourseProjects($course_id)
+{
+    $query = "SELECT
+        course_id, project_id, ordered_value,
+        `course`.name AS course_name,
+        `projects`.slug AS slug,
+        `projects`.name AS project_name,
+        `projects`.summary AS project_summary,
+        `projects`.image AS image,
+        `projects`.created_at AS created_at
+        FROM `course_projects`
+        INNER JOIN `course`
+            ON course_id=`course`.id
+        INNER JOIN `projects`
+            ON project_id=`projects`.id
+        WHERE course_id=$course_id";
+
+    return returnRows($query);
+}
+
+
+
+
 function getNumPublishedPosts($limit)
 {
     global $conn;
@@ -52,6 +115,8 @@ function getPublishedProjects($scope_id)
 
     return $final_posts;
 }
+
+
 function getPostCategory($post_id)
 {
     global $conn;

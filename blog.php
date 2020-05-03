@@ -27,7 +27,7 @@
 				<?php foreach($posts as $post): ?>
 					<article class="blog-post__preview">
 						<?php if (isset($post['image'])): ?>
-							<figure class="blog_banner">
+							<figure class="blog_banner ratio-container-a">
 								<a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>" class="img_link">
 									<?php echo getPostImg($post['image']); ?>
 							</a>

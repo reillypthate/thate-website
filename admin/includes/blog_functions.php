@@ -64,7 +64,7 @@ function createPost($request_values)
     $post_summary = esc($request_values['post_summary']);
     $post_body = esc($request_values['post_body']);
     $post_banner = esc($request_values['post_banner']);
-    $post_published = esc($request_vlaues['post_published']);
+    $post_published = esc($request_values['post_published']);
 
     // Validate form
     if(empty($post_name))
@@ -93,7 +93,6 @@ function createPost($request_values)
 
         $_SESSION['message'] = "Blog added successfully!";
         header('location: blog_manager.php');
-        echo "Complete";
         exit(0);
     }
 }

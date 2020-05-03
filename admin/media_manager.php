@@ -49,7 +49,7 @@
         </section>
 
         <!-- Display records from database -->
-        <section id="pictures">
+        <section id="pictures" class="rows">
             <h2>Media</h2>
             <?php if (empty($pictures)): ?>
                 <p class="message">No pictures in the database.</p>

@@ -70,7 +70,7 @@
         </section>
 
         <!-- Display records from database -->
-        <section id="posts">
+        <section id="posts" class="rows">
             <h2>Blog Posts</h2>
             <?php if (empty($posts)): ?>
                 <p class="message">No posts in the database.</p>

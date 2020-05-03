@@ -28,7 +28,7 @@
 
 .page_preview
 {
-	@include edge(0 1rem, 0 1rem);
+	@include edge(0.5rem 0, 0);
 
 	.description
 	{

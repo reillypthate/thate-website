@@ -13,6 +13,9 @@
 					<li class="topNav_item"
 					<?php if($thisPage=="media_manager"){echo " id=\"active_page\">Media Manager";}else{echo "><a href=\"media_manager.php\">Media Manager</a>";}?>
 					</li>
+					<li class="topNav_item"
+					<?php if($thisPage=="course_manager"){echo " id=\"active_page\">Course Manager";}else{echo "><a href=\"course_manager.php\">Course Manager</a>";}?>
+					</li>
 				</ul>
 				<button id="topNav_toggle" aria-expanded="false">Menu</button>
 			</nav>

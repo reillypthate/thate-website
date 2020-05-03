@@ -1,0 +1,54 @@
+.polaroid
+{
+    box-shadow: 1px 1px 4px 1px black, -1px -1px 4px 1px gray;
+}
+.polaroid-hover
+{
+    &:hover
+    {
+        box-shadow: 1px 1px 4px 1px $shade-primary, -1px -1px 4px 1px $accent-primary;
+    }
+}
+.ratio-container
+{
+    height: 0;
+    overflow: hidden;
+    background: black;
+    position: relative;
+    padding-top: 540px / 960px * 100%;
+    img
+    {
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        max-width: 100%;
+        height: 100%;
+    }
+}
+.ratio-container-a
+{
+    flex: 0 1 100%;
+    align-content: center;
+    a
+    {
+        height: 0;
+        overflow: hidden;
+        background: black;
+        position: relative;
+        padding-top: 540px / 960px * 100%;
+        img
+        {
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-width: 100%;
+            height: 100%;
+        }
+    }
+}

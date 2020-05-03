@@ -42,7 +42,7 @@
 				</article>
 				<article class="tiles">
 					<h2 class="trick-highlight">Pinned Project</h2>
-					<article class="home_card">
+					<article class="home_card  polaroid-hover">
 						<a href="https://youtu.be/19ghZuSgtuU">
 							<figure class="card_banner">
 								<img src="media/images/blogTeasers/banner_birthday-toast.jpg">
@@ -55,27 +55,33 @@
 					</article>
 				</article>
 			</section>
-			<section class="page_preview" id="recent_posts">
-				<?php $posts=getPublishedProjects(1); ?>
-				<?php foreach($posts as $post): ?>
-					<article class="blog-post__preview">
-						<?php if (isset($post['image'])): ?>
-							<figure class="blog_banner">
-								<a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>" class="img_link">
-									<?php echo getPostImg($post['image']); ?>
-							</a>
-							</figure>
-						<?php endif ?>
-
-						<article class="blog_summary">
-							<p class="date_published"><?php echo date_format(date_create($post['created_at']), "M d, Y"); ?></p>
-							<h3><a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>" class="trick-highlight"><?php echo $post['name']; ?></a></h3>
-							<?php echo getPostSummary($post); ?>
-							<p class="to_more"><a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>">Read More</a></p>
-						</article>
-					</article>
-				<?php endforeach ?>
+			<section class="page_preview">
+				<h2 class="trick-highlight">Courses</h2>
+				<article class="categories courses">
+					<?php $courses=getAllCourses(); ?>
+					<?php foreach($courses as $course) : ?>
+						<?php $prevSrc=getCoursePreviewImage($course['id']); ?>
+						<?php if($prevSrc != false) : ?>
+							<article class="card">
+								<h3><a href="<?php echo BASE_URL . 'single_course.php?course-slug=' . $course['slug']; ?>"><?php echo $course['name']; ?></a></h3>
+								<figure class="ratio-container-a polaroid polaroid-hover">
+									<a href="<?php echo BASE_URL . 'single_course.php?course-slug=' . $course['slug']; ?>" class="to_more">
+										<img src="<?php echo $prevSrc['base']; ?>" alt="<?php echo $prevSrc['alt']; ?>">
+									</a>
+								</figure>
+								<p>
+									<?php if(isset($course['summary'])) : ?>
+										<?php echo $course['summary']; ?>
+									<?php else : ?>
+										** No Course Summary Available **
+									<?php endif; ?>
+								</p>
+							</article>
+						<?php endif; ?>
+					<?php endforeach; ?>
+				</article>
 			</section>
+			
 			<section class="page_preview" id="self_enrichment">
 				<article class="description">
 					<article class="sub_description">
@@ -97,26 +103,5 @@
 					</article>
 				</article>
 			</section>
-			<section class="page_preview" id="recent_posts">
-				<?php $posts=getPublishedProjects(2); ?>
-				<?php foreach($posts as $post): ?>
-					<article class="blog-post__preview">
-						<?php if (isset($post['image'])): ?>
-							<figure class="blog_banner">
-								<a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>" class="img_link">
-									<?php echo getPostImg($post['image']); ?>
-							</a>
-							</figure>
-						<?php endif ?>
-
-						<article class="blog_summary">
-							<p class="date_published"><?php echo date_format(date_create($post['created_at']), "M d, Y"); ?></p>
-							<h3><a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>" class="trick-highlight"><?php echo $post['name']; ?></a></h3>
-							<?php echo getPostSummary($post); ?>
-							<p class="to_more"><a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>">Read More</a></p>
-						</article>
-					</article>
-				<?php endforeach ?>
-			</section>		
         </main>
 <?php require_once(ROOT_PATH . '/includes/footer_section.php'); ?>
