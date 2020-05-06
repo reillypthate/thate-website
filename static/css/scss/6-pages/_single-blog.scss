@@ -1,8 +1,13 @@
 .post_content
 {
+    @include edge(0, 0.5rem 0);
+    h3
+    {
+        @include edge(1.25rem 0 0.5rem 0, 0);
+    }
     p
     {
-        @include edge(0.75rem 0.5rem, 0);
+        @include edge(0.25rem 0.5rem 0.5rem 0.5rem, 0);
         line-height: 1.75rem;
     }
 }

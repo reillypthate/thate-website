@@ -72,7 +72,8 @@ function getCourseProjects($course_id)
             ON course_id=`course`.id
         INNER JOIN `projects`
             ON project_id=`projects`.id
-        WHERE course_id=$course_id";
+        WHERE course_id=$course_id
+        ORDER BY `created_at` DESC";
 
     return returnRows($query);
 }
