@@ -4,7 +4,9 @@
 	{
 		background: 
 			linear-gradient(
-				$transparent 0,
+				$shade-secondary 0rem,
+				$shade-secondary 0.25rem,
+				$transparent 0.25rem,
 				$transparent 0.75rem,
 				$shade-secondary 0.75rem,
 				$shade-primary 1.5rem,
@@ -12,7 +14,9 @@
 			),
 			linear-gradient(
 				0deg,
-				$transparent 0,
+				$shade-secondary 0rem,
+				$shade-secondary 0.25rem,
+				$transparent 0.25rem,
 				$transparent 0.75rem,
 				$shade-secondary 0.75rem,
 				$shade-primary 1.5rem,

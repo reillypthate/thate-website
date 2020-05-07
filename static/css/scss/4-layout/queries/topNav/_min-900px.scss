@@ -1,0 +1,10 @@
+#topNav
+{
+    margin: 0;
+    flex-basis: 40%;
+    flex-grow: 0;
+}
+#topNav_list, .js #topNav_list
+{
+    justify-content: flex-start;
+}

@@ -2,17 +2,3 @@
 {
     @include edge(0);
 }
-html
-{
-    @include edge(0 auto, 0);
-    max-width: 1024px;
-}
-body
-{
-    @include edge(0, $default-padding);
-    padding-bottom: 2.55rem;
-
-    background: $background-color;
-
-    font-family: $body-family;
-}

@@ -2,6 +2,8 @@
 
 h1, h2, h3, h4, h5, h6, .topNav-item
 {
+    color: $heading-color-primary;
+
     font-family: $heading-family;
     font-weight: $heading-weight;
     
@@ -12,15 +14,16 @@ h1, h2, h3, h4, h5, h6, .topNav-item
 }
 h1
 {
-    @include edge(($h1-height / 4.0) 0, 0);
+    @include edge(($h1-height / 4.0) 0 0 0, 0);
     
-    @include heading($h1-height / 2.0, center, $dark-primary, $h1-height);
+    @include heading($h1-height / 2.0, center, $heading-color-primary, $h1-height);
     height: $h1-height;
 }
 h2
 {
 	font-size: $h2-height;
     line-height: $h2-height;
+    text-align: left;
 
 	padding-bottom: 0.5rem;
 }
@@ -29,7 +32,18 @@ h3
 	font-size: $h3-height;
 	line-height: $h3-height;
 
-	padding-bottom: 0.25rem;
+    padding-bottom: 0.25rem;
+    
+    text-align: left;
+    
+    @include edge(0, 0 0.5rem);
+	flex: 0 1 100%;
+	
+	text-transform: uppercase;
+	letter-spacing: 0.05rem;
+	
+	color: hsla(0, 0%, 0%, 0.85);
+	text-shadow: 1.0px 1.0px 1px white;
 }
 h4
 {
@@ -40,12 +54,8 @@ h4
 	padding-bottom: 0.5rem;
 }
 
-p
+p, li
 {
+    color: $heading-color-secondary;
     line-height: 1.3rem;
-    height: auto;
-    &:last-child
-    {
-        padding-bottom: 0;
-    }
 }

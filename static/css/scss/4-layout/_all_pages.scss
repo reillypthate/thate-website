@@ -1,0 +1,24 @@
+@import 'header';
+@import 'topNav';
+@import 'main';
+@import 'footer';
+
+
+*
+{
+    outline: 1px solid hsla(0, 22%, 38%, 0.1);
+}
+html
+{
+    @include edge(0 auto, 0);
+    max-width: 1024px;
+}
+body
+{
+    @include edge(0, $default-padding);
+    padding-bottom: 2.55rem;
+
+    background: $background-color;
+
+    font-family: $body-family;
+}

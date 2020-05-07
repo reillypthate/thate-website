@@ -1,6 +1,6 @@
 .post_content
 {
-    @include edge(0, 0.5rem 0);
+    @include edge(0);
     h3
     {
         @include edge(1.25rem 0 0.5rem 0, 0);

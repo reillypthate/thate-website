@@ -1,16 +1,19 @@
 <?php require_once('config.php'); ?>
+<?php require_once(ROOT_PATH . '/includes/common_functions.php'); ?>
 <?php require_once(ROOT_PATH . '/includes/public_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/includes/modules/head_module.php'); ?>
+<?php 
+	$thisPage = "home";
+	generateHead("Home | Reilly Thate", "Reilly Thate is a well-rounded young artist with a scientific background. This website showcases his work across his broad range of expertise, as well as detailed recounts of his workflows and creative processes.");
+?>
 
-<?php $thisPage="home"; ?>
-<?php require_once(ROOT_PATH . '/includes/head_section.php'); ?>
-        
-        <title>Home | Reilly Thate</title>
-        <meta name="description" content="Reilly Thate is a well-rounded young artist with a scientific background. This website showcases his work across his broad range of expertise, as well as detailed recounts of his workflows and creative processes.">
-    </head>
+	<body>
 
-    <body>
-        <?php require_once(ROOT_PATH . '/includes/header_section.php'); ?>
+		<?php require_once(ROOT_PATH . '/includes/modules/header_section.php'); ?>
+
         <main>
+
+<!-- Page Teaser -->
             <section id="page_teaser">
 				<p>
 					Reilly Thate is a well-rounded young artist with a scientific background.
@@ -19,29 +22,39 @@
 					This website showcases his work across his broad range of expertise, as well as detailed recounts of his workflows and creative processes.
 				</p>
 			</section>
-			<section class="page_preview" id="featured_projects">
+
+<!-- Main Section of Page -->
+			<section class="page_preview" id="primary_section">
 				<article class="description">
 					<h2>
 						<a href="portfolio.php" class="trick-highlight trick-hover">
 							Portfolio
 						</a>
 					</h2>
-					<p>
-						Reilly maintains an impressive portfolio that showcases his work in a variety of contexts.
-					</p>
-					<p>
-						His portfolio contains a selection of academic coursework that reflect years of education in science and art, as well as a selection of projects he worked on for self-enrichment.
-					</p>
+					<div class="section_thesis">
+						<p>
+							Reilly maintains an impressive portfolio that showcases his work in a variety of contexts.
+						</p>
+						<p>
+							His portfolio contains a selection of academic coursework that reflect years of education in science and art, as well as a selection of projects he worked on for self-enrichment.
+						</p>
+					</div>
 					<article class="sub_description">
 						<h3>Academic Coursework</h3>
-						<p>Reilly graduated from Rochester Institute of Technology in 2018 with a B.S. in Bioinformatics, and he is currently pursuing an A.A.S. in Media Production at Anne Arundel Community College.</p>
-						<p>Reilly's education at R.I.T. incorporated intensive study in such courses as:</p>
+						<p>
+							Reilly graduated from Rochester Institute of Technology in 2018 with a B.S. in Bioinformatics, and he is currently pursuing an A.A.S. in Media Production at Anne Arundel Community College.
+						</p>
+						<p>
+							Reilly's education at R.I.T. incorporated intensive study in such courses as:
+						</p>
 						<ul>
 							<li>Bioinformatics Algorithms</li>
 							<li>Statistical Analysis</li>
 							<li>Genetic Engineering</li>
 						</ul>
-						<p>At A.A.C.C., his education is focused on artistic endeavors in such courses as:</p>
+						<p>
+							At A.A.C.C., his education is focused on artistic endeavors in such courses as:
+						</p>
 						<ul>
 							<li>Video Editing & Drawing</li>
 							<li>Web Design</li>
@@ -65,8 +78,11 @@
 						<a href="portfolio.php">Visit Portfolio</a>
 					</p>
 				</article>
-				<article class="tiles">
-					<h2 class="trick-highlight">Featured</h2>
+			</section>
+<!-- Pinned Project(s) -->
+			<section id="primary_accent">
+				<h2 class="trick-highlight">Featured</h2>
+				<div class="tiles paired">
 					<article class="home_card">
 						<a href="https://youtu.be/FtKwKWFR57A">
 							<figure class="card_banner">
@@ -89,30 +105,53 @@
 							</p>
 						</a>
 					</article>
-				</article>
+				</div>
 			</section>
-			<section class="page_preview" id="recent_posts">
-				<h2><a href="blog.php"  class="trick-highlight trick-hover">Recent Posts</a></h2>
-				<?php $posts=getNumPublishedPosts(3); ?>
-				<?php foreach($posts as $post): ?>
-					<article class="blog-post__preview">
-						<?php if (isset($post['image'])): ?>
-							<figure class="blog_banner ratio-container-a">
-								<a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>" class="img_link">
-									<?php echo getPostImg($post['image']); ?>
-							</a>
-							</figure>
-						<?php endif ?>
 
-						<article class="blog_summary">
-							<p class="date_published"><?php echo date_format(date_create($post['created_at']), "M d, Y"); ?></p>
-							<h3><a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>" class="trick-highlight"><?php echo $post['name']; ?></a></h3>
-							<?php echo getPostSummary($post); ?>
-							<p class="to_more"><a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>">Read More</a></p>
-						</article>
+<!-- Blog Posts: Three Most Recent -->
+			<section class="page_preview" id="recent_posts">
+				<h2>
+					<a href="blog.php"  class="trick-highlight trick-hover">
+						Recent Posts
+					</a>
+				</h2>
+
+<?php $posts=getNumPublishedPosts(3); ?>
+<?php foreach($posts as $post): ?>
+	<?php echo "<!-- Post: " . $post['name'] . " -->\r\n"; ?>
+				<article class="blog-post__preview">
+<?php if (isset($post['image'])): ?>
+					<figure class="blog_banner ratio-container-a">
+						<a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>" class="img_link">
+							<?php echo getPostImg($post['image']) . "\r\n"; ?>
+						</a>
+					</figure>
+<?php endif ?>
+					<article class="blog_summary">
+						<p class="date_published">
+							<?php echo date_format(date_create($post['created_at']), "M d, Y") . "\r\n"; ?>
+						</p>
+						<h3>
+							<a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>" class="trick-highlight">
+								<?php echo $post['name'] . "\r\n"; ?>
+							</a>
+						</h3>
+<?php if (isset($post['summary'])) : ?>
+						<p class="summary">
+							<?php echo $post['summary'] . "\r\n"; ?>
+						</p>
+<?php else : ?>
+						<p class="summary">
+							** No summary written for this post. **
+						</p>
+<?php endif; ?>
+						<p class="to_more"><a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>">Read More</a></p>
 					</article>
-				<?php endforeach ?>
+				</article>
+
+<?php endforeach ?>
 			</section>
 			
-        </main>
-<?php require_once(ROOT_PATH . '/includes/footer_section.php'); ?>
+		</main>
+
+<?php require_once(ROOT_PATH . '/includes/modules/footer_section.php'); ?>

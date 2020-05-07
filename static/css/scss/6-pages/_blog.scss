@@ -1,27 +1,3 @@
-main
-{
-    @include flex(row);
-    flex-basis: 0 1 100%;
-}
-
-h2
-{
-    padding-top: 0;
-    text-align: left;
-}
-h3, h4, h5
-{
-    text-align: left;
-    
-    @include edge(0, 0 0.5rem);
-	flex: 0 1 100%;
-	
-	text-transform: uppercase;
-	letter-spacing: 0.05rem;
-	
-	color: hsla(0, 0%, 0%, 0.85);
-	text-shadow: 1.0px 1.0px 1px white;
-}
 ol
 {
     @include edge(0);
@@ -35,16 +11,9 @@ ol
     flex: 0 1 100%;
     @include edge(0);
 
-    h2
-    {
-        @include edge(0, 0 0.5rem);
-        text-align: left;
-
-    }
     figure
     {
         margin: 0 auto;
-        max-width: 450px;
         flex: 0 1 100%;
         align-content: center;
         img
@@ -52,7 +21,10 @@ ol
             max-width: 100%;
         }
     }
-    
+    .date_published
+    {
+        margin-top: 0.5rem;
+    }
 }
 
 .blog-post__preview
@@ -83,29 +55,37 @@ ol
 }
 .date_published
 {
-    @include edge(0, 0.5rem 0.5rem 0 0.5rem);
+    @include edge(0);
     color: $heading-color-secondary;
     font-size: 1rem;
     letter-spacing: 0.05rem;
 }
 .post_closer
 {
-    @include edge(1rem 0, 0.5rem, none, 1rem 2.5rem 1rem 2.5rem);
+    @include edge(1rem 0, 0.5rem 1rem, none, 1rem 2.5rem 1rem 2.5rem);
     @include flex(row, space-between, center);
-    @include softBox(0.045, 0.045);
+    //@include softBox(0.045, 0.045);
+	box-shadow: 
+        1px 1px 4px 1px hsla(0, 0%, 0%, 0.1) inset,
+        -1px -1px 4px 1px hsla(0, 0%, 100%, 1) inset;
     figure
     {
+        @include edge(0.25rem, 0);
         min-width: 48px;
         max-width: 64px;
         img
         {
-            @include edge(0, 0, none, 4rem 4rem 10rem 10rem);
-            box-shadow: -0.5px -0.5px 1px 1px white, 1px 2px 1px 1px black;
+            @include edge(0, 0, 4px solid transparent, 4rem 4rem 10rem 10rem);
+            
+            box-shadow: 
+                1px 1px 4px 1px hsla(0, 0%, 0%, 0.1),
+                -1px -1px 4px 1px hsla(0, 0%, 100%, 1);
         }
         flex: 1 0 15%;
     }
     p
     {
+        @include edge(0, 0 0 0 1rem);
         align-self: center;
         text-align: center;
         flex: 1 0 50%;

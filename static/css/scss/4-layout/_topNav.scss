@@ -40,6 +40,7 @@
 {
     @include edge(0.25rem, 0, false, 5px);
 
+    font-family: $heading_family;
     font-weight: 400;
     font-size: $topNav_item-fontSize;
     line-height: $topNav_item-fontSize;
@@ -107,6 +108,7 @@
 {
     @include edge(0, $topNav_toggle-padding, false, 5px);
     
+    font-family: $heading_family;
     font-size: $topNav_toggle-fontSize;
     line-height: $topNav_toggle-fontSize;
 

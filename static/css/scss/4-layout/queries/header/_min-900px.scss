@@ -1,0 +1,35 @@
+header
+{
+    height: 6rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.logo
+{
+    display: block;
+    position: absolute;
+    top: 0.75rem;
+    left: calc(50% - (3.75rem));
+    opacity: 100%;
+    width: 7.5rem;
+    height: 7.5rem;
+    z-index: 0;
+    background-image: url("../../../media/logo/renegade-basic.svg");
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.logo
+{
+    opacity: 50%;
+    animation-duration: 0.75s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+}
+.logo-renegade
+{
+    opacity: 100%;
+    z-index: 1;
+}

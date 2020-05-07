@@ -1,7 +1,11 @@
+/**
+ * Default header specs:
+ * --- Padding-top is 1rem to center h1 along logo.
+ */
 header
 {
     @include edge(0, 1rem 0 0 0);
-    @include flex(column, center);
+    @include flex(row);
 }
 .logo
 {

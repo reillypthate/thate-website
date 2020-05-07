@@ -1,0 +1,7 @@
+/** 
+ * When topNav moves back to a relative position, extra padding on the bottom of the page is not needed.
+ */
+body
+{// When topNav moves back up to header, reduce bottom padding.
+    padding-bottom: 0.5;
+}

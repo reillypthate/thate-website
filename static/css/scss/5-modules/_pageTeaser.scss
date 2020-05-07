@@ -1,14 +1,18 @@
 #page_teaser
 {
     @include edge(
-        0 0 0.5rem 0,
-        1rem
+        0,
+		1rem,
+		none,
+		0.75rem
     );
-    @include softBox(0.015, 0.035);
 
+	grid-column: 1 / end;
     flex: 0 1 100%;
 
-    box-shadow: 1px 1px 1px 1px hsla(0, 0%, 0%, 0.1);
+	box-shadow: 
+		1px 1px 4px 1px hsla(0, 0%, 0%, 0.1),
+		-1px -1px 4px 1px hsla(0, 0%, 100%, 1);
 
     p
 	{
@@ -28,8 +32,6 @@
 
 .page_preview
 {
-	@include edge(0.5rem 0, 0);
-
 	.description
 	{
 		flex: 1 0 100%;
@@ -66,10 +68,7 @@
 	}
 }
 #recent_posts
-{
-    @include edge(0.5rem 0 0 0, 0 0 0.5rem 0);
-    
-	
+{	
 	.home_card
 	{
 		@include flex(column, space-between, flex-start);
@@ -105,7 +104,6 @@ figure, img
 }
 h2
 {
-    @include edge(0, 0.5rem);
 	flex-basis: 100%;
 	
 	text-transform: uppercase;

@@ -1,102 +1,23 @@
 @media only screen and (min-width: 450px)
 {
-    // 3-Basics
+    @import '/xampp/htdocs/thate-website/static/css/scss/3-basics/queries/reset/min-450px';
+    @import '/xampp/htdocs/thate-website/static/css/scss/3-basics/queries/typography/min-450px';
+    @import '/xampp/htdocs/thate-website/static/css/scss/3-basics/queries/links/min-450px';
 
-	// _reset.scss
-	body
-    {// When topNav moves back up to header, reduce bottom padding.
-        padding-bottom: 0.5;
-    }
+    @import '/xampp/htdocs/thate-website/static/css/scss/4-layout/queries/all_pages/min-450px';
+    @import '/xampp/htdocs/thate-website/static/css/scss/4-layout/queries/header/min-450px';
+    @import '/xampp/htdocs/thate-website/static/css/scss/4-layout/queries/topNav/min-450px';
+    @import '/xampp/htdocs/thate-website/static/css/scss/4-layout/queries/main/min-450px';
+    @import '/xampp/htdocs/thate-website/static/css/scss/4-layout/queries/footer/min-450px';
+    
+    @import '/xampp/htdocs/thate-website/static/css/scss/5-modules/queries/categories/min-450px';
+    @import '/xampp/htdocs/thate-website/static/css/scss/5-modules/queries/img_ratio/min-450px';
+    @import '/xampp/htdocs/thate-website/static/css/scss/5-modules/queries/pageTeaser/min-450px';
+    @import '/xampp/htdocs/thate-website/static/css/scss/5-modules/queries/youtubeEmbed/min-450px';
 
-    // 4-Layout
-
-    // _header.scss
-	header
-	{
-		display: flex;
-		justify-content: space-between;
-	}
-	h1
-	{
-		text-align: center;
-		padding: 0 0;
-	}
-	// _topNav.scss
-	#topNav
-    {
-        @include edge(0.5rem 0, 0);
-        position: relative;
-        background: none;
-        backdrop-filter: none;
-    }
-    #topNav_toggle
-    {
-        display: none;
-    }
-    .topNav_item, .js .topNav_item
-    {
-        @include softBox(0.015, 0.035);
-    }
-    %topNav_list-rows
-    {
-        background: none;
-        padding: 0;
-        box-shadow: none;
-        
-        display: flex;
-        justify-content: center;
-        grid-template-columns: 1fr 1fr 1fr;
-
-        border: none;
-    }
-    #topNav_list, #topNav_list.is-active
-    {
-        @extend %topNav_list-rows;
-    }
-    .js
-    {
-        #topNav_toggle
-        {
-            display: none;
-        }
-        #topNav_list, #topNav_list.is-active
-        {
-            @extend %topNav_list-rows;
-        }
-        .topNav_item
-        {
-            width: 7rem;
-        }
-    }
-    @-moz-document url-prefix()
-    {
-        #topNav
-        {
-            background: transparent;
-        }
-    }
-
-    #featured_projects
-    {
-        .tiles
-        {
-            @include flex(row);
-        }
-        .home_card
-        {
-            flex: 1 0 50%;
-        }
-    }
-    // 5-Modules
-    .categories
-    {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    // 6-Pages
-
-    // _home.scss
-	#featured_projects
-	{
-	}
+    @import '/xampp/htdocs/thate-website/static/css/scss/6-pages/queries/home/min-450px';
+    @import '/xampp/htdocs/thate-website/static/css/scss/6-pages/queries/portfolio/min-450px';
+    @import '/xampp/htdocs/thate-website/static/css/scss/6-pages/queries/blog/min-450px';
+    @import '/xampp/htdocs/thate-website/static/css/scss/6-pages/queries/about/min-450px';
+    @import '/xampp/htdocs/thate-website/static/css/scss/6-pages/queries/single_blog/min-450px';
 }

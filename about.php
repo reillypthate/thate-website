@@ -1,17 +1,28 @@
 <?php require_once('config.php'); ?>
-
-<?php //require_once(ROOT_PATH . '/index.html'); exit;?>
-
-<?php $thisPage="about"; ?>
-<?php require_once(ROOT_PATH . '/includes/head_section.php'); ?>
-        
-        <title>About | Reilly Thate</title>
-        <meta name="description" content="Featuring the creative works of Reilly Thate.">
-    </head>
-
+<?php require_once(ROOT_PATH . '/includes/common_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/includes/public_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/includes/modules/head_module.php'); ?>
+<?php 
+	$thisPage = "about";
+	generateHead("About | Reilly Thate", "An about page describing Reilly Thate and his website.");
+?>
     <body>
-        <?php require_once(ROOT_PATH . '/includes/header_section.php'); ?>
+
+		<?php require_once(ROOT_PATH . '/includes/modules/header_section.php'); ?>
+
         <main>
+			
+<!-- Page Teaser -->
+			<section id="page_teaser">
+				<p>
+					Reilly Thate has experience in Film, Science, and Design.
+				</p>
+				<p>
+					This page details the breadth of his experience across these fields.
+				</p>
+			</section>
+
+<!-- Main Section -->
 			<section class="page_preview">
 				<article class="description">
 					<h2>
@@ -82,5 +93,6 @@
 				</article>
 			</section>
 			
-        </main>
-<?php require_once(ROOT_PATH . '/includes/footer_section.php'); ?>
+		</main>
+		
+<?php require_once(ROOT_PATH . '/includes/modules/footer_section.php'); ?>
