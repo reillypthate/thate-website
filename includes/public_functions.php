@@ -1,5 +1,134 @@
 <?php
 
+
+/******************************************************************************/
+/** Course Functions **********************************************************/
+/******************************************************************************/
+
+/**
+ * Return an array of all the `course` rows.
+ */
+function getAllCourses()
+{
+    return returnRows("SELECT * FROM `course` ORDER BY `name`");
+}
+function getCourse($course_slug)
+{
+    $query = "SELECT * FROM `course` WHERE `slug`='$course_slug' LIMIT 1";
+
+    return returnRows($query)[0];
+}
+function getCoursesBySlugs($course_slugs)
+{
+    $query = "SELECT * FROM `course` WHERE ";
+
+    for($i = 0; $i < count($course_slugs); $i++)
+    {
+        $query = $query . "`slug`='$course_slugs[$i]'";
+        if($i < count($course_slugs)-1)
+        {
+            $query = $query ." OR ";
+        }
+    }
+
+    return returnRows($query);
+}
+/**
+ * This function returns the courses that have projects associated with them.
+ * This will be used when I want to list the courses I've taken without directing the user to a course without work.
+ */
+function getCoursesWithProjects()
+{
+    // This query returns the course_id's with at least 1 project.
+    $query = "SELECT 
+        DISTINCT `course_id`, 
+        `course`.name, 
+        `course`.slug, 
+        `course`.summary FROM `course_projects`
+        INNER JOIN `course`
+            ON `course_id`=`course`.id
+        ORDER BY name";
+
+    $result = returnRows($query);
+
+    return $result;
+}
+/**
+ * This function returns the project image associated with the most recent project in a course.
+ */
+function getCoursePreviewImage($course_id)
+{
+    $query = "SELECT
+        media.base_path AS 'base',
+        media.alt AS 'alt' FROM `projects`
+        INNER JOIN media ON (projects.image=media.id)
+        INNER JOIN project_academic_scope ON (projects.id=project_id)
+        WHERE course_id=$course_id 
+        ORDER BY projects.id DESC LIMIT 1";
+    
+    $result = returnRows($query);
+
+    if(sizeof($result) == 1)
+    {
+        return $result[0];
+    }
+    return false;
+}
+/**
+ * Given a particular course, this function will return a list of projects done for that course, ordered by most recent.
+ */
+function getCourseProjects($course_id)
+{
+    $query = "SELECT
+        course_id, `course`.slug AS course_slug, project_id, ordered_value,
+        `course`.name AS course_name,
+        `projects`.slug AS slug,
+        `projects`.name AS project_name,
+        `projects`.summary AS project_summary,
+        `projects`.image AS image,
+        `projects`.created_at AS created_at
+        FROM `course_projects`
+        INNER JOIN `course`
+            ON course_id=`course`.id
+        INNER JOIN `projects`
+            ON project_id=`projects`.id
+        WHERE course_id=$course_id
+        ORDER BY `created_at` DESC";
+
+    return returnRows($query);
+}
+
+
+function getProject($project_slug)
+{
+    $query = "SELECT * FROM `projects` WHERE `slug`='$project_slug' LIMIT 1";
+
+    return returnRows($query)[0];
+}
+function getProjectPosts($project_id)
+{    
+    $query = "SELECT 
+        blog_post.name AS name,
+        blog_post.summary AS summary,
+        blog_post.image AS image,
+        blog_post.slug AS slug,
+        blog_post.created_at AS created_at,
+        directly_related,
+        ordered_value FROM `project_posts` 
+    INNER JOIN `blog_post`
+        ON project_posts.blog_id=blog_post.id
+    WHERE project_id=$project_id
+    ORDER BY ordered_value";
+
+    return returnRows($query);
+}
+function getNumRelatedPosts($project_id, $direct)
+{
+    $query = "SELECT COUNT(directly_related) AS cnt FROM `project_posts` WHERE project_id=$project_id AND directly_related=$direct";
+
+    return returnRows($query)[0];
+}
+
 /**
  * Catch-all: Returns rows from a custom query.
  */
@@ -25,58 +154,6 @@ function getPublishedPosts()
 }
 
 
-/**
- * Return an array of all the `course` rows.
- */
-function getAllCourses()
-{
-    return returnRows("SELECT * FROM `course` ORDER BY `name`");
-}
-function getCoursePreviewImage($course_id)
-{
-    $query = "SELECT
-        media.base_path AS 'base',
-        media.alt AS 'alt' FROM `projects`
-        INNER JOIN media ON (projects.image=media.id)
-        INNER JOIN project_academic_scope ON (projects.id=project_id)
-        WHERE course_id=$course_id 
-        ORDER BY projects.id DESC LIMIT 1";
-    
-    $result = returnRows($query);
-
-    if(sizeof($result) == 1)
-    {
-        return $result[0];
-    }
-    return false;
-}
-function getCourse($course_slug)
-{
-    $query = "SELECT * FROM `course` WHERE `slug`='$course_slug' LIMIT 1";
-
-    return returnRows($query)[0];
-}
-
-function getCourseProjects($course_id)
-{
-    $query = "SELECT
-        course_id, project_id, ordered_value,
-        `course`.name AS course_name,
-        `projects`.slug AS slug,
-        `projects`.name AS project_name,
-        `projects`.summary AS project_summary,
-        `projects`.image AS image,
-        `projects`.created_at AS created_at
-        FROM `course_projects`
-        INNER JOIN `course`
-            ON course_id=`course`.id
-        INNER JOIN `projects`
-            ON project_id=`projects`.id
-        WHERE course_id=$course_id
-        ORDER BY `created_at` DESC";
-
-    return returnRows($query);
-}
 
 
 

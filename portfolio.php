@@ -65,26 +65,28 @@
 						</p>
 					</a>
 				</article>
+				<p class="to_all"><a href="projects.php">All Projects</a></p>
 			</section>
 
 <!-- Course Tiles -->
 			<section class="page_preview">
-				<h2 class="trick-highlight">Courses</h2>
+				<h2 class="trick-highlight">Featured Courses</h2>
 				<article class="categories courses">
-<?php $courses=getAllCourses(); ?>
-<?php foreach($courses as $course) : ?>
+<?php $courses=getAllCourses(); ?> 
+<?php $featured_courses = getCoursesBySlugs(array("video-2", "responsive-web-design", "typography")); ?>
+<?php foreach($featured_courses as $course) : ?>
 <?php $prevSrc=getCoursePreviewImage($course['id']); ?>
 <?php if($prevSrc != false) : ?>
 
 	<!-- Course Tile: <?php echo $course['name']; ?> -->
 					<article class="card">
 						<h3>
-							<a href="<?php echo BASE_URL . 'single_course.php?course-slug=' . $course['slug']; ?>">
+							<a href="<?php echo BASE_URL . 'course.php?course-slug=' . $course['slug']; ?>">
 								<?php echo $course['name'] . "\r\n"; ?>
 							</a>
 						</h3>
 						<figure class="ratio-container-a polaroid polaroid-hover">
-							<a href="<?php echo BASE_URL . 'single_course.php?course-slug=' . $course['slug']; ?>" class="to_more">
+							<a href="<?php echo BASE_URL . 'course.php?course-slug=' . $course['slug']; ?>" class="to_more">
 								<img src="<?php echo $prevSrc['base']; ?>" alt="<?php echo $prevSrc['alt']; ?>">
 							</a>
 						</figure>
@@ -98,6 +100,7 @@
 					</article>
 <?php endif; ?>
 <?php endforeach; ?>
+					<p class="to_all" id="to_all_courses"><a href="courses.php">All Courses</a></p>
 				</article>
 			</section>
 			

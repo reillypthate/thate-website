@@ -1,0 +1,24 @@
+main
+{
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+}
+
+
+#primary_section
+{
+    grid-column: 1 / 2;
+}
+#primary_accent
+{
+    grid-column: 2 / end;
+}
+.tiles
+{
+    display: grid;
+}
+.paired
+{
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+}

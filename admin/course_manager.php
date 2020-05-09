@@ -1,13 +1,17 @@
-<?php include('../config.php');?>
-    <?php include(ROOT_PATH . '/admin/includes/admin_functions.php'); ?>
-    <?php include(ROOT_PATH . '/admin/includes/course_functions.php'); ?>
-
-    <?php include(ROOT_PATH . '/admin/includes/head_section.php'); ?>
-    <title>Admin ~ Course Manager | Reilly Thate</title>
-</head>
-<body>
-    <?php $thisPage = "course_manager" ?>
-    <?php include('includes/header_section.php'); ?>
+<?php if (session_status() != 0): ?>
+<?php require_once('../config.php'); ?>
+<?php endif ?>
+<?php require_once(ROOT_PATH . '../includes/common_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/admin_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/helper_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/course_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/modules/head_module.php'); ?>
+<?php 
+	$thisPage = "course_manager";
+	generateHead("Course Manager | Thate Admin", "The CMS for Reilly Thate's website.");
+?>
+<body id="manager">
+    <?php include('includes/modules/header_section.php'); ?>
     <main>
     <?php $courses = getAllCourses(); ?>
         <section class="controller">
@@ -82,7 +86,7 @@
         </section>
 
         <!-- Display records from database -->
-        <section class="rows">
+        <section class="rows list-section">
             <h2>Courses</h2>
             <?php if (empty($courses)): ?>
                 <p class="message">No courses in the database.</p>

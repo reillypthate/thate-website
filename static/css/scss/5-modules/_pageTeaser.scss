@@ -8,6 +8,7 @@
     );
 
 	grid-column: 1 / end;
+	grid-row: 1 / 2;
     flex: 0 1 100%;
 
 	box-shadow: 
@@ -45,16 +46,26 @@
 .sub_description
 {
 	padding-top: 0.5rem;
+	margin-bottom: 1rem;
 }
 .home_card
 {
 	a
 	{
+		display: inline-block;
+		border-radius: 1rem;
 		padding: 1rem;
+		box-shadow: 
+			1px 1px 4px 1px hsla(0, 0%, 0%, 0.1),
+			-1px -1px 4px 1px hsla(0, 0%, 100%, 1);
+		&:hover
+		{
+			box-shadow: 
+				1px 1px 4px 1px hsla(0, 0%, 0%, 0.1) inset,
+				-1px -1px 4px 1px hsla(0, 0%, 100%, 1) inset;
+		}
 	}
 	padding: 0;
-	@include softBox(0.015, 0.035);
-	box-shadow: 1px 1px 1px 1px hsla(0, 0%, 0%, 0.1);
 }
 
 #featured_projects

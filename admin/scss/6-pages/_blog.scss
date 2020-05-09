@@ -1,0 +1,143 @@
+ol
+{
+    @include edge(0);
+    li
+    {
+        @include edge(1rem 0, 0);
+    }
+}
+.blog_post
+{
+    flex: 0 1 100%;
+    @include edge(0);
+
+    figure
+    {
+        margin: 0 auto;
+        flex: 0 1 100%;
+        align-content: center;
+        img
+        {
+            max-width: 100%;
+        }
+    }
+    .date_published
+    {
+        margin-top: 0.5rem;
+    }
+}
+
+.blog-post__preview
+{
+    flex: 0 1 100%;
+    @include edge(0);
+
+    h2
+    {
+        @include edge(0, 0 0.5rem 0.5rem 0.5rem);
+        text-align: left;
+
+    }
+    
+    @include edge(0.5rem, 0);
+    &:first-child
+    {
+        @include edge(0 0.5rem 0.75rem 0.5rem, 0);
+    }
+    &:last-child
+    {
+        @include edge(0.75rem 0.5rem 0 0.5rem, 0);
+    }
+    &:only-child
+    {
+        @include edge(0 0.5rem, 0);
+    }
+}
+.date_published
+{
+    @include edge(0);
+    color: $heading-color-secondary;
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+}
+.post_closer
+{
+    @include edge(1rem 0, 0.5rem 1rem, none, 1rem 2.5rem 1rem 2.5rem);
+    @include flex(row, space-between, center);
+    //@include softBox(0.045, 0.045);
+	box-shadow: 
+        1px 1px 4px 1px hsla(0, 0%, 0%, 0.1) inset,
+        -1px -1px 4px 1px hsla(0, 0%, 100%, 1) inset;
+    figure
+    {
+        @include edge(0.25rem, 0);
+        min-width: 48px;
+        max-width: 64px;
+        img
+        {
+            @include edge(0, 0, 4px solid transparent, 4rem 4rem 10rem 10rem);
+            
+            box-shadow: 
+                1px 1px 4px 1px hsla(0, 0%, 0%, 0.1),
+                -1px -1px 4px 1px hsla(0, 0%, 100%, 1);
+        }
+        flex: 1 0 15%;
+    }
+    p
+    {
+        @include edge(0, 0 0 0 1rem);
+        align-self: center;
+        text-align: center;
+        flex: 1 0 50%;
+        text-shadow: 1px 1px 1px white;
+    }
+}
+.content_paragraph
+{
+    @include edge(0.5rem 0 1rem 0, 0);
+    p
+    {
+        @include edge(0.75rem 0.5rem, 0);
+        line-height: 1.75rem;
+        &:first-child
+        {
+            @include edge(0 0.5rem 0.75rem 0.5rem, 0);
+        }
+        &:last-child
+        {
+            @include edge(0.75rem 0.5rem 0 0.5rem, 0);
+        }
+        &:only-child
+        {
+            @include edge(0 0.5rem, 0);
+        }
+    }
+}
+.blog_summary
+{
+    @include flex(row, flex-start, flex-start);
+    align-content: flex-start;
+    flex-basis: 0 1 100%;
+    .date_published
+    {
+        flex: 0 1 100%;
+        align-self: flex-start;
+        font-size: 0.8rem;
+    }
+    h3
+    {
+        flex: 0 1 100%;
+        align-self: flex-start;
+        font-size: 1.4rem;
+    }
+    .summary
+    {
+        flex: 0 1 100%;
+    }
+    .to_blog
+    {
+        flex: 0 1 100%;
+        text-align: right;
+        align-self: flex-end;
+    }
+}

@@ -2,23 +2,26 @@ main
 {
     display: grid;
     grid-template-columns: 7fr 3fr;
+    grid-template-rows: auto;
 }
 
 
 #primary_section
 {
     grid-column: 1 / 2;
+    grid-row: auto / span 1;
 }
 #primary_accent
 {
     grid-column: 2 / end;
+    grid-row: 2 / span 1;
+    align-content: flex-start;
 }
 .tiles
 {
-    display: grid;
+    @include flex(row);
 }
 .paired
 {
-    grid-template-rows: repeat(2, 1fr);
     grid-template-columns: 1fr;
 }

@@ -1,5 +1,6 @@
 .categories
 {
+    @include edge(0.5rem 0 0 0, 0);
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: 1fr;
@@ -10,8 +11,10 @@
     @include flex(row, flex-start, flex-start);
     align-content: flex-start;
 
-	@include softBox(0.015, 0.035);
-	box-shadow: 1px 1px 1px 1px hsla(0, 0%, 0%, 0.1);
+	
+	box-shadow: 
+		1px 1px 4px 1px hsla(0, 0%, 0%, 0.1),
+		-1px -1px 4px 1px hsla(0, 0%, 100%, 1);
     h3
     {
         @include edge(0, 0 0 0.5rem 0);
@@ -20,8 +23,4 @@
             text-align: center;
         }
     }
-}
-.course
-{
-
 }

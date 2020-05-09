@@ -1,0 +1,23 @@
+@media screen and (min-width:667px)
+{
+    @import '/xampp/htdocs/thate-website/admin/scss/3-basics/queries/reset/min-667px';
+    @import '/xampp/htdocs/thate-website/admin/scss/3-basics/queries/typography/min-667px';
+    @import '/xampp/htdocs/thate-website/admin/scss/3-basics/queries/links/min-667px';
+
+    @import '/xampp/htdocs/thate-website/admin/scss/4-layout/queries/all_pages/min-667px';
+    @import '/xampp/htdocs/thate-website/admin/scss/4-layout/queries/header/min-667px';
+    @import '/xampp/htdocs/thate-website/admin/scss/4-layout/queries/topNav/min-667px';
+    @import '/xampp/htdocs/thate-website/admin/scss/4-layout/queries/main/min-667px';
+    @import '/xampp/htdocs/thate-website/admin/scss/4-layout/queries/footer/min-667px';
+    
+    @import '/xampp/htdocs/thate-website/admin/scss/5-modules/queries/categories/min-667px';
+    @import '/xampp/htdocs/thate-website/admin/scss/5-modules/queries/img_ratio/min-667px';
+    @import '/xampp/htdocs/thate-website/admin/scss/5-modules/queries/pageTeaser/min-667px';
+    @import '/xampp/htdocs/thate-website/admin/scss/5-modules/queries/youtubeEmbed/min-667px';
+
+    @import '/xampp/htdocs/thate-website/admin/scss/6-pages/queries/home/min-667px';
+    @import '/xampp/htdocs/thate-website/admin/scss/6-pages/queries/portfolio/min-667px';
+    @import '/xampp/htdocs/thate-website/admin/scss/6-pages/queries/blog/min-667px';
+    @import '/xampp/htdocs/thate-website/admin/scss/6-pages/queries/about/min-667px';
+    @import '/xampp/htdocs/thate-website/admin/scss/6-pages/queries/single_blog/min-667px';
+}

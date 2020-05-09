@@ -1,36 +1,43 @@
-<?php include('../config.php');?>
-    <?php include(ROOT_PATH . '/admin/includes/admin_functions.php'); ?>
-    <?php include(ROOT_PATH . '/admin/includes/blog_functions.php'); ?>
-    <?php include(ROOT_PATH . '/admin/includes/project_functions.php'); ?>
-    <?php include(ROOT_PATH . '/admin/includes/head_section.php'); ?>
-    <title>Admin ~ Project Manager | Reilly Thate</title>
-</head>
-<body>
-    <?php $thisPage = "project_manager" ?>
-    <?php include('includes/header_section.php'); ?>
+<?php if (session_status() != 0): ?>
+<?php require_once('../config.php'); ?>
+<?php endif ?>
+<?php require_once(ROOT_PATH . '../includes/common_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/admin_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/helper_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/blog_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/project_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/modules/head_module.php'); ?>
+<?php 
+	$thisPage = "project_manager";
+	generateHead("Project Manager | Thate Admin", "The CMS for Reilly Thate's website.");
+?>
+
+    <body id="manager">
+    <?php include('includes/modules/header_section.php'); ?>
+
     <main>
-        <?php $projects = getAllProjects();?>
+<?php $projects = getAllProjects();?>
         <section class="controller" id="add_post">
             <h2>
-                <?php if ($isEditingProject === true): ?>
+<?php if ($isEditingProject === true): ?>
                     Edit Project
-                <?php else: ?>
+<?php else: ?>
                     Create Project
-                <?php endif ?>
+<?php endif ?>
             </h2>
             <article class="ctrl-main">
-                <?php include(ROOT_PATH . '/includes/errors.php') ?>
+<?php include(ROOT_PATH . '/includes/errors.php') ?>
                 <form method="post" action="<?php echo BASE_URL . 'admin/project_manager.php'; ?>">
-                    <?php if ($isEditingProject === true): ?>
+<?php if ($isEditingProject === true): ?>
                         <input type="hidden" name="project_id" value="<?php echo $project_id; ?>">
-                    <?php endif ?>
+<?php endif ?>
                     <fieldset>
                         <legend>
-                            <?php if ($isEditingProject === true): ?>
+<?php if ($isEditingProject === true): ?>
                                 Update Project in Database
-                            <?php else: ?>
+<?php else: ?>
                                 Create a New Project
-                            <?php endif ?>
+<?php endif ?>
                         </legend>
                         <fieldset>
                             <legend>Set a Portfolio Scope</legend>
@@ -41,14 +48,7 @@
                                 <input type="radio" id="self-enrichment" name="project_scope" value="2" onclick="changeScopeContent()" <?php if($isEditingProject): ?><?php if($project_scope == 2):echo "checked"; endif;?> <?php endif;?>><label for="self-enrichment" id="label_self">Self-Enrichment</label>
                             </div>
                             <div id="courses" hidden>
-                                <label for="course">Courses</label>
-                                <select id="course" name="project_course">
-                                    <option value="">&mdash;</option>
-                                    <?php foreach( getAllCourses() as $course) : ?>
-                                        <option value="<?php echo $course['id']; ?>" 
-                                        <?php if($isEditingProject) : if($project_course == $course['id']) : echo "selected"; endif; endif; ?>><?php echo $course['id'] . ': ' . $course['name']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+<?php generateSelectElement("course", "Courses", "project_course", $project_course, getAllCourses(), 'id', 'name', $isEditingProject, 8); ?>
                             </div>
                             <div id="by_scope"></div>
                             <script type="text/javascript">
@@ -72,13 +72,8 @@
                         <fieldset>
                             <legend>Pick a Cover Image</legend>
                             <!-- Banner Selection -->
-                            <label for="project_banner">Banner</label>
-                            <select id="project_banner" name="project_banner">
-                                <option value="">&mdash;</option>
-                                <?php foreach( getAllPictures() as $media) : ?>
-                                    <option value="<?php echo $media['id']; ?>"<?php if($isEditingProject) : if($project_banner == $media['id']) : echo "selected"; endif; endif; ?>><?php echo $media['id'] . ': ' . $media['name']; ?></option>
-                                <?php endforeach; ?>
-                            </select>
+<?php generateSelectElement("project_banner", "Banner", "project_banner", $project_banner, getAllPictures(), 'id', 'name', $isEditingProject, 7); ?>
+
                         </fieldset>
 
                         <fieldset>
@@ -102,51 +97,46 @@
                             <label for="project_published" id="label_published">Published</label> <input type="checkbox" id="project_published" name="project_published" value="0" <?php if($isEditingProject): ?><?php if($project_published == 1): echo "checked"; endif; endif; ?>>
                         </div>
 
-                        
-
-                        <?php if ($isEditingProject === true): ?>
-                            <button type="submit" name="update_project">Update Project</button>
-                        <?php else: ?>
-                            <button type="submit" name="create_project">Create Project</button>
-                        <?php endif ?>
-
+<?php if ($isEditingProject === true): ?>
+                        <button type="submit" name="update_project">Update Project</button>
+<?php else: ?>
+                        <button type="submit" name="create_project">Create Project</button>
+<?php endif ?>
                     </fieldset>
                 </form>
             </article>
         </section>
 
         <!-- Display records from database -->
-        <section id="projects" class="rows">
+        <section id="projects" class="rows list-section">
             <h2>Projects</h2>
-            <?php if (empty($projects)): ?>
-                <p class="message">No projects in the database.</p>
-            <?php else: ?>
-                <?php foreach ($projects as $key => $project): ?>
-                    <article class="single">
-                        <figure>
-                            <?php echo getBlogPostBanner($project['image']); ?>
-                        </figure>
-                        
-                        <div class="single_details">
-                            <h3><?php echo $project['name'];  ?></h3>
-                            <p>
-                                <?php if (!isset($project['summary'])) : ?>
-                                    ** No summary has been written for this blog post. **
-                                <?php else : ?>
-                                    <?php echo $project['summary']; ?>
-                                <?php endif; ?>
-                            </p>
-                            <p<?php if ($project['published'] == 0) : ?> class="error">
-                            *** Not published! ***<?php else: ?>>Published!<?php endif; ?>
-                            </p>
-                            <div class="edit_remove">
-                                <button onclick="window.location.href='project_manager.php?edit-project=<?php echo $project['id']?>'">Edit</button>
-                                <button onclick="window.location.href='project_manager.php?delete-project=<?php echo $project['id']?>'">Delete</button>
-                            </div>
-                        </div>
-                    </article>
-                <?php endforeach; ?>
-            <?php endif ?>
+<?php if (empty($projects)): ?>
+            <p class="message">No projects in the database.</p>
+<?php else: ?>
+<?php foreach ($projects as $key => $project): ?>
+            <article class="single">
+                <figure>
+                    <?php echo getBlogPostBanner($project['image']) . "\r\n"; ?>
+                </figure>
+                    
+                <div class="single_details">
+                    <h3><?php echo $project['name']; ?></h3>
+                    <p>
+<?php if (!isset($project['summary'])) : ?>
+                        ** No summary has been written for this blog post. **
+<?php else : ?>
+                        <?php echo $project['summary'] . "\r\n"; ?>
+<?php endif; ?>
+                    </p>
+                    <p<?php if ($project['published'] == 0) : ?> class="error">*** Not published! ***<?php else: ?>>Published!<?php endif; ?></p>
+                    <div class="edit_remove">
+                        <button onclick="window.location.href='project_manager.php?edit-project=<?php echo $project['id']?>'">Edit</button>
+                        <button onclick="window.location.href='project_manager.php?delete-project=<?php echo $project['id']?>'">Delete</button>
+                    </div>
+                </div>
+            </article>
+<?php endforeach; ?>
+<?php endif ?>
         </section>
        
     </main>

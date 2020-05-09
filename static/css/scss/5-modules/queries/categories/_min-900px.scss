@@ -1,0 +1,8 @@
+.categories
+{
+    grid-template-columns: repeat(3, 1fr);
+}
+#to_all_courses
+{
+    grid-column: 1 / 4;
+}

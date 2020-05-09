@@ -277,49 +277,16 @@ function updateProject($request_values)
             updated_at=now()
             WHERE id=" . $request_values['project_id'] . "";
         
-        mysqli_query($conn, $query);
+       
+        if(mysqli_query($conn, $query))
+        {
+            $_SESSION['message'] = "Project successfully updated";
+            header("location: project_manager.php");
+            exit(0);
+        }
 
     }
     return;
-    global $conn, $errors, $project_blog, $project_scope, $projectCourse;
-
-    $project_blog = $request_values['project_blog'];
-    $project_scope = $request_values['portfolio_scope'];
-    $projectCourse = $request_values['project_course'];
-
-    if($project_scope == 1)
-    {
-        $projectCourse = $request_values['project_course'];
-        if(empty($request_values['project_course']))
-        {
-            array_push($errors, "Academic project -- Course required");
-        }
-    }else
-    {
-        
-    }
-    
-    if(count($errors) == 0)
-    {
-        $query = "UPDATE project SET blog_id=$project_blog, portfolio_scope_id=$project_scope WHERE id=" . $request_values['project_id'] . "";
-        
-        mysqli_query($conn, $query); 
-        if($request_values['no_course'])
-        {
-            echo "Inserted THIS!";
-            $query = "INSERT INTO project_academic_scope (project_id, course_id)VALUES (".$request_values['project_id'].", $projectCourse)";
-        }else
-        {
-            echo "Updated THIS!";
-            $query = "UPDATE project_academic_scope SET course_id=$projectCourse WHERE project_id=" . $request_values['project_id'] . "";
-        }
-        mysqli_query($conn, $query); 
-        $projectCourse = 0;
-
-        $_SESSION['message'] = "Project successfully updated";
-        header("location: project_manager.php");
-        exit(0);
-    }
 }
 
 function deleteProject($project_id)

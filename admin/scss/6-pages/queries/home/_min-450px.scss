@@ -1,0 +1,11 @@
+#featured_projects
+{
+    .tiles
+    {
+        @include flex(row);
+    }
+    .home_card
+    {
+        flex: 1 0 50%;
+    }
+}

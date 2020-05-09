@@ -1,12 +1,17 @@
-<?php include('../config.php');?>
-    <?php include(ROOT_PATH . '/admin/includes/admin_functions.php'); ?>
-    <?php include(ROOT_PATH . '/admin/includes/blog_functions.php'); ?>
-    <?php include(ROOT_PATH . '/admin/includes/head_section.php'); ?>
-    <title>Admin ~ Media Manager | Reilly Thate</title>
-</head>
-<body>
-    <?php $thisPage = "media_manager" ?>
-    <?php include('includes/header_section.php'); ?>
+<?php if (session_status() != 0): ?>
+<?php require_once('../config.php'); ?>
+<?php endif ?>
+<?php require_once(ROOT_PATH . '../includes/common_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/admin_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/helper_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/blog_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/modules/head_module.php'); ?>
+<?php 
+	$thisPage = "media_manager";
+	generateHead("Media Manager | Thate Admin", "The CMS for Reilly Thate's website.");
+?>
+<body id="manager">
+    <?php include('includes/modules/header_section.php'); ?>
     <main>
     <?php $pictures = getAllPictures(); ?>
         <section id="add_picture">
@@ -49,7 +54,7 @@
         </section>
 
         <!-- Display records from database -->
-        <section id="pictures" class="rows">
+        <section id="pictures" class="rows list-section">
             <h2>Media</h2>
             <?php if (empty($pictures)): ?>
                 <p class="message">No pictures in the database.</p>

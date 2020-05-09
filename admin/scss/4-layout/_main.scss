@@ -1,0 +1,85 @@
+main
+{
+	@include edge(0, 2.5rem 1rem);
+
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 1rem;
+
+    background: 
+    linear-gradient(
+		$shade-transparent 0%,
+		$shade-secondary 0.75rem,  
+		$shade-primary 1.25rem,
+		$shade-transparent 1.5rem,
+		$shade-transparent 100%
+    ),
+    linear-gradient(
+        0deg,
+        $shade-transparent  0%,
+		$shade-secondary 0.75rem,  
+		$shade-primary 1.25rem,
+		$shade-transparent  1.5rem,
+		$shade-transparent  100%
+    );
+	background-position: top 0, bottom 0;
+	background-origin: border-box;
+}
+ul
+{
+    @include edge(0.5rem 0, 0 0 0 2rem);
+}
+
+section
+{
+	@include edge(0);
+}
+.section_thesis
+{
+	@include edge(0.25rem 0 0.5rem 0, 0);
+
+	p
+	{
+		@include edge(0.5rem, 0);
+		&:first-child
+		{
+			margin-top: 0;
+		}
+		&:last-child
+		{
+			margin-bottom: 0;
+		}
+	}
+}
+article
+{
+	@include edge(0);
+}
+
+.tiles
+{
+	display: grid;
+	grid-gap: 0.5rem;
+}
+.paired
+{
+	grid-template-rows: repeat(2, 1fr);
+}
+
+#manager
+{
+	main
+	{
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 1rem;
+	}
+}
+.form_section
+{
+	grid-column: 1 / 2;
+}
+.list_section
+{
+	grid-column: 2 / 3;
+}

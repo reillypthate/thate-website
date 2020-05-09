@@ -1,12 +1,17 @@
 <?php if (session_status() == 0): ?>
-<?php include('../config.php');?>
+<?php require_once('config.php'); ?>
 <?php endif ?>
-<?php include(ROOT_PATH . '/admin/includes/admin_functions.php'); ?>
-<?php include(ROOT_PATH . '/admin/includes/head_section.php'); ?>
-    <title>Admin ~ Dashboard | Reilly Thate</title>
-</head>
-<body>
-    <?php include('includes/header_section.php'); ?>
+<?php require_once(ROOT_PATH . '../includes/common_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/admin_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/helper_functions.php'); ?>
+<?php require_once(ROOT_PATH . '/admin/includes/modules/head_module.php'); ?>
+<?php 
+	$thisPage = "dashboard";
+	generateHead("Dashboard | Thate Admin", "The CMS for Reilly Thate's website.");
+?>
+
+    <body>
+    <?php include('includes/modules/header_section.php'); ?>
     <main class="manager">
         <section class="manager_preview">
             <h2>Blog Manager</h2>

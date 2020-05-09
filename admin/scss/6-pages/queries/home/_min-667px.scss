@@ -1,0 +1,12 @@
+#recent_posts
+{
+    .home_card
+    {
+        @include flex(row);
+
+        figure
+        {
+            flex-basis: 30%;
+        }
+    }
+}

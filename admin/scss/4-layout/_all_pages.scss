@@ -1,0 +1,29 @@
+@import 'header';
+@import 'topNav';
+@import 'main';
+@import 'footer';
+
+
+*
+{
+    outline: 1px solid hsla(0, 22%, 38%, 0.1);
+}
+html
+{
+    @include edge(0 auto, 0);
+}
+body
+{
+    @include edge(0, $default-padding);
+    max-width: 1024px;
+    margin: 0 auto;
+
+    background: $background-color;
+
+    font-family: $body-family;
+}
+
+#manager
+{
+    max-width: none;
+}

@@ -1,12 +1,18 @@
 .polaroid
 {
-    box-shadow: 1px 1px 4px 1px black, -1px -1px 4px 1px gray;
+    padding: 0.3rem;
+    border-radius: 0.2rem;
+	box-shadow: 
+		1px 1px 2px 1px hsla(0, 0%, 0%, 0.1) inset,
+		-1px -1px 2px 1px hsla(0, 0%, 100%, 1) inset;
 }
 .polaroid-hover
 {
     &:hover
     {
-        box-shadow: 1px 1px 4px 1px $shade-primary, -1px -1px 4px 1px $accent-primary;
+        //box-shadow: 
+        //1px 1px 2px 1px hsla(0, 0%, 0%, 0.1),
+        //-1px -1px 2px 1px hsla(0, 0%, 100%, 1);
     }
 }
 .ratio-container

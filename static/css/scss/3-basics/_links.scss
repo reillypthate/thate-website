@@ -50,3 +50,29 @@ a
         color: $shade_primary;
     }
 }
+.to_all
+{
+    @include edge(0, 0);
+    flex: 0 1 100%;
+    align-self: center;
+    text-align: center;
+    a
+    {
+        color: $shade-primary;
+        text-decoration: underline;
+        @include edge(0, 0.5rem, none, 2rem);
+        box-shadow: 
+            1px 1px 2px 2px hsla(0, 0%, 0%, 0.1),
+            -1px -1px 2px 2px hsla(0, 0%, 100%, 1);
+        &:hover
+        {
+            box-shadow: 
+            1px 1px 2px 2px hsla(0, 0%, 0%, 0.1) inset,
+            -1px -1px 2px 2px hsla(0, 0%, 100%, 1) inset;
+        }
+    }
+}
+.bump-down
+{
+    margin-top: 1rem;
+}

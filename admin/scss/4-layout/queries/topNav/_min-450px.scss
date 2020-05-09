@@ -1,0 +1,55 @@
+#topNav
+{
+    @include edge(0.5rem 0, 0);
+    position: relative;
+    background: none;
+    backdrop-filter: none;
+}
+#topNav_toggle
+{
+    display: none;
+}
+.topNav_item, .js .topNav_item
+{
+    @include softBox(0.015, 0.035);
+}
+%topNav_list-rows
+{
+    background: none;
+    padding: 0;
+    box-shadow: none;
+    
+    display: flex;
+    justify-content: center;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+
+    border: none;
+}
+#topNav_list, #topNav_list.is-active
+{
+    @extend %topNav_list-rows;
+}
+.js
+{
+    #topNav_toggle
+    {
+        display: none;
+    }
+    #topNav_list, #topNav_list.is-active
+    {
+        @extend %topNav_list-rows;
+    }
+    .topNav_item
+    {
+        width: 7rem;
+    }
+}
+@-moz-document url-prefix()
+{
+    #topNav
+    {
+        background: transparent;
+    }
+}

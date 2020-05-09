@@ -110,6 +110,36 @@ a {
   color: rgba(32, 64, 223, 0.9);
 }
 
+.to_all {
+  /* Spacing & Border */
+  margin: 0;
+  padding: 0;
+  /* */
+  flex: 0 1 100%;
+  align-self: center;
+  text-align: center;
+}
+
+.to_all a {
+  color: rgba(32, 64, 223, 0.9);
+  text-decoration: underline;
+  /* Spacing & Border */
+  margin: 0;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 2rem;
+  /* */
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1), -1px -1px 2px 2px white;
+}
+
+.to_all a:hover {
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1) inset, -1px -1px 2px 2px white inset;
+}
+
+.bump-down {
+  margin-top: 1rem;
+}
+
 /**
  * Default header specs:
  * --- Padding-top is 1rem to center h1 along logo.
@@ -311,7 +341,7 @@ article {
 
 .tiles {
   display: grid;
-  grid-gap: 0.5rem;
+  grid-gap: 1rem;
 }
 
 .paired {
@@ -358,10 +388,6 @@ article {
   text-align: center;
 }
 
-* {
-  outline: 1px solid rgba(118, 76, 76, 0.1);
-}
-
 html {
   /* Spacing & Border */
   margin: 0 auto;
@@ -388,6 +414,7 @@ body {
   border-radius: 0.75rem;
   /* */
   grid-column: 1 / end;
+  grid-row: 1 / 2;
   flex: 0 1 100%;
   box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1), -1px -1px 4px 1px white;
 }
@@ -415,16 +442,22 @@ body {
 
 .sub_description {
   padding-top: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .home_card {
   padding: 0;
-  background: linear-gradient(rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.015) 5%, rgba(0, 0, 0, 0.015) 95%, rgba(0, 0, 0, 0.035) 100%), linear-gradient(90deg, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.015) 2.5%, rgba(0, 0, 0, 0.015) 97.5%, rgba(0, 0, 0, 0.035) 100%);
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .home_card a {
+  display: inline-block;
+  border-radius: 1rem;
   padding: 1rem;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1), -1px -1px 4px 1px white;
+}
+
+.home_card a:hover {
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1) inset, -1px -1px 4px 1px white inset;
 }
 
 #featured_projects {
@@ -525,11 +558,9 @@ p {
 }
 
 .polaroid {
-  box-shadow: 1px 1px 4px 1px black, -1px -1px 4px 1px gray;
-}
-
-.polaroid-hover:hover {
-  box-shadow: 1px 1px 4px 1px rgba(32, 64, 223, 0.9), -1px -1px 4px 1px rgba(9, 64, 109, 0.9);
+  padding: 0.3rem;
+  border-radius: 0.2rem;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1) inset, -1px -1px 2px 1px white inset;
 }
 
 .ratio-container {
@@ -576,6 +607,10 @@ p {
 }
 
 .categories {
+  /* Spacing & Border */
+  margin: 0.5rem 0 0 0;
+  padding: 0;
+  /* */
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: 1fr;
@@ -594,8 +629,7 @@ p {
   align-items: flex-start;
   flex-wrap: wrap;
   align-content: flex-start;
-  background: linear-gradient(rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.015) 5%, rgba(0, 0, 0, 0.015) 95%, rgba(0, 0, 0, 0.035) 100%), linear-gradient(90deg, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.015) 2.5%, rgba(0, 0, 0, 0.015) 97.5%, rgba(0, 0, 0, 0.035) 100%);
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1), -1px -1px 4px 1px white;
 }
 
 .card h3 {
@@ -940,18 +974,23 @@ ol li {
   main {
     display: grid;
     grid-template-columns: 7fr 3fr;
+    grid-template-rows: auto;
   }
   #primary_section {
     grid-column: 1 / 2;
+    grid-row: auto / span 1;
   }
   #primary_accent {
     grid-column: 2 / end;
+    grid-row: 2 / span 1;
+    align-content: flex-start;
   }
   .tiles {
-    display: grid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
   .paired {
-    grid-template-rows: repeat(2, 1fr);
     grid-template-columns: 1fr;
   }
   #page_teaser {
@@ -1061,6 +1100,15 @@ ol li {
   }
   #topNav_list, .js #topNav_list {
     justify-content: flex-start;
+  }
+  .primary_accent {
+    grid-row: 2 / span 2;
+  }
+  .categories {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  #to_all_courses {
+    grid-column: 1 / 4;
   }
   #recent_posts {
     grid-column: 1 / 2;

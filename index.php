@@ -74,7 +74,7 @@
 							Reilly's primary areas of focus are in film and web development.
 						</p>
 					</article>
-					<p class="to_more">
+					<p class="to_all bump-down">
 						<a href="portfolio.php">Visit Portfolio</a>
 					</p>
 				</article>
@@ -82,29 +82,31 @@
 <!-- Pinned Project(s) -->
 			<section id="primary_accent">
 				<h2 class="trick-highlight">Featured</h2>
-				<div class="tiles paired">
+				<div class="tiles">
 					<article class="home_card">
-						<a href="https://youtu.be/FtKwKWFR57A">
-							<figure class="card_banner">
-								<img src="media/images/blogTeasers/banner_ruthless.jpg">
-							</figure>
-							<h3>Ruthless: The Final Chapter</h3>
-							<p>
-								A (fake) movie trailer in which Reilly plays a man whose dark side emerges with a violent streak...
-							</p>
-						</a>
-					</article>
-					<article class="home_card">
-						<a href="https://youtu.be/19ghZuSgtuU">
+						<a href="project.php?project-slug=birthday-toast">
 							<figure class="card_banner">
 								<img src="media/images/blogTeasers/banner_birthday-toast.jpg">
 							</figure>
-							<h3>Birthday Toast</h3>
+							<h3>Project: Birthday Toast</h3>
 							<p>
 								An 18th birthday party doesn't go quite according to plan...
 							</p>
 						</a>
 					</article>
+					<p class="to_all"><a href="projects.php">All Projects</a></p>
+					<article class="home_card">
+						<a href="blog_post.php?post-slug=n-body-orbital-simulator">
+							<figure class="card_banner">
+								<img src="media/images/blogTeasers/banner_n-body.jpg">
+							</figure>
+							<h3>Blog: N-Body Orbitals</h3>
+							<p>
+								A JavaScript project in which randomly-generated orbs of different colors and mass interact with each other via gravity.
+							</p>
+						</a>
+					</article>
+					<p class="to_all"><a href="blog.php">All Blog Posts</a></p>
 				</div>
 			</section>
 
@@ -150,6 +152,9 @@
 				</article>
 
 <?php endforeach ?>
+					<p class="to_all bump-down">
+						<a href="blog.php">Visit Blog</a>
+					</p>
 			</section>
 			
 		</main>

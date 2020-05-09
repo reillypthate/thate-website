@@ -1,0 +1,179 @@
+/* topNav */
+
+ #topNav /* header nav */
+{	
+    @include edge(0, 0);
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+
+    z-index: 1;
+}
+#topNav_list /* header nav ul */
+{	
+    @include edge(0, 0.25rem, false, 0.3125rem);
+    
+    flex-basis: 100%;
+    
+    background: linear-gradient(
+        hsla(0, 0%, 60%, 0.3), 
+        hsla(0, 0%, 80%, 0.6)),
+    linear-gradient(
+        hsla(0, 0%, 0%, 0.035) 0%,
+        hsla(0, 0%, 0%, 0.015) 5%,
+        hsla(0, 0%, 0%, 0.015) 95%,
+        hsla(0, 0%, 0%, 0.035) 100%),
+    linear-gradient(
+        90deg,
+        hsla(0, 0%, 0%, 0.035) 0%,
+        hsla(0, 0%, 0%, 0.015) 2.5%,
+        hsla(0, 0%, 0%, 0.015) 97.5%,
+        hsla(0, 0%, 0%, 0.035) 100%);
+    box-shadow: 0.5px 0.5px 0.5px 0.5px hsla(0, 0%, 0%, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+%topNav_item
+{
+    @include edge(0.25rem, 0, false, 5px);
+
+    font-family: $heading_family;
+    font-weight: 400;
+    font-size: $topNav_item-fontSize;
+    line-height: $topNav_item-fontSize;
+
+    text-align: center;
+    list-style: none;
+
+    @include softBox(0.015, 0.035, true);
+
+    box-shadow: 0.5px 0.5px 0.5px 0.5px hsla(0, 0%, 0%, 0.1);
+
+    transition: 0.1s;
+}
+%topNav_item-hover
+{
+    box-shadow: 0px 0px 1px 1px hsla(0, 0%, 0%, 0.1);
+}
+%topNav_item-link
+{
+    @include edge(0, $topNav_item-padding);
+    color: hsla(0, 0%, 0%, 0.85);
+    text-shadow: 1.0px 1.0px 1px white;
+    text-decoration: none;
+    display: block;
+}
+.topNav_item
+{
+    @extend %topNav_item;
+
+    a, a:link
+    {
+        @extend %topNav_item-link;
+    }
+    &:hover
+    {
+        @extend %topNav_item-hover;
+    }
+}
+#active_page
+{
+    padding: $topNav_item-padding;
+    text-shadow: 1.0px 1.0px 1px white;
+    background: linear-gradient(
+        hsla(0, 0%, 0%, 0.055) 0%,
+        hsla(0, 0%, 0%, 0.045) 5%,
+        hsla(0, 0%, 0%, 0.045) 95%,
+        hsla(0, 0%, 100%, 0.35) 100%),
+    linear-gradient(
+        90deg,
+        hsla(0, 0%, 0%, 0.055) 0%,
+        hsla(0, 0%, 0%, 0.045) 2.5%,
+        hsla(0, 0%, 0%, 0.045) 97.5%,
+        hsla(0, 0%, 100%, 0.35) 100%);
+    &:hover
+    {
+        box-shadow: 0.5px 0.5px 0.5px 0.5px hsla(0, 0%, 0%, 0.1);
+    }
+ }
+ #topNav a:link, #topNav a:visited
+ {
+     color: var(--dark-primary);
+ }
+ 
+#topNav_toggle
+{
+    @include edge(0, $topNav_toggle-padding, false, 5px);
+    
+    font-family: $heading_family;
+    font-size: $topNav_toggle-fontSize;
+    line-height: $topNav_toggle-fontSize;
+
+    width: 100%;
+    background: linear-gradient(hsla(0, 0%, 60%, 0.7), hsla(0, 0%, 90%, 0.9)),
+    linear-gradient(
+        hsla(0, 0%, 100%, 0.15) 0%,
+        hsla(0, 0%, 0%, 0.015) 5%,
+        hsla(0, 0%, 0%, 0.015) 95%,
+        hsla(0, 0%, 0%, 0.035) 100%),
+    linear-gradient(
+        90deg,
+        hsla(0, 0%, 100%, 0.15) 0%,
+        hsla(0, 0%, 0%, 0.015) 2.5%,
+        hsla(0, 0%, 0%, 0.015) 97.5%,
+        hsla(0, 0%, 0%, 0.035) 100%);
+    box-shadow: 0.5px 0.5px 0.5px 0.5px hsla(0, 0%, 0%, 0.1);
+    text-shadow: 0 0 0.5rem $bright-primary;
+
+    backdrop-filter: blur(7px);
+    
+    &:hover
+    {
+        cursor: pointer;
+        box-shadow: 0px 0px 1px 1px hsla(0, 0%, 0%, 0.1);
+    }
+}
+
+#topNav_list.is-active
+{
+   display: block;
+}
+.js
+{
+    #topNav_list
+    {
+        display: none;
+        &.is-active
+        {
+            display: block;
+        }
+    }
+    .topNav_item
+    {
+        @extend %topNav_item;
+   
+        a, a:link
+        {
+            @extend %topNav_item-link;
+        }
+        &:hover
+        {
+            @extend %topNav_item-hover;
+        }
+    }
+    #topNav_toggle
+    {
+        display: block;
+    }
+}
+
+@-moz-document url-prefix()
+{
+	#topNav
+	{
+		background: white;
+	}
+}
