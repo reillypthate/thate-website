@@ -60,11 +60,11 @@
                                 <input type="radio" id="published" name="post_published" value="1" <?php if($isEditingPost): ?><?php if($post_published == 1):echo "checked"; endif;?> <?php endif;?>><label for="published" id="label_published">Publish</label><br>
                                 <input type="radio" id="unpublished" name="post_published" value="0" <?php if($isEditingPost): ?><?php if($post_published != 1):echo "checked"; endif;?> <?php endif;?>><label for="unpublished" id="label_published">Don't publish</label>
                             </div>
-                            <?php if ($isEditingPost === true): ?>
-                                <button type="submit" name="update_post">Update Post</button>
-                            <?php else: ?>
-                                <button type="submit" name="create_post">Create Post</button>
-                            <?php endif ?>
+<?php if ($isEditingPost === true): ?>
+                            <button type="submit" name="update_post">Update Post</button>
+<?php else: ?>
+                            <button type="submit" name="create_post">Create Post</button>
+<?php endif ?>
 
                         </fieldset>
                     </form>

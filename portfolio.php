@@ -81,12 +81,12 @@
 	<!-- Course Tile: <?php echo $course['name']; ?> -->
 					<article class="card">
 						<h3>
-							<a href="<?php echo BASE_URL . 'course.php?course-slug=' . $course['slug']; ?>">
+							<a href="<?php echo /*BASE_URL .*/ 'course.php?course-slug=' . $course['slug']; ?>">
 								<?php echo $course['name'] . "\r\n"; ?>
 							</a>
 						</h3>
 						<figure class="ratio-container-a polaroid polaroid-hover">
-							<a href="<?php echo BASE_URL . 'course.php?course-slug=' . $course['slug']; ?>" class="to_more">
+							<a href="<?php echo /*BASE_URL .*/ 'course.php?course-slug=' . $course['slug']; ?>" class="to_more">
 								<img src="<?php echo $prevSrc['base']; ?>" alt="<?php echo $prevSrc['alt']; ?>">
 							</a>
 						</figure>

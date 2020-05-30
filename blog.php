@@ -32,7 +32,7 @@
 					<article class="blog-post__preview">
 <?php if (isset($post['image'])): ?>
 						<figure class="blog_banner ratio-container-a">
-							<a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>" class="img_link">
+							<a href="<?php echo /*BASE_URL .*/ 'blog_post.php?post-slug=' . $post['slug']; ?>" class="img_link">
 								<?php echo getPostImg($post['image']) . "\r\n"; ?>
 							</a>
 						</figure>
@@ -40,7 +40,7 @@
 
 						<article class="blog_summary">
 							<p class="date_published"><?php echo date_format(date_create($post['created_at']), "M d, Y"); ?></p>
-							<h3><a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>" class="trick-highlight"><?php echo $post['name']; ?></a></h3>
+							<h3><a href="<?php echo /*BASE_URL .*/ 'blog_post.php?post-slug=' . $post['slug']; ?>" class="trick-highlight"><?php echo $post['name']; ?></a></h3>
 <?php if (isset($post['summary'])) : ?>
 							<p class="summary">
 								<?php echo $post['summary'] . "\r\n"; ?>
@@ -50,7 +50,7 @@
 								** No summary written for this post. **
 							</p>
 <?php endif; ?>
-							<p class="to_more"><a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>">Read More</a></p>
+							<p class="to_more"><a href="<?php echo /*BASE_URL .*/ 'blog_post.php?post-slug=' . $post['slug']; ?>">Read More</a></p>
 						</article>
 					</article>
 

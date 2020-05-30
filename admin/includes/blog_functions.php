@@ -88,7 +88,7 @@ function createPost($request_values)
 
     if(count($errors) == 0)
     {
-        $query = "INSERT INTO blog_post (author_id, name, slug, summary, body, published, created_at, image) VALUES(1, '$post_name', '$slug', '$post_summary', '$post_body', $post_published, now(), $post_banner)";
+        $query = "INSERT INTO blog_post (author_id, name, slug, summary, body, published, created_at, image) VALUES(1, '$post_name', '$slug', '$post_summary', '$post_body', $post_published, NOW(), $post_banner)";
         mysqli_query($conn, $query);
 
         $_SESSION['message'] = "Blog added successfully!";
