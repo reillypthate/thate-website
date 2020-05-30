@@ -388,6 +388,10 @@ article {
   text-align: center;
 }
 
+* {
+  outline: none;
+}
+
 html {
   /* Spacing & Border */
   margin: 0 auto;
@@ -641,6 +645,12 @@ p {
 
 .card h3 a {
   text-align: center;
+}
+
+/* Embedded PDF file */
+.pdf {
+  width: 100%;
+  height: 500px;
 }
 
 /* Embedded YouTube video */

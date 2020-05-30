@@ -39,7 +39,7 @@
 					<article class="blog-post__preview">
 <?php if (isset($post['image'])): ?>
 						<figure class="blog_banner ratio-container-a">
-							<a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>" class="img_link">
+							<a href="<?php echo /*BASE_URL .*/ 'blog_post.php?post-slug=' . $post['slug']; ?>" class="img_link">
 								<?php echo getPostImg($post['image']) . "\r\n"; ?>
 							</a>
 						</figure>
@@ -48,11 +48,11 @@
 							<p class="date_published">
 								<?php echo date_format(date_create($post['created_at']), "M d, Y"); ?> 
 							</p>
-							<h3><a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>" class="trick-highlight"><?php echo $post['name']; ?></a></h3>
+							<h3><a href="<?php echo /*BASE_URL .*/ 'blog_post.php?post-slug=' . $post['slug']; ?>" class="trick-highlight"><?php echo $post['name']; ?></a></h3>
 							<p>
 								<?php echo $post['summary'] . "\r\n"; ?>
 							</p>
-							<p class="to_more"><a href="<?php echo BASE_URL . 'blog_post.php?post-slug=' . $post['slug']; ?>">Read More</a></p>
+							<p class="to_more"><a href="<?php echo /*BASE_URL .*/ 'blog_post.php?post-slug=' . $post['slug']; ?>">Read More</a></p>
 						</article>
 					</article>
 <?php endif; ?>

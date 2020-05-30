@@ -29,7 +29,138 @@ h1, h2, h3, nav li, button
     font-family: $heading-family;
     font-weight: $heading-weight;
 }
+h2 button
+{
+    all: inherit;
+    /*
+    @include edge(0, 0.5rem 0.5rem 0.5rem 1rem, 2px solid hsla(0, 0%, 0%, 0.2), 0.25rem);
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    cursor: pointer;
 
+    text-align: left;
+    font-size: 1.6rem;
+    text-transform: uppercase;*/
+}
+.collapsible
+{
+    all: inherit;
+    @include edge(0, 0.75rem, 2px solid hsla(0, 0%, 0%, 0.2), 0.25rem);
+    @include flex(row, space-between, center, nowrap);
+
+    svg
+    {
+        flex: 0 1 3%;
+    }
+    cursor: pointer;
+    
+    &:hover
+    {
+        background: hsla(0, 0%, 0%, 0.05);
+    }
+}
+[aria-expanded]
+{
+    rect
+    {
+        fill: currentColor;
+    }
+}
+[aria-expanded="true"]
+{
+    border-bottom-style: dotted;
+    background: hsla(0, 0%, 0%, 0.1);
+    
+    .vert
+    {
+        display: none;
+    }
+
+}
+.collapsible_section
+{
+    grid-column: 1 / end;
+    h2
+    {
+        padding-bottom: 0;
+    }
+}
+h2 button:focus svg 
+{
+    outline: 2px solid;
+}
+.collapsible_div
+{
+    @include edge(0, 0.75rem, 2px solid hsla(0, 0%, 0%, 0.2), 0 0 0.25rem 0.25rem);
+    border-top: none;
+    &:not([hidden=""])
+    {
+        @include flex(row, space-between, flex-start, nowrap);
+
+        fieldset
+        {
+            margin: 0;
+        }
+
+        form, article
+        {
+            flex: 0 1 49%;
+        }
+        textarea
+        {
+            resize: vertical;
+            overflow: scroll;
+        }
+        #post_summary
+        {
+            min-height: 50px;
+            height: 100px;
+            max-height: 150px;
+        }
+        #post_body
+        {
+            min-height: 500px;
+            max-height: 1000px;
+        }
+        #blog_preview
+        {
+            flex: 0 1 49%;
+            .blog_banner
+            {
+                max-width: 100%;
+                img
+                {
+                    max-width: 100%;
+                }
+            }
+            .post_closer
+            {
+                figure
+                {
+                    max-width: 100%;
+                    img
+                    {
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+.radio_container
+{
+    display: inline-grid;
+    grid-auto-flow: dense;
+    align-items: center;
+
+    label
+    {
+        grid-column: 2;
+        padding-left: 0.5rem;
+    }
+}
+/*
 button
 {
     border-radius: 1rem;
@@ -44,6 +175,28 @@ button
     {
         background: $button-background-hover;
         border: 2px solid $button-border-highlight;
+    }
+}*/
+table
+{
+    @include edge(0, 0.25rem, 2px solid hsla(0, 0%, 0%, 0.2), 0.25rem);
+    border-collapse: collapse;
+
+    th, td
+    {
+        @include edge(0, 0.5rem, 1px solid hsla(0, 0%, 0%, 0.1));
+
+    }
+    thead
+    {
+        @include edge(0.25rem, 0.25rem, 1px solid black);
+    }
+    tbody
+    {
+        td
+        {
+            text-align: left;
+        }
     }
 }
 /******************************************************************************

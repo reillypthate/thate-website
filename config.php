@@ -1,6 +1,8 @@
 <?php 
     session_start();
 
+    $adminEnabled = true;
+
     $server_name = "localhost";
     $username = "root";
     $password = "";

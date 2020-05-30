@@ -35,6 +35,185 @@ function makeSlug(String $string)
     $slug = preg_replace('/[^A-Za-z0-9-]+/', '-', $string);
     return $slug;
 }
+/******************************************************************************
+ ** Tag Manager | Variables & Functions ***************************************
+ ******************************************************************************/
+/*
+ * Tag table values.
+ */
+$tag_id = 0;
+$tag_p_id = 0;
+$tag_name = "";
+$tag_slug = "";
+$tag_meta_name = "";
+$tag_description = "";
+
+$isEditingTag = false;
+
+function getAllTags()
+{
+    global $conn;
+
+    $query = "SELECT * FROM `tag`";
+    $result = $conn->query($query);
+
+    if ($result->num_rows > 0)
+    {
+        $final_result = $result->fetch_all(MYSQLI_ASSOC);
+        // print_r($final_result);
+        return $final_result;
+    }
+    echo "Fail";
+    return -1;
+}
+function getTagById($request_id)
+{
+    global $conn, $tag_id;
+
+    $stmt = $conn->prepare("SELECT * FROM `tag` WHERE `id`=? LIMIT 1");
+    $stmt->bind_param("i", $tag_id);
+
+    $tag_id = $request_id;
+    $stmt->execute();
+
+    $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+
+    if(!$result) exit("No rows");
+
+    return $result[0];
+}
+
+// If user clicks the "Create Tag" button...
+if (isset($_POST['create_tag'])) { createTag($_POST); }
+
+// If user clicks the "Edit Tag" button...
+if (isset($_GET['edit-tag'])) {
+    $isEditingTag = true;
+    $tag_id = $_GET['edit-tag'];
+    editTag($tag_id);
+}
+// If user clicks the "Update Topic" button...
+if (isset($_POST['update_tag']))
+{
+    updateTag($_POST);
+}
+// If user clicks the "Delete Topic" button...
+if (isset($_POST['delete_tag']))
+{
+    deleteTag($_POST['tag_id']);
+}
+
+function createTag($request_values)
+{
+    global $conn, $errors, $tag_name, $tag_description;
+    $tag_name = esc($request_values['tag_name']);
+    $tag_p_id = esc($request_values['tag_p_id']);
+    $tag_description = esc($request_values['tag_description']);
+    // Create slug: if tag is "Life Advice", return "life-advice" as slug.
+    $tag_slug = makeSlug($tag_name);
+    // Validate form
+    if(empty($tag_name))
+    {
+        array_push($errors, "Tag name required");
+    }
+    if(empty($tag_description))
+    {
+        array_push($errors, "Tag summary required");
+    }
+    // Ensure that no tag is saved twice.
+    $tag_check_query = "SELECT * FROM tag WHERE slug='$tag_slug' LIMIT 1";
+    $result = mysqli_query($conn, $tag_check_query);
+    if(mysqli_num_rows($result) > 0)
+    {
+        array_push($errors, "Tag already exists");
+    }
+    // Register tag if there are no errors in the form
+    if(count($errors) == 0)
+    {
+        if(empty($tag_p_id))
+        {
+            $stmt = $conn->prepare("INSERT INTO `tag` (name, slug, description) VALUES(?, ?, ?)");
+            $stmt->bind_param("sss", $tag_name, $tag_slug, $tag_description);
+        }else
+        {
+            $stmt = $conn->prepare("INSERT INTO `tag` (p_id, name, slug, description) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("isss", $tag_p_id, $tag_name, $tag_slug, $tag_description);
+        }
+        $stmt->execute();
+        $stmt->close();
+
+        $_SESSION['message'] = "Tag created successfully";
+        header('location: tag_admin.php');
+        exit(0);
+    }
+
+}
+
+function editTag($request_id)
+{
+    global $conn, $isEditingTag, $tag_id, $tag_p_id, $tag_name, $tag_description;
+
+    $result = getTagById($request_id);
+    $tag_id = $result['id'];
+    $tag_p_id = $result['p_id'];
+    $tag_name = $result['name'];
+    $tag_description = $result['description'];
+
+    $isEditingTag = true;
+}
+
+function updateTag($request_values)
+{
+    global $conn, $errors, $tag_name, $tag_description;
+    $tag_id = $request_values['tag_id'];
+    $tag_name = esc($request_values['tag_name']);
+    $tag_p_id = esc($request_values['tag_p_id']);
+    $tag_description = esc($request_values['tag_description']);
+    // Create slug: if tag is "Life Advice", return "life-advice" as slug.
+    $tag_slug = makeSlug($tag_name);
+    // Validate form
+    if(empty($tag_name))
+    {
+        array_push($errors, "Tag name required");
+    }
+    if(empty($tag_description))
+    {
+        array_push($errors, "Tag summary required");
+    }
+    // Register tag if there are no errors in the form
+    if(count($errors) == 0)
+    {
+        if(empty($tag_p_id))
+        {
+            $stmt = $conn->prepare("UPDATE `tag` SET `p_id`=NULL, `name`=?, `slug`=?, `description`=? WHERE `id`=?");
+            $stmt->bind_param("sssi", $tag_name, $tag_slug, $tag_description, $tag_id);
+        }else
+        {
+            $stmt = $conn->prepare("UPDATE `tag` SET `p_id`=?, `name`=?, `slug`=?, `description`=? WHERE `id`=?");
+            $stmt->bind_param("isssi", $tag_p_id, $tag_name, $tag_slug, $tag_description, $tag_id);
+        }
+        $stmt->execute();
+        $stmt->close();
+
+        $_SESSION['message'] = "Tag updated successfully";
+        header('location: tag_admin.php');
+        exit(0);
+    }
+}
+function deleteTag($tag_id)
+{
+    global $conn;
+    $stmt = $conn->prepare("DELETE FROM `tag` WHERE `id`=?");
+    $stmt->bind_param("i", $tag_id);
+    $stmt->execute();
+    $stmt->close();
+
+    $_SESSION['message'] = "Tag successfully deleted";
+    header("location: tag_admin.php");
+    exit(0);
+}
+
 
 /******************************************************************************
  ** Media Manager | Variables & Functions *************************************
@@ -346,111 +525,6 @@ function getCategoryCount()
  ** Tag Manager | Variables & Functions **********************************
  ******************************************************************************/
 
-$tag_id = 0;
-$isEditingTag = false;
-$tag_name = "";
-
-// If user clicks the "Create Tag" button...
-if (isset($_POST['create_tag'])) { createTag($_POST); }
-// If user clicks the "Edit Tag" button...
-if (isset($_GET['edit-tag'])) {
-    $isEditingTag = true;
-    $tag_id = $_GET['edit-tag'];
-    editTag($tag_id);
-}
-// If user clicks the "Update Topic" button...
-if (isset($_POST['update_tag']))
-{
-    updateTag($_POST);
-}
-// If user clicks the "Delete Topic" button...
-if (isset($_GET['delete-tag']))
-{
-    $tag_id = $_GET['delete-tag'];
-    deleteTag($tag_id);
-}
-// Get all tags from DB
-function getAllTags()
-{
-    global $conn;
-
-    $sql = "SELECT * FROM tag";
-
-    $result = mysqli_query($conn, $sql);
-    $tags = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    return $tags;
-}
-
-function createTag($request_values)
-{
-    global $conn, $errors, $tag_name;
-    $tag_name = esc($request_values['tag_name']);
-    // Create slug: if tag is "Life Advice", return "life-advice" as slug.
-    $tag_slug = makeSlug($tag_name);
-    // Validate form
-    if(empty($tag_name))
-    {
-        array_push($errors, "Tag name required");
-    }
-    // Ensure that no tag is saved twice.
-    $tag_check_query = "SELECT * FROM tag WHERE slug='$tag_slug' LIMIT 1";
-    $result = mysqli_query($conn, $tag_check_query);
-    if(mysqli_num_rows($result) > 0)
-    {
-        array_push($errors, "Tag already exists");
-    }
-    // Register tag if there are no errors in the form
-    if(count($errors) == 0)
-    {
-        $query = "INSERT INTO tag (title, slug) VALUES('$tag_name', '$tag_slug')";
-        mysqli_query($conn, $query);
-
-        $_SESSION['message'] = "Tag created successfully";
-        header('location: tag_manager.php');
-        exit(0);
-    }
-
-}
-function editTag($tag_id)
-{
-    global $conn, $tag_name, $isEditingTag, $tag_id;
-    $sql = "SELECT * FROM tag WHERE id=$tag_id LIMIT 1";
-    $result = mysqli_query($conn, $sql);
-    $tag = mysqli_fetch_assoc($result);
-
-    $tag_name = $tag['title'];
-}
-function updateTag($request_values)
-{
-    global $conn, $errors, $tag_name, $tag_id;
-    $tag_name = esc($request_values['tag_name']);
-    $tag_id = esc($request_values['tag_id']);
-    $tag_slug = makeSlug($tag_name);
-    if(empty($tag_name))
-    {
-        array_push($errors, "Tag name required");
-    }
-    if(count($errors) == 0)
-    {
-        $query = "UPDATE tag SET title='$tag_name', slug='$tag_slug' WHERE id=$tag_id";
-        mysqli_query($conn, $query);
-
-        $_SESSION['message'] = "Tag updated successfully";
-        header('location: tag_manager.php');
-        exit(0);
-    }
-}
-function deleteTag($tag_id)
-{
-    global $conn;
-    $sql = "DELETE FROM tag WHERE id=$tag_id";
-    if(mysqli_query($conn, $sql))
-    {
-        $_SESSION['message'] = "Topic successfully deleted";
-        header("location: tag_manager.php");
-        exit(0);
-    }
-}
 function getTagCount()
 {
     global $conn;

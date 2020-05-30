@@ -5,7 +5,11 @@
 				</a>
 			</h1>
 <!-- Renegade Logo; imported in CSS -->
+<?php if($adminEnabled == true): ?>
+			<a href="/thate-website/admin/"><span class="logo logo-renegade"></span></a>
+<?php else: ?>
 			<span class="logo logo-renegade"></span>
+<?php endif; ?>
 
 <!-- Top Nav; if on one of these pages, the respective button will be disabled. -->
 			<nav id="topNav">
