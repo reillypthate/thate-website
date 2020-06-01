@@ -17,6 +17,7 @@ $post_published_at = 0;
 $post_body = "";
 
 $isEditingPost = false;
+$isEditingTags = false;
 
 function getAllPosts()
 {

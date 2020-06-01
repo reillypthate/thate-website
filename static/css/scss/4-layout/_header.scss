@@ -7,6 +7,18 @@ header
     @include edge(0, 1rem 0 0 0);
     @include flex(row);
 }
+
+.public_header
+{
+    @include edge(0, 1rem 0 0 0);
+    @include flex(row);
+}
+.public_header__grid
+{
+    display: grid;
+    grid-template-areas:
+        "public_h1";
+}
 .logo
 {
     opacity: 20%;

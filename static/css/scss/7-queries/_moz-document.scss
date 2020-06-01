@@ -1,29 +1,6 @@
 @-moz-document url-prefix()
 {
-	main
-	{
-		background: 
-			linear-gradient(
-				$shade-secondary 0rem,
-				$shade-secondary 0.25rem,
-				$transparent 0.25rem,
-				$transparent 0.75rem,
-				$shade-secondary 0.75rem,
-				$shade-primary 1.5rem,
-				transparent 1.5rem
-			),
-			linear-gradient(
-				0deg,
-				$shade-secondary 0rem,
-				$shade-secondary 0.25rem,
-				$transparent 0.25rem,
-				$transparent 0.75rem,
-				$shade-secondary 0.75rem,
-				$shade-primary 1.5rem,
-				transparent 1.5rem
-			);
-	}
-	@media screen and (max-width: 450px)
+	@media screen and (max-width: 449px)
 	{
 		#topNav
 		{

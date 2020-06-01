@@ -6,7 +6,27 @@ main
 	grid-template-columns: 1fr;
 	grid-gap: 1rem;
 
-    background: 
+	background: 
+			linear-gradient(
+				$shade-secondary 0rem,
+				$shade-secondary 0.25rem,
+				$transparent 0.25rem,
+				$transparent 0.75rem,
+				$shade-secondary 0.75rem,
+				$shade-primary 1.5rem,
+				transparent 1.5rem
+			),
+			linear-gradient(
+				0deg,
+				$shade-secondary 0rem,
+				$shade-secondary 0.25rem,
+				$transparent 0.25rem,
+				$transparent 0.75rem,
+				$shade-secondary 0.75rem,
+				$shade-primary 1.5rem,
+				transparent 1.5rem
+			);
+/*
     linear-gradient(
 		$shade-transparent 0%,
 		$shade-secondary 0.75rem,  
@@ -21,7 +41,8 @@ main
 		$shade-primary 1.25rem,
 		$shade-transparent  1.5rem,
 		$shade-transparent  100%
-    );
+	);
+*/
 	background-position: top 0, bottom 0;
 	background-origin: border-box;
 }

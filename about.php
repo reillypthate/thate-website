@@ -25,11 +25,36 @@
 <!-- Main Section -->
 			<section class="page_preview">
 				<article class="description">
-					<h2>
+					<h2 class="trick-highlight">Academic Career</h2>
+					<p>
+						Reilly graduated from Rochester Institute of Technology in 2018 with a B.S. in Bioinformatics, and he is currently pursuing an A.A.S. in Media Production at Anne Arundel Community College.
+					</p>
+					<p>
+						Reilly's education at R.I.T. incorporated intensive study in such courses as:
+					</p>
+					<ul>
+						<li>Bioinformatics Algorithms</li>
+						<li>Statistical Analysis</li>
+						<li>Genetic Engineering</li>
+					</ul>
+					<p>
+						At A.A.C.C., his education is focused on artistic endeavors in such courses as:
+					</p>
+					<ul>
+						<li>Video Editing & Drawing</li>
+						<li>Web Design</li>
+						<li>Typography</li>
+					</ul>
+				</article>
+			</section>
+			<h2 class="trick-highlight">Experience</h2>
+			<section class="page_preview">
+				<article class="description">
+					<h3>
 						<a href="#" class="trick-highlight">
 							Film
 						</a>
-					</h2>
+					</h3>
 					<p>
 						Experienced in roles throughout all phases of production.
 					</p>
@@ -49,11 +74,11 @@
 			</section>
 			<section class="page_preview">
 				<article class="description">
-					<h2>
+					<h3>
 						<a href="#" class="trick-highlight">
 							Science
 						</a>
-					</h2>
+					</h3>
 					<p>
 						Reilly graduated from Rochester Institute of Technology in 2018 with a B.S. in Bioinformatics and immersion in Mathematics.
 					</p>
@@ -73,11 +98,11 @@
 			</section>
 			<section class="page_preview">
 				<article class="description">
-					<h2>
+					<h3>
 						<a href="#" class="trick-highlight">
 							Design
 						</a>
-					</h2>
+					</h3>
 					<p>
 						Skilled in web design, graphic design, and still art.
 					</p>

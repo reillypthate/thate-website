@@ -1240,6 +1240,10 @@ h2 button:focus svg {
   padding-left: 0.5rem;
 }
 
+.tags_container {
+  flex: 0 1 100%;
+}
+
 /*
 button
 {

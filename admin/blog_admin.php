@@ -75,6 +75,44 @@
                                 <label for="post_unpublished">Don't Publish</label>
                             </div>
 
+                            <div class="tags_container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" id="t_key">#</th>
+                                            <th scope="col" id="t_tag">Tag</th>
+                                            <th scope="col" id="t_edit">Add/Remove</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+<?php foreach($tags as $key => $tag) : ?>
+                                        <tr>
+                                            <th headers="t_key">
+                                                <?php echo $key; ?>
+                                            </th>
+                                            <td headers="t_name">
+                                                <?php echo $post['name']; ?>
+                                            </td>
+                                            <td headers="t_remove">
+                                                <button>Remove</button>
+                                            </td>
+                                        </tr>
+<?php endforeach; ?>
+                                        <tr>
+                                            <th headers="t_key">
+                                                ADD
+                                            </th>
+                                            <td headers="t_name">
+<?php generateSelectElement("post_tag", "Add Tag", "post_tag", $post_tag, getAllTags(), 'id', 'name', $isEditingPost, 7); ?>
+                                            </td>
+                                            <td headers="t_remove">
+                                                <button>Add New Tag</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
 <?php if ($isEditingPost === true) : ?>
                             <button type="submit" name="update_post">Update Post</button>
                             <button type="submit" name="delete_post"><em>Delete Post</em></button>
@@ -120,6 +158,7 @@
                                     <th scope="col" id="t_description">Summary</th>
                                     <th scope="col" id="t_published">Published</th>
                                     <th scope="col" id="t_edit">Edit</th>
+                                    <th scope="col" id="t_edit_tags">Tags</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -149,6 +188,9 @@
                                     </td>
                                     <td headers="t_edit">
                                         <button onclick="window.location.href='blog_admin.php?edit-post=<?php echo $post['id']?>#post_manager'">Edit</button>
+                                    </td>
+                                    <td headers="t_edit_tags">
+                                        <button onclick="window.location.href='blog_admin.php?edit-post-tags=<?php echo $post['id']?>#post_manager'">Edit</button>
                                     </td>
                                 </tr>
 <?php endforeach; ?>

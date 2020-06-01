@@ -24,7 +24,7 @@
 			</section>
 
 <!-- Main Section of Page -->
-			<section class="page_preview" id="primary_section">
+			<section id="primary_section">
 				<article class="description">
 					<h2>
 						<a href="portfolio.php" class="trick-highlight trick-hover">

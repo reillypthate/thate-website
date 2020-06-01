@@ -98,6 +98,59 @@ function getCourseProjects($course_id)
     return returnRows($query);
 }
 
+/******************************************************************************/
+/** Blog Post Functions *******************************************************/
+/******************************************************************************/
+function getPublishedPosts()
+{
+    global $conn;
+
+    $query = "SELECT * FROM `post` WHERE `published`=TRUE ORDER BY `created_at` DESC";
+    $result = $conn->query($query);
+
+    if ($result->num_rows > 0)
+    {
+        $final_result = $result->fetch_all(MYSQLI_ASSOC);
+        // print_r($final_result);
+        return $final_result;
+    }
+    echo "Fail";
+    return -1;
+}
+function getPostBySlug($request_slug)
+{
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT * FROM `post` WHERE `slug`=? LIMIT 1");
+    $stmt->bind_param("s", $post_slug);
+
+    $post_slug = $request_slug;
+    $stmt->execute();
+
+    $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+
+    if(!$result) exit("No rows");
+
+    return $result[0];
+}
+function getPost($slug)
+{
+    global $conn;
+
+    $query = "SELECT * FROM `post` WHERE `slug`=? LIMIT 1";
+
+    $post_slug = $_GET['post-slug'];
+    $sql = "SELECT * FROM blog_post WHERE slug='$post_slug' AND published=true";
+    $result = mysqli_query($conn, $sql);
+
+    $post = mysqli_fetch_assoc($result);
+    if($post)
+    {
+        $post['category'] = getPostCategory($post['id']);
+    }
+    return $post;
+}
 
 function getProject($project_slug)
 {
@@ -146,13 +199,6 @@ function returnRows($query)
     }
     return $final_rows;
 }
-
-function getPublishedPosts()
-{
-    $query = "SELECT * FROM blog_post WHERE published=true ORDER BY created_at DESC";
-    return returnRows($query);
-}
-
 
 
 
@@ -205,21 +251,7 @@ function getPostCategory($post_id)
     return $category;
 }
 
-function getPost($slug)
-{
-    global $conn;
 
-    $post_slug = $_GET['post-slug'];
-    $sql = "SELECT * FROM blog_post WHERE slug='$post_slug' AND published=true";
-    $result = mysqli_query($conn, $sql);
-
-    $post = mysqli_fetch_assoc($result);
-    if($post)
-    {
-        $post['category'] = getPostCategory($post['id']);
-    }
-    return $post;
-}
 
 function getPostAuthor($author_id)
 {

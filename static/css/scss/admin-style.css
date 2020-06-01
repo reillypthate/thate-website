@@ -28,6 +28,11 @@ h1 {
   height: 6rem;
 }
 
+.public_h1 {
+  grid-area: public_h1;
+  justify-self: center;
+}
+
 h2 {
   font-size: 1.8rem;
   line-height: 1.8rem;
@@ -152,6 +157,21 @@ header {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.public_header {
+  /* Spacing & Border */
+  margin: 0;
+  padding: 1rem 0 0 0;
+  /* */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.public_header__grid {
+  display: grid;
+  grid-template-areas: "public_h1";
 }
 
 .logo {
@@ -290,7 +310,24 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1rem;
-  background: linear-gradient(rgba(32, 64, 223, 0) 0%, rgba(32, 64, 223, 0.45) 0.75rem, rgba(32, 64, 223, 0.9) 1.25rem, rgba(32, 64, 223, 0) 1.5rem, rgba(32, 64, 223, 0) 100%), linear-gradient(0deg, rgba(32, 64, 223, 0) 0%, rgba(32, 64, 223, 0.45) 0.75rem, rgba(32, 64, 223, 0.9) 1.25rem, rgba(32, 64, 223, 0) 1.5rem, rgba(32, 64, 223, 0) 100%);
+  background: linear-gradient(rgba(32, 64, 223, 0.45) 0rem, rgba(32, 64, 223, 0.45) 0.25rem, rgba(0, 0, 0, 0) 0.25rem, rgba(0, 0, 0, 0) 0.75rem, rgba(32, 64, 223, 0.45) 0.75rem, rgba(32, 64, 223, 0.9) 1.5rem, transparent 1.5rem), linear-gradient(0deg, rgba(32, 64, 223, 0.45) 0rem, rgba(32, 64, 223, 0.45) 0.25rem, rgba(0, 0, 0, 0) 0.25rem, rgba(0, 0, 0, 0) 0.75rem, rgba(32, 64, 223, 0.45) 0.75rem, rgba(32, 64, 223, 0.9) 1.5rem, transparent 1.5rem);
+  /*
+    linear-gradient(
+		$shade-transparent 0%,
+		$shade-secondary 0.75rem,  
+		$shade-primary 1.25rem,
+		$shade-transparent 1.5rem,
+		$shade-transparent 100%
+    ),
+    linear-gradient(
+        0deg,
+        $shade-transparent  0%,
+		$shade-secondary 0.75rem,  
+		$shade-primary 1.25rem,
+		$shade-transparent  1.5rem,
+		$shade-transparent  100%
+	);
+*/
   background-position: top 0, bottom 0;
   background-origin: border-box;
 }
@@ -397,7 +434,7 @@ html {
   margin: 0 auto;
   padding: 0;
   /* */
-  max-width: 1024px;
+  max-width: 1920px;
 }
 
 body {
@@ -645,6 +682,11 @@ p {
 
 .card h3 a {
   text-align: center;
+}
+
+.simple_grid {
+  display: grid;
+  grid-gap: 1rem;
 }
 
 /* Embedded PDF file */
@@ -916,11 +958,17 @@ ol li {
   body {
     padding-bottom: 0.5;
   }
+  .public_header__grid {
+    display: grid;
+    grid-template-areas: "public_h1" "topNav";
+  }
   #topNav {
     /* Spacing & Border */
     margin: 0.5rem 0;
     padding: 0;
     /* */
+    margin-top: 0;
+    grid-area: topNav;
     position: relative;
     background: none;
     backdrop-filter: none;
@@ -1065,12 +1113,24 @@ ol li {
   }
 }
 
+@media only screen and (max-width: 899px) {
+  .public_h1 .trick-highlight {
+    background: none;
+  }
+  .public_h1 .trick-highlight:hover {
+    background: none;
+  }
+}
+
 @media screen and (min-width: 900px) {
   h1 {
     text-align: center;
     height: 3rem;
-    flex-basis: 40%;
-    flex-grow: 0;
+  }
+  .public_h1 {
+    justify-self: end;
+    margin-bottom: 1.5rem;
+    width: 350px;
   }
   header {
     height: 6rem;
@@ -1078,6 +1138,16 @@ ol li {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.5rem;
+  }
+  .public_header {
+    height: 6rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .public_header__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-areas: "public_h1 . topNav";
   }
   .logo {
     display: block;
@@ -1105,8 +1175,7 @@ ol li {
   }
   #topNav {
     margin: 0;
-    flex-basis: 40%;
-    flex-grow: 0;
+    justify-self: start;
   }
   #topNav_list, .js #topNav_list {
     justify-content: flex-start;
@@ -1129,9 +1198,6 @@ ol li {
 }
 
 @media only screen and (min-width: 1024px) {
-  h1 {
-    margin-bottom: 1.5rem;
-  }
   .categories {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1168,10 +1234,7 @@ ol li {
 }
 
 @-moz-document url-prefix() {
-  main {
-    background: linear-gradient(rgba(32, 64, 223, 0.45) 0rem, rgba(32, 64, 223, 0.45) 0.25rem, rgba(0, 0, 0, 0) 0.25rem, rgba(0, 0, 0, 0) 0.75rem, rgba(32, 64, 223, 0.45) 0.75rem, rgba(32, 64, 223, 0.9) 1.5rem, transparent 1.5rem), linear-gradient(0deg, rgba(32, 64, 223, 0.45) 0rem, rgba(32, 64, 223, 0.45) 0.25rem, rgba(0, 0, 0, 0) 0.25rem, rgba(0, 0, 0, 0) 0.75rem, rgba(32, 64, 223, 0.45) 0.75rem, rgba(32, 64, 223, 0.9) 1.5rem, transparent 1.5rem);
-  }
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 449px) {
     #topNav {
       background: white;
     }

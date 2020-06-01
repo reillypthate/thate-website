@@ -23,54 +23,16 @@
 			</section>
 
 <!-- Main Section of Page -->
-			<section class="page_preview" id="primary_section">
+			<section id="primary_section">
 				<article class="description">
 					<h2>
 						<a href="#" class="trick-highlight">
-							Academic Coursework
+							Coursework
 						</a>
 					</h2>
-					<p>
-						Reilly graduated from Rochester Institute of Technology in 2018 with a B.S. in Bioinformatics, and he is currently pursuing an A.A.S. in Media Production at Anne Arundel Community College.
-					</p>
-					<p>
-						Reilly's education at R.I.T. incorporated intensive study in such courses as:
-					</p>
-					<ul>
-						<li>Bioinformatics Algorithms</li>
-						<li>Statistical Analysis</li>
-						<li>Genetic Engineering</li>
-					</ul>
-					<p>
-						At A.A.C.C., his education is focused on artistic endeavors in such courses as:
-					</p>
-					<ul>
-						<li>Video Editing & Drawing</li>
-						<li>Web Design</li>
-						<li>Typography</li>
-					</ul>
+					<p>I've completed work across a variety of courses during my time at Rochester Institute of Technology and Anne Arundel Community College.</p>
 				</article>
-			</section>
-<!-- Pinned Project(s) -->
-			<section class="tiles" id="primary_accent">
-				<h2 class="trick-highlight">Pinned Project</h2>
-				<article class="home_card  polaroid-hover">
-					<a href="https://youtu.be/19ghZuSgtuU">
-						<figure class="card_banner">
-							<img src="media/images/blogTeasers/banner_birthday-toast.jpg">
-						</figure>
-						<h3>Birthday Toast</h3>
-						<p>
-							An 18th birthday party doesn't go quite according to plan...
-						</p>
-					</a>
-				</article>
-				<p class="to_all"><a href="projects.php">All Projects</a></p>
-			</section>
-
-<!-- Course Tiles -->
-			<section class="page_preview">
-				<h2 class="trick-highlight">Featured Courses</h2>
+				<!-- Course Tiles -->
 				<article class="categories courses">
 <?php $courses=getAllCourses(); ?> 
 <?php $featured_courses = getCoursesBySlugs(array("video-2", "responsive-web-design", "typography")); ?>
@@ -103,8 +65,26 @@
 					<p class="to_all" id="to_all_courses"><a href="courses.php">All Courses</a></p>
 				</article>
 			</section>
-			
-			<section class="page_preview" id="self_enrichment">
+<!-- Pinned Project(s) -->
+			<section class="tiles" id="primary_accent">
+				<h2 class="trick-highlight">Pinned Project</h2>
+				<article class="simple_grid">
+					<article class="home_card  polaroid-hover">
+						<a href="https://youtu.be/19ghZuSgtuU">
+							<figure class="card_banner">
+								<img src="media/images/blogTeasers/banner_birthday-toast.jpg">
+							</figure>
+							<h3>Birthday Toast</h3>
+							<p>
+								An 18th birthday party doesn't go quite according to plan...
+							</p>
+						</a>
+					</article>
+					<p class="to_all"><a href="projects.php">All Projects</a></p>
+				</article>
+			</section>
+
+			<section id="self_enrichment">
 				<article class="description">
 					<article class="sub_description">
 						<h2>

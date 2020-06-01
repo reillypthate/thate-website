@@ -1,5 +1,5 @@
-<header>
-			<h1>
+<header class="public_header public_header__grid">
+			<h1 class="public_h1">
 				<a href="index.php" class="trick-highlight trick-hover">
 					Reilly Thate
 				</a>

@@ -1,8 +1,7 @@
 #topNav
 {
     margin: 0;
-    flex-basis: 40%;
-    flex-grow: 0;
+    justify-self: start;
 }
 #topNav_list, .js #topNav_list
 {

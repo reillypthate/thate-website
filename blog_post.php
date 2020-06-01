@@ -5,7 +5,7 @@
 <?php
 	if (isset($_GET['post-slug']))
 	{
-		$post = getPost($_GET['post-slug']);
+		$post = getPostBySlug($_GET['post-slug']);
 	}
 ?>
 <?php 

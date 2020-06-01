@@ -6,6 +6,19 @@ header
     align-items: center;
     margin-bottom: 1.5rem;
 }
+.public_header
+{
+    height: 6rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.public_header__grid
+{
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-areas:
+        "public_h1 . topNav";
+}
 .logo
 {
     display: block;

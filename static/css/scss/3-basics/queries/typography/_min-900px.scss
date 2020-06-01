@@ -2,6 +2,10 @@ h1
 {
     text-align: center;
     height: 3rem;
-    flex-basis: 40%;
-    flex-grow: 0;
+}
+.public_h1
+{
+    justify-self: end;
+    margin-bottom: 1.5rem;
+    width: 350px;
 }
